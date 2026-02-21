@@ -70,7 +70,7 @@ export const PainPoints = () => {
                             <span className="text-xs font-bold text-red-500 uppercase tracking-wide">Hidden Costs</span>
                         </div>
                         <h2 className="text-navy text-3xl md:text-5xl font-black leading-tight tracking-tight mb-4 text-balance">
-                            Каждый день автопарк теряет деньги
+                            Превращаем скрытые убытки в прозрачную прибыль
                         </h2>
                     </div>
                 </div>
