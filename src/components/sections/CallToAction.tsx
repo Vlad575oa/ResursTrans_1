@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function CallToAction() {
     return (
-        <section className="relative py-24 px-4 bg-slate-900 overflow-hidden">
+        <section className="relative py-16 px-4 bg-slate-900 overflow-hidden">
             {/* Background Image with Overlay */}
             <div className="absolute inset-0 z-0">
                 <Image

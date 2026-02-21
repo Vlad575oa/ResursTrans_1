@@ -1,6 +1,6 @@
 export function Faq() {
     return (
-        <section className="py-24 px-4 bg-background-light relative overflow-hidden">
+        <section className="py-16 px-4 bg-background-light relative overflow-hidden">
             {/* Abstract background pattern */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-50">
                 <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>

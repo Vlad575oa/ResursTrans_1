@@ -39,10 +39,10 @@ export const Sustainability = () => {
             {/* Texture Overlay */}
             <div className="fixed inset-0 opacity-20 mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />
 
-            <div className="container mx-auto px-6 py-24 relative z-10">
+            <div className="container mx-auto px-6 py-12 relative z-10">
 
                 {/* Sticky Header */}
-                <div className="sticky top-24 z-20 mb-16 md:mb-24 bg-olive-spruce-dark/80 backdrop-blur-md py-4 rounded-xl border border-white/5 shadow-2xl">
+                <div className="sticky top-24 z-20 mb-8 md:mb-12 bg-olive-spruce-dark/80 backdrop-blur-md py-4 rounded-xl border border-white/5 shadow-2xl">
                     <div className="max-w-4xl mx-auto text-center px-4">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/20 bg-white/5 mb-4">
                             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />

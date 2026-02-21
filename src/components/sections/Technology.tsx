@@ -2,9 +2,9 @@ import Image from "next/image";
 
 export function Technology() {
     return (
-        <section className="py-24 bg-background-light border-t border-neutral-border">
+        <section className="py-16 bg-background-light border-t border-neutral-border">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16 gap-6">
+                <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10 gap-6">
                     <div className="max-w-3xl">
                         <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-3 block">Tech Stack</span>
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight">

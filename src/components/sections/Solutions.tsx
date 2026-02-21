@@ -1,6 +1,6 @@
 export function Solutions() {
     return (
-        <section className="py-20 lg:py-28 px-6 lg:px-12 bg-background-light" id="services">
+        <section className="py-12 lg:py-16 px-6 lg:px-12 bg-background-light" id="services">
             <div className="mx-auto max-w-7xl">
                 <div className="mb-16 flex flex-col gap-4 text-center md:text-left">
                     <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl md:text-5xl lg:max-w-2xl">

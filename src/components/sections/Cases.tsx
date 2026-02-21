@@ -1,6 +1,6 @@
 export function Cases() {
     return (
-        <section className="py-20 lg:py-28 px-6 lg:px-12 bg-white relative">
+        <section className="py-12 lg:py-16 px-6 lg:px-12 bg-white relative">
             {/* Background decoration */}
             <div className="absolute top-0 right-0 -z-10 h-[600px] w-1/3 bg-slate-50"></div>
             <div className="mx-auto max-w-7xl">

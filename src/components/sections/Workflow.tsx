@@ -19,12 +19,12 @@ export function Workflow() {
     });
 
     return (
-        <section ref={containerRef} className="py-32 bg-[#f8f7f5] relative overflow-hidden">
+        <section ref={containerRef} className="py-16 bg-[#f8f7f5] relative overflow-hidden">
             {/* Background decorative element */}
             <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-white to-transparent opacity-50 pointer-events-none"></div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="mb-20 max-w-3xl">
+                <div className="mb-12 max-w-3xl">
                     <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-3 block">Наш процесс</span>
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight">
                         Простой процесс — <br className="hidden md:block" />измеримый результат

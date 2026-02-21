@@ -9,9 +9,7 @@ export function Footer() {
                             <span className="material-symbols-outlined text-primary text-3xl">local_shipping</span>
                             <span className="text-xl font-bold text-slate-900">РесурсТранс</span>
                         </div>
-                        <p className="text-slate-500 text-sm leading-relaxed">
-                            «РесурсТранс» — дочерняя компания транспортного холдинга федерального уровня, работает на рынке с 2008 года. Основное направление деятельности компании — оказание услуг по аутсорсингу транспортной функции и организация перевозок различными видами автотранспорта.
-                        </p>
+
                         <div className="flex gap-4">
                             <a className="text-slate-400 hover:text-primary transition-colors" href="#">
                                 <span className="material-symbols-outlined">public</span>
