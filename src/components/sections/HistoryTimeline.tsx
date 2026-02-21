@@ -2,29 +2,31 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-
-const HISTORY = [
-    { year: 2008, title: "Начало пути", desc: "Старт операционной деятельности. Первые 100 машин." },
-    { year: 2012, title: "Региональная экопансия", desc: "Выход в 5 новых регионов РФ." },
-    { year: 2018, title: "Цифровизация", desc: "Запуск первой версии системы мониторинга." },
-    { year: 2023, title: "ИИ и Big Data", desc: "Предиктивная аналитика становится стандартом." },
-    { year: 2026, title: "Экосистема", desc: "Полная автоматизация и «Авто-Контроль»." },
-];
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export const HistoryTimeline = () => {
+    const { t } = useLanguage();
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({ target: containerRef });
 
+    const HISTORY = [
+        { year: 2008, title: t("Timeline.2008.title"), desc: t("Timeline.2008.description") },
+        { year: 2010, title: t("Timeline.2010.title"), desc: t("Timeline.2010.description") },
+        { year: 2014, title: t("Timeline.2014.title"), desc: t("Timeline.2014.description") },
+        { year: 2018, title: t("Timeline.2018.title"), desc: t("Timeline.2018.description") },
+        { year: 2021, title: t("Timeline.2021.title"), desc: t("Timeline.2021.description") },
+        { year: 2024, title: t("Timeline.2024.title"), desc: t("Timeline.2024.description") },
+        { year: 2027, title: t("Timeline.2027.title"), desc: t("Timeline.2027.description") },
+    ];
+
     return (
         <section ref={containerRef} className="py-24 bg-anthracite-core text-cloud-dancer relative overflow-hidden">
-
             {/* Engineering Grid Background */}
             <div className="absolute inset-0 opacity-10 pointer-events-none"
                 style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '20px 20px' }}
             />
 
             <div className="container mx-auto px-6 relative z-10 flex gap-12">
-
                 {/* Vertical Line */}
                 <div className="w-px bg-white/20 relative h-[500px] hidden md:block">
                     <motion.div

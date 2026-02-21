@@ -1,34 +1,36 @@
-import Image from "next/image";
+"use client";
+
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export function CallToAction() {
+    const { t } = useLanguage();
+
     return (
-        <section className="relative py-16 px-4 bg-slate-900 overflow-hidden">
+        <section 
+            className="relative py-16 px-4 bg-cover bg-center bg-fixed"
+            style={{
+                backgroundImage: `url('/solutions_bg_cinematic_1771685396206.png')`
+            }}
+        >
             {/* Background Image with Overlay */}
             <div className="absolute inset-0 z-0">
-                <Image
-                    alt="Abstract minimalist sunrise over city skyline"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMfbt1Z9KredbEj1xAVEarRXDPwDGlXxuzm0c0ibfKrGZ9r9zkWTMdzROfIU9031rqFtN28GJ1MiAohz0wATETxJ8MYklzO-yVnM6GJ_tRuyR0b0GdRxbkd2jiSHUPNXz-XziVDFGUdtKNf0I_jm54sh9xQTe4PYnNTaChewtfcrIJ3v0f8jfwPKLLCWPWj5j3guRhePQxP4glTes-1EA2RNxGjMI0cBZ0u_PNECD7OIVaN-2sdA6c4IHDgdEubGqFfBQZ6iXTbfN5"
-                    fill
-                    style={{ objectFit: 'cover' }}
-                    className="opacity-20"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900/40"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-slate-900/90 to-slate-800/90"></div>
             </div>
             <div className="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
                 <div className="flex-1 text-center md:text-left">
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-6 leading-tight">
-                        Готовы снизить <br className="hidden lg:block" /> транспортные расходы?
+                        {t("CallToAction.title")}
                     </h2>
                     <p className="text-xl text-slate-300 max-w-2xl mb-8">
-                        Получите индивидуальный расчет в течение 24 часов и узнайте, сколько вы можете сэкономить, оптимизировав работу корпоративного автопарка.
+                        {t("CallToAction.description")}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                         <button className="bg-primary hover:bg-orange-600 text-white min-w-[200px] h-14 rounded-lg text-lg font-bold transition-all shadow-[0_0_20px_rgba(245,122,0,0.4)] hover:shadow-[0_0_30px_rgba(245,122,0,0.6)] flex items-center justify-center gap-2">
-                            Оставить заявку
+                            {t("CallToAction.submitRequest")}
                             <span className="material-symbols-outlined">arrow_forward</span>
                         </button>
                         <button className="bg-white/10 hover:bg-white/20 border border-white/20 text-white min-w-[200px] h-14 rounded-lg text-lg font-bold transition-all backdrop-blur-sm flex items-center justify-center">
-                            Запросить КП
+                            {t("CallToAction.requestQuote")}
                         </button>
                     </div>
                 </div>
@@ -40,11 +42,11 @@ export function CallToAction() {
                                 <span className="material-symbols-outlined text-3xl">trending_down</span>
                             </div>
                             <div>
-                                <p className="text-sm text-slate-400 uppercase font-semibold">Средняя экономия</p>
+                                <p className="text-sm text-slate-400 uppercase font-semibold">{t("CallToAction.averageSavings")}</p>
                                 <p className="text-3xl font-bold text-white">30%</p>
                             </div>
                         </div>
-                        <p className="text-sm text-slate-300">Клиенты получают окупаемость инвестиций (ROI) уже в первые 3 месяца аутсорсинга.</p>
+                        <p className="text-sm text-slate-300">{t("CallToAction.roiDescription")}</p>
                     </div>
                 </div>
             </div>

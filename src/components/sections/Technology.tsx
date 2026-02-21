@@ -1,19 +1,25 @@
-import Image from "next/image";
+"use client";
+
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export function Technology() {
+    const { t } = useLanguage();
+
     return (
         <section className="py-16 bg-background-light border-t border-neutral-border">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10 gap-6">
                     <div className="max-w-3xl">
-                        <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-3 block">Tech Stack</span>
+                        <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-3 block">
+                            {t("Technology.techStack")}
+                        </span>
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight">
-                            Полная цифровизация <br />транспортной функции
+                            {t("Technology.title")}
                         </h2>
                     </div>
                     <div className="flex gap-3">
                         <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white text-xs font-medium text-slate-600 border border-slate-200">
-                            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Live System
+                            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> {t("Technology.liveSystem")}
                         </span>
                     </div>
                 </div>
@@ -27,9 +33,9 @@ export function Technology() {
                                 </div>
                                 <span className="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">arrow_outward</span>
                             </div>
-                            <h3 className="text-2xl font-bold text-slate-900 mb-3">GPS Monitoring</h3>
+                            <h3 className="text-2xl font-bold text-slate-900 mb-3">{t("Technology.gpsMonitoring.title")}</h3>
                             <p className="text-slate-600 leading-relaxed">
-                                Real-time vehicle tracking with precision geofencing and historical route replay capabilities.
+                                {t("Technology.gpsMonitoring.desc")}
                             </p>
                         </div>
                         <div className="mt-8 px-6 pb-6 w-full">
@@ -62,9 +68,9 @@ export function Technology() {
                                 </div>
                                 <span className="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">arrow_outward</span>
                             </div>
-                            <h3 className="text-2xl font-bold text-slate-900 mb-3">Fuel Analytics</h3>
+                            <h3 className="text-2xl font-bold text-slate-900 mb-3">{t("Technology.fuelAnalytics.title")}</h3>
                             <p className="text-slate-600 leading-relaxed">
-                                Advanced consumption monitoring to detect anomalies, theft, and optimization opportunities.
+                                {t("Technology.fuelAnalytics.desc")}
                             </p>
                         </div>
                         <div className="mt-8 px-6 pb-6 w-full">
@@ -99,9 +105,9 @@ export function Technology() {
                                 </div>
                                 <span className="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">arrow_outward</span>
                             </div>
-                            <h3 className="text-2xl font-bold text-slate-900 mb-3">BI Dashboards</h3>
+                            <h3 className="text-2xl font-bold text-slate-900 mb-3">{t("Technology.biDashboards.title")}</h3>
                             <p className="text-slate-600 leading-relaxed">
-                                Executive-level aggregated data views for strategic decision making and cost control.
+                                {t("Technology.biDashboards.desc")}
                             </p>
                         </div>
                         <div className="mt-8 px-6 pb-6 w-full">
@@ -144,9 +150,9 @@ export function Technology() {
                                 </div>
                                 <span className="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">arrow_outward</span>
                             </div>
-                            <h3 className="text-2xl font-bold text-slate-900 mb-3">Driver KPI</h3>
+                            <h3 className="text-2xl font-bold text-slate-900 mb-3">{t("Technology.driverKpi.title")}</h3>
                             <p className="text-slate-600 leading-relaxed">
-                                Automated scoring system measuring safety, efficiency, and compliance for every driver.
+                                {t("Technology.driverKpi.desc")}
                             </p>
                         </div>
                         <div className="mt-8 px-6 pb-6 w-full">
@@ -182,7 +188,7 @@ export function Technology() {
                 </div>
                 <div className="mt-16 text-center">
                     <button className="inline-flex items-center justify-center gap-2 text-slate-900 font-bold border-b-2 border-primary pb-1 hover:text-primary transition-colors group">
-                        <span>Explore our full technology stack</span>
+                        <span>{t("Technology.exploreTech")}</span>
                         <span className="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
                     </button>
                 </div>

@@ -4,18 +4,20 @@ import { motion } from "framer-motion";
 import { AlertTriangle, Fuel, Map, Wrench, Clock, ShieldAlert, Users } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useHaptic } from "@/hooks/useHaptic";
-
-const LOSSES = [
-    { icon: <Fuel className="w-6 h-6" />, text: "Перерасход топлива" },
-    { icon: <Map className="w-6 h-6" />, text: "Неэффективные маршруты" },
-    { icon: <Wrench className="w-6 h-6" />, text: "Внеплановые ремонты" },
-    { icon: <Clock className="w-6 h-6" />, text: "Простои" },
-    { icon: <ShieldAlert className="w-6 h-6" />, text: "Штрафы" },
-    { icon: <Users className="w-6 h-6" />, text: "Человеческий фактор" },
-];
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export const Losses = () => {
     const { trigger } = useHaptic();
+    const { t } = useLanguage();
+
+    const LOSSES = [
+        { icon: <Fuel className="w-6 h-6" />, text: t("PainPoints.fuelWaste.title") },
+        { icon: <Map className="w-6 h-6" />, text: t("PainPoints.inefficientRoutes.title") },
+        { icon: <Wrench className="w-6 h-6" />, text: t("PainPoints.unscheduledRepairs.title") },
+        { icon: <Clock className="w-6 h-6" />, text: t("PainPoints.downtime.title") },
+        { icon: <ShieldAlert className="w-6 h-6" />, text: t("PainPoints.fines.title") },
+        { icon: <Users className="w-6 h-6" />, text: t("PainPoints.humanFactor.title") },
+    ];
 
     return (
         <section id="losses" className="py-32 bg-anthracite-core relative overflow-hidden">
@@ -25,10 +27,10 @@ export const Losses = () => {
             <div className="container mx-auto px-6 max-w-7xl">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div>
-                        <span className="text-burnt-terra font-mono text-xs uppercase tracking-widest mb-4 block">Hidden Costs</span>
+                        <span className="text-burnt-terra font-mono text-xs uppercase tracking-widest mb-4 block">{t("Losses.hiddenCosts")}</span>
                         <h2 className="text-4xl md:text-6xl font-bold text-cloud-dancer mb-8 tracking-tighter leading-tight">
-                            Каждый день автопарк <br />
-                            <span className="text-burnt-terra italic font-serif">теряет деньги</span>
+                            {t("Losses.title").split("<br />")[0]} <br />
+                            <span className="text-burnt-terra italic font-serif">{t("Losses.title").split("<br />")[1]}</span>
                         </h2>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
@@ -50,7 +52,7 @@ export const Losses = () => {
 
                         <div className="p-8 bg-white/5 border-l-4 border-burnt-terra max-w-xl">
                             <p className="text-xl text-white/90 font-serif italic leading-relaxed">
-                                "Если у вас нет цифровой системы контроля — вы теряете до <span className="text-burnt-terra font-bold">30% бюджета</span>."
+                                {t("PainPoints.quote").split("вы теряете до")[0]} вы теряете до <span className="text-burnt-terra font-bold">30% бюджета</span>."
                             </p>
                         </div>
                     </div>
@@ -68,7 +70,7 @@ export const Losses = () => {
                             <div className="text-center z-10 p-12 glass-panel rounded-full aspect-square flex flex-col items-center justify-center bg-black/40">
                                 <AlertTriangle className="w-16 h-16 text-burnt-terra mb-6 animate-pulse" />
                                 <div className="text-5xl font-black text-white mb-2 font-mono">30%</div>
-                                <div className="text-xs uppercase tracking-widest text-white/40">Потенциал экономии</div>
+                                <div className="text-xs uppercase tracking-widest text-white/40">{t("Losses.savingsPotential")}</div>
                             </div>
                         </motion.div>
 
@@ -82,7 +84,7 @@ export const Losses = () => {
                                 onClick={trigger}
                                 className="bg-burnt-terra text-white hover:bg-burnt-terra/90 rounded-none px-10 py-8 text-xl tracking-widest uppercase font-black transition-all hover:scale-105"
                             >
-                                → Проверить свой автопарк
+                                → {t("Losses.checkFleet")}
                             </Button>
                         </motion.div>
                     </div>

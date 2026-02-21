@@ -2,45 +2,48 @@
 
 import { motion } from "framer-motion";
 import { XCircle, CheckCircle } from "lucide-react";
-
-const COMPARISON_DATA = [
-    {
-        category: "Бюджет",
-        own: "Скрытые расходы на ремонт и страховку сверх плана.",
-        resurs: "Фиксированный тариф: Прозрачное планирование на год."
-    },
-    {
-        category: "Налоги",
-        own: "Высокая нагрузка на ФОТ (штат водителей и механиков).",
-        resurs: "Вычет НДС 20%: Все услуги принимаются к расходам."
-    },
-    {
-        category: "Надежность",
-        own: "Убытки при поломке техники или болезни персонала.",
-        resurs: "Замена за 2 часа: Гарантия подмены транспорта."
-    },
-    {
-        category: "Финансы",
-        own: "Замораживание капитала в «железе» (CapEx).",
-        resurs: "OpEx модель: Деньги работают на развитие бизнеса."
-    }
-];
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export const Comparison = () => {
+    const { t } = useLanguage();
+
+    const COMPARISON_DATA = [
+        {
+            category: t("Comparison.data.budget.category"),
+            own: t("Comparison.data.budget.own"),
+            resurs: t("Comparison.data.budget.resurs")
+        },
+        {
+            category: t("Comparison.data.taxes.category"),
+            own: t("Comparison.data.taxes.own"),
+            resurs: t("Comparison.data.taxes.resurs")
+        },
+        {
+            category: t("Comparison.data.reliability.category"),
+            own: t("Comparison.data.reliability.own"),
+            resurs: t("Comparison.data.reliability.resurs")
+        },
+        {
+            category: t("Comparison.data.finance.category"),
+            own: t("Comparison.data.finance.own"),
+            resurs: t("Comparison.data.finance.resurs")
+        }
+    ];
+
     return (
         <section className="py-24 bg-cloud-dancer relative overflow-hidden">
             <div className="container mx-auto px-6 max-w-5xl relative z-10">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold text-anthracite-core mb-4">Сравнение моделей</h2>
-                    <p className="text-anthracite-core/60 font-serif italic text-lg">Почему лидеры рынка переходят на аутсорсинг</p>
+                    <h2 className="text-3xl md:text-5xl font-bold text-anthracite-core mb-4">{t("Comparison.title")}</h2>
+                    <p className="text-anthracite-core/60 font-serif italic text-lg">{t("Comparison.description")}</p>
                 </div>
 
                 <div className="grid grid-cols-1 overflow-hidden rounded-sm border border-anthracite-core/10">
                     {/* Header Row */}
                     <div className="grid grid-cols-12 bg-anthracite-core/5 border-b border-anthracite-core/10 p-6 text-xs font-mono uppercase tracking-widest text-anthracite-core/50">
-                        <div className="col-span-12 md:col-span-2">Параметр</div>
-                        <div className="col-span-12 md:col-span-5 text-burnt-terra mt-2 md:mt-0 font-bold">Свой автопарк (Риски)</div>
-                        <div className="col-span-12 md:col-span-5 text-safe-green mt-2 md:mt-0 font-bold">РесурсТранс (Выгода)</div>
+                        <div className="col-span-12 md:col-span-2">{t("Comparison.parameter")}</div>
+                        <div className="col-span-12 md:col-span-5 text-burnt-terra mt-2 md:mt-0 font-bold">{t("Comparison.ownFleet")}</div>
+                        <div className="col-span-12 md:col-span-5 text-safe-green mt-2 md:mt-0 font-bold">{t("Comparison.resursTrans")}</div>
                     </div>
 
                     {/* Data Rows */}

@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 const COMPANIES = [
     "Лукойл",
@@ -26,13 +27,14 @@ const SEPARATOR = (
 );
 
 export const HeroTicker = () => {
+    const { t } = useLanguage();
     const trackRef = useRef<HTMLDivElement>(null);
 
     return (
         <div className="w-full py-8 bg-transparent overflow-hidden select-none">
             {/* Static label above */}
             <p className="text-center text-xs font-bold uppercase tracking-[0.2em] text-slate-400 mb-4">
-                Нам доверяют
+                {t("Hero.ticker.trustedBy")}
             </p>
 
             {/* Scrolling strip */}
@@ -60,7 +62,7 @@ export const HeroTicker = () => {
 
             {/* Static label below - Uniform and same size as top label */}
             <p className="text-center text-xs font-bold uppercase tracking-[0.2em] text-slate-400 mt-6">
-                Проверенные решения для лидеров рынка
+                {t("Hero.ticker.marketLeaders")}
             </p>
         </div>
     );

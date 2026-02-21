@@ -3,67 +3,54 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
-
-const timelineData = [
-    {
-        year: "2010",
-        title: "Основание компании",
-        description: "РесурсТранс начинает свой путь как амбициозный стартап в сфере транспортной логистики. Первые клиенты, первые маршруты, первые успехи.",
-        image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    },
-    {
-        year: "2014",
-        title: "Запуск первых ИТ-решений",
-        description: "Осознание необходимости цифровизации. Внедрение первых модулей АСУ «Авто-контроль» для мониторинга корпоративного автопарка.",
-        image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    },
-    {
-        year: "2018",
-        title: "Выход на федеральный уровень",
-        description: "Открытие филиалов в 10 регионах РФ. Значительное расширение автопарка до 1500 единиц техники.",
-        image: "https://images.unsplash.com/photo-1449824913935-5b8d23425f20?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    },
-    {
-        year: "2021",
-        title: "Полная цифровизация",
-        description: "Переход на электронные путевые листы и транспортные накладные. Внедрение ИИ для предиктивной аналитики ремонтов.",
-        image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    },
-    {
-        year: "2024",
-        title: "Лидер рынка аутсорсинга",
-        description: "РесурсТранс — признанный эксперт и надежный партнер крупнейших корпораций России в сфере управления транспортом.",
-        image: "https://images.unsplash.com/photo-1627995133379-3733cc8165cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    },
-];
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export function Timeline() {
+    const { t } = useLanguage();
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start center", "end end"],
     });
 
+    const YEARS = ["2008", "2009", "2010", "2011", "2014", "2018", "2021", "2024", "2026", "2027"];
+
+    const IMAGES: Record<string, string> = {
+        "2008": "/images/timeline/2008.svg",
+        "2009": "/images/timeline/2009.svg",
+        "2010": "/images/timeline/2010.png",
+        "2011": "/images/timeline/2011.svg",
+        "2014": "/images/timeline/2014.png",
+        "2018": "/images/timeline/2018.png",
+        "2021": "/images/timeline/2021.png",
+        "2024": "/images/timeline/2024.png",
+        "2026": "/images/timeline/2026.svg",
+        "2027": "/images/timeline/2027.svg"
+    };
+
     return (
-        <section ref={containerRef} className="py-24 bg-white relative">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <section ref={containerRef} className="py-24 bg-white relative selection:bg-burnt-terra selection:text-white">
+            <div className="max-w-6xl mx-auto px-6 lg:px-8 relative">
                 {/* Central Line */}
-                <div className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 transform md:-translate-x-1/2" />
+                <div className="absolute left-[24px] md:left-1/2 top-0 bottom-0 w-[1px] bg-anthracite-core/10 transform md:-translate-x-1/2" />
 
                 {/* Animated progress line */}
                 <motion.div
-                    className="absolute left-[20px] md:left-1/2 top-0 w-0.5 bg-primary origin-top transform md:-translate-x-1/2 z-0"
+                    className="absolute left-[24px] md:left-1/2 top-0 w-[1px] bg-burnt-terra origin-top transform md:-translate-x-1/2 z-0 shadow-[0_0_10px_rgba(189,64,37,0.5)]"
                     style={{ scaleY: scrollYProgress, bottom: 0 }}
                 />
 
-                <div className="space-y-32">
-                    {timelineData.map((item, index) => {
+                <div className="space-y-48">
+                    {YEARS.map((year, index) => {
                         const isEven = index % 2 === 0;
                         return (
                             <TimelineItem
-                                key={item.year}
-                                item={item}
+                                key={year}
+                                year={year}
                                 isEven={isEven}
+                                image={IMAGES[year]}
+                                title={t(`AboutPage.timeline.${year}.title`)}
+                                description={t(`AboutPage.timeline.${year}.description`)}
                             />
                         );
                     })}
@@ -73,47 +60,58 @@ export function Timeline() {
     );
 }
 
-function TimelineItem({ item, isEven }: { item: typeof timelineData[0], isEven: boolean }) {
+function TimelineItem({ year, title, description, image, isEven }: {
+    year: string,
+    title: string,
+    description: string,
+    image: string,
+    isEven: boolean
+}) {
     const itemRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: itemRef,
-        offset: ["start 80%", "center center"]
+        offset: ["start 85%", "center center"]
     });
 
-    const y = useTransform(scrollYProgress, [0, 1], [50, 0]);
-    const opacity = scrollYProgress;
+    const y = useTransform(scrollYProgress, [0, 1], [100, 0]);
+    const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+    const scale = useTransform(scrollYProgress, [0, 1], [0.95, 1]);
 
     return (
         <motion.div
             ref={itemRef}
-            style={{ y, opacity }}
-            className={`flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16 relative z-10 ${isEven ? "md:flex-row-reverse" : ""
+            style={{ y, opacity, scale }}
+            className={`flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24 relative z-10 ${isEven ? "md:flex-row-reverse" : ""
                 }`}
         >
             {/* Year Node */}
-            <div className="absolute left-[20px] md:left-1/2 w-12 h-12 bg-white border-4 border-primary rounded-full transform -translate-x-1/2 flex items-center justify-center font-bold text-slate-900 shadow-md z-20">
-                <div className="w-3 h-3 bg-primary rounded-full animate-pulse" />
+            <div className="absolute left-[24px] md:left-1/2 w-4 h-4 bg-white border-2 border-burnt-terra rounded-full transform -translate-x-1/2 flex items-center justify-center z-20 shadow-[0_0_15px_rgba(189,64,37,0.3)]">
+                <div className="w-1.5 h-1.5 bg-burnt-terra rounded-full animate-pulse" />
             </div>
 
             {/* Content Sidebar */}
-            <div className={`w-full md:w-5/12 ml-12 md:ml-0 ${isEven ? "md:text-left" : "md:text-right"}`}>
-                <h3 className="text-4xl md:text-5xl font-black text-slate-900 mb-2 font-display">{item.year}</h3>
-                <h4 className="text-xl md:text-2xl font-bold text-slate-800 mb-4">{item.title}</h4>
-                <p className="text-slate-600 leading-relaxed text-lg">
-                    {item.description}
+            <div className={`w-full md:w-[45%] ml-16 md:ml-0 ${isEven ? "md:text-left" : "md:text-right"}`}>
+                <h3 className="text-5xl md:text-7xl font-black text-anthracite-core/10 mb-2 tracking-tighter transition-colors group-hover:text-burnt-terra duration-500">
+                    {year}
+                </h3>
+                <h4 className="text-2xl md:text-3xl font-bold text-anthracite-core mb-6 tracking-tight">
+                    {title}
+                </h4>
+                <p className="text-anthracite-core/60 leading-relaxed text-lg font-serif italic">
+                    {description}
                 </p>
             </div>
 
             {/* Image Sidebar */}
-            <div className={`w-full md:w-5/12 ml-12 md:ml-0 ${isEven ? "md:pr-8" : "md:pl-8"}`}>
-                <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-xl border border-slate-100 group">
+            <div className={`w-full md:w-[45%] ml-16 md:ml-0 ${isEven ? "md:pr-12" : "md:pl-12"}`}>
+                <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-anthracite-core/5 group">
                     <Image
-                        src={item.image}
-                        alt={item.title}
+                        src={image}
+                        alt={title}
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                        className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)]"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-anthracite-core/40 via-transparent to-transparent opacity-60" />
                 </div>
             </div>
         </motion.div>

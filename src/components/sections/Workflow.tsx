@@ -2,16 +2,18 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
-const steps = [
-    { step: "01", title: "Анализ и Аудит", desc: "Комплексный аудит текущих маршрутов, затрат и коэффициентов использования.", icon: "analytics", threshold: 0.15 },
-    { step: "02", title: "Модель оптимизации", desc: "Разработка индивидуальной стратегии и имитационной модели.", icon: "model_training", threshold: 0.35 },
-    { step: "03", title: "Подключение систем", desc: "Бесшовная интеграция ИТ-инфраструктуры и телематики транспортных средств.", icon: "hub", threshold: 0.55 },
-    { step: "04", title: "Запуск и Контроль", desc: "Пилотный запуск, корректировки в реальном времени и калибровка процессов.", icon: "rocket_launch", threshold: 0.75 },
-    { step: "05", title: "Месячная аналитика", desc: "Детальная отчетность и циклы непрерывного совершенствования.", icon: "monitoring", threshold: 0.90 }
+const WORKFLOW_STEPS = [
+    { key: "analysis", icon: "analytics", threshold: 0.15 },
+    { key: "model", icon: "model_training", threshold: 0.35 },
+    { key: "connection", icon: "hub", threshold: 0.55 },
+    { key: "launch", icon: "rocket_launch", threshold: 0.75 },
+    { key: "analytics", icon: "monitoring", threshold: 0.90 }
 ];
 
 export function Workflow() {
+    const { t } = useLanguage();
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -25,12 +27,12 @@ export function Workflow() {
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="mb-12 max-w-3xl">
-                    <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-3 block">Наш процесс</span>
+                    <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-3 block">{t("Workflow.badge")}</span>
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight">
-                        Простой процесс — <br className="hidden md:block" />измеримый результат
+                        {t("Workflow.title")}
                     </h2>
                     <p className="mt-4 text-lg text-slate-600 max-w-2xl">
-                        Структурированный подход к оптимизации автопарка, который гарантирует прозрачность и эффективность на каждом этапе.
+                        {t("Workflow.description")}
                     </p>
                 </div>
 
@@ -45,10 +47,11 @@ export function Workflow() {
                     </div>
 
                     <div className="grid grid-cols-5 gap-4">
-                        {steps.map((item, idx) => (
+                        {WORKFLOW_STEPS.map((item, idx) => (
                             <StepItem
                                 key={idx}
                                 item={item}
+                                index={idx + 1}
                                 progress={scrollYProgress}
                             />
                         ))}
@@ -65,10 +68,11 @@ export function Workflow() {
                         />
                     </div>
 
-                    {steps.map((item, idx) => (
+                    {WORKFLOW_STEPS.map((item, idx) => (
                         <MobileStepItem
                             key={idx}
                             item={item}
+                            index={idx + 1}
                             progress={scrollYProgress}
                         />
                     ))}
@@ -78,7 +82,8 @@ export function Workflow() {
     );
 }
 
-function StepItem({ item, progress }: { item: typeof steps[0], progress: any }) {
+function StepItem({ item, index, progress }: { item: typeof WORKFLOW_STEPS[0], index: number, progress: any }) {
+    const { t } = useLanguage();
     // Range: light up 5% before and stay lit 5% after the threshold
     const active = useTransform(progress,
         [item.threshold - 0.05, item.threshold, item.threshold + 0.15, item.threshold + 0.20],
@@ -109,11 +114,11 @@ function StepItem({ item, progress }: { item: typeof steps[0], progress: any }) 
                         style={{ color: textColor }}
                         className="text-xs font-bold uppercase tracking-widest mb-1 transition-colors duration-300"
                     >
-                        Шаг {item.step}
+                        {t("Workflow.step")} {index.toString().padStart(2, '0')}
                     </motion.div>
-                    <h3 className="text-lg font-bold text-slate-900 mb-2">{item.title}</h3>
+                    <h3 className="text-lg font-bold text-slate-900 mb-2">{t(`Workflow.steps.${item.key}.title`)}</h3>
                     <p className="text-sm text-slate-500 leading-relaxed font-medium">
-                        {item.desc}
+                        {t(`Workflow.steps.${item.key}.desc`)}
                     </p>
                 </div>
             </div>
@@ -121,7 +126,8 @@ function StepItem({ item, progress }: { item: typeof steps[0], progress: any }) 
     );
 }
 
-function MobileStepItem({ item, progress }: { item: typeof steps[0], progress: any }) {
+function MobileStepItem({ item, index, progress }: { item: typeof WORKFLOW_STEPS[0], index: number, progress: any }) {
+    const { t } = useLanguage();
     const active = useTransform(progress,
         [item.threshold - 0.05, item.threshold, item.threshold + 0.15, item.threshold + 0.20],
         [0, 1, 1, 0]
@@ -143,7 +149,7 @@ function MobileStepItem({ item, progress }: { item: typeof steps[0], progress: a
                     style={{ color: textColor }}
                     className="text-xs font-bold"
                 >
-                    {parseInt(item.step)}
+                    {index}
                 </motion.span>
             </motion.div>
             <div className="flex items-center gap-3 mb-1">
@@ -157,10 +163,10 @@ function MobileStepItem({ item, progress }: { item: typeof steps[0], progress: a
                     style={{ color: titleColor }}
                     className="text-lg font-bold transition-colors duration-300"
                 >
-                    {item.title}
+                    {t(`Workflow.steps.${item.key}.title`)}
                 </motion.h3>
             </div>
-            <p className="text-slate-500 mt-1 text-sm">{item.desc}</p>
+            <p className="text-slate-500 mt-1 text-sm">{t(`Workflow.steps.${item.key}.desc`)}</p>
         </div>
     );
 }

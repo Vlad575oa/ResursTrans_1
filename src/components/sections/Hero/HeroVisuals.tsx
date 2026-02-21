@@ -3,8 +3,10 @@
 import { motion } from "framer-motion";
 import { Verified, Car, Navigation, Fuel, Activity, Map as MapIcon, Play } from "lucide-react";
 import { useState, useRef } from "react";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export const HeroVisuals: React.FC = () => {
+    const { t } = useLanguage();
     const [key, setKey] = useState(0);
     const videoRef = useRef<HTMLVideoElement>(null);
     const [showReplay, setShowReplay] = useState(false);
@@ -51,8 +53,8 @@ export const HeroVisuals: React.FC = () => {
                     >
                         <Navigation className="w-4 h-4 text-primary-main animate-pulse" />
                         <div className="flex flex-col">
-                            <span className="text-[10px] uppercase font-bold tracking-widest opacity-60">GPS Signal</span>
-                            <span className="text-xs font-mono font-bold">Active / 1.2m</span>
+                            <span className="text-[10px] uppercase font-bold tracking-widest opacity-60">{t("Hero.visuals.gpsSignal")}</span>
+                            <span className="text-xs font-mono font-bold">{t("Hero.visuals.active")} / 1.2m</span>
                         </div>
                     </motion.div>
 
@@ -65,7 +67,7 @@ export const HeroVisuals: React.FC = () => {
                     >
                         <Verified className="w-4 h-4 text-green-400" />
                         <div className="flex flex-col text-right">
-                            <span className="text-[10px] uppercase font-bold tracking-widest opacity-60">SLA Rate</span>
+                            <span className="text-[10px] uppercase font-bold tracking-widest opacity-60">{t("Hero.visuals.slaRate")}</span>
                             <span className="text-xs font-mono font-bold">98.4%</span>
                         </div>
                     </motion.div>
@@ -81,8 +83,8 @@ export const HeroVisuals: React.FC = () => {
                             <Activity className="w-5 h-5 text-primary-main" />
                         </div>
                         <div>
-                            <p className="text-[10px] uppercase font-bold tracking-widest opacity-60">Telemetry</p>
-                            <p className="text-sm font-mono font-bold">Surface: Highway</p>
+                            <p className="text-[10px] uppercase font-bold tracking-widest opacity-60">{t("Hero.visuals.telemetry")}</p>
+                            <p className="text-sm font-mono font-bold">{t("Hero.visuals.surface")}: {t("Hero.visuals.highway")}</p>
                         </div>
                     </motion.div>
 
@@ -96,7 +98,7 @@ export const HeroVisuals: React.FC = () => {
                         <div className="flex items-center justify-between gap-4">
                             <div className="flex items-center gap-2.5">
                                 <Fuel className="w-4 h-4 text-orange-400" />
-                                <span className="text-xs font-bold uppercase opacity-80">Fuel Level</span>
+                                <span className="text-xs font-bold uppercase opacity-80">{t("Hero.visuals.fuelLevel")}</span>
                             </div>
                             <span className="text-xs font-mono text-orange-400 font-bold">74%</span>
                         </div>
@@ -110,7 +112,7 @@ export const HeroVisuals: React.FC = () => {
                         </div>
                         <div className="flex items-center gap-3 pt-1 border-t border-white/10">
                             <Car className="w-4 h-4 text-primary-main" />
-                            <span className="text-sm font-bold tracking-tight">5,412 Active Units</span>
+                            <span className="text-sm font-bold tracking-tight">5,412 {t("Hero.visuals.activeUnits")}</span>
                         </div>
                     </motion.div>
 
@@ -142,7 +144,7 @@ export const HeroVisuals: React.FC = () => {
                                 transition={{ duration: 1.5, ease: "easeOut" }}
                                 className="text-white text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tighter drop-shadow-2xl"
                             >
-                                Мы видим транспорт насквозь
+                                {t("Hero.visuals.seeTransport")}
                             </motion.h2>
 
                             <motion.p
@@ -153,7 +155,7 @@ export const HeroVisuals: React.FC = () => {
                                 transition={{ duration: 1.8, ease: "easeOut" }}
                                 className="text-white/90 text-xl sm:text-2xl lg:text-3xl font-bold uppercase tracking-tight leading-tight drop-shadow-xl"
                             >
-                                умный аутсорсинг от <span className="text-primary-main font-black">РесурсТранс</span>
+                                {t("Hero.visuals.smartOutsourcing")} <span className="text-primary-main font-black">{t("Navigation.logo")}</span>
                             </motion.p>
                         </div>
                     </motion.div>
@@ -170,33 +172,35 @@ export const HeroVisuals: React.FC = () => {
                 </div>
 
                 {/* Replay Overlay - Centered below brand with pulsing orange bulb */}
-                {showReplay && (
-                    <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-auto"
-                    >
-                        <motion.button
-                            initial={{ scale: 0.5 }}
-                            animate={{ scale: 1 }}
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                            onClick={handleReplay}
-                            className="group relative flex items-center justify-center p-3 rounded-full bg-primary-main text-white shadow-[0_0_20px_rgba(var(--color-primary-main-rgb),0.5)]"
-                            title="Replay sequence"
+                {
+                    showReplay && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="absolute bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-auto"
                         >
-                            <Play className="w-4 h-4 fill-current relative z-10" />
+                            <motion.button
+                                initial={{ scale: 0.5 }}
+                                animate={{ scale: 1 }}
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.9 }}
+                                onClick={handleReplay}
+                                className="group relative flex items-center justify-center p-3 rounded-full bg-primary-main text-white shadow-[0_0_20px_rgba(var(--color-primary-main-rgb),0.5)]"
+                                title={t("Hero.visuals.replayTooltip")}
+                            >
+                                <Play className="w-4 h-4 fill-current relative z-10" />
 
-                            {/* Pulse layers - Slower animation */}
-                            <div className="absolute inset-0 rounded-full bg-primary-main animate-ping opacity-20 duration-[3000ms]"></div>
-                            <div className="absolute -inset-1 rounded-full bg-primary-main/10 animate-pulse duration-[2000ms]"></div>
-                        </motion.button>
-                    </motion.div>
-                )}
-            </div>
+                                {/* Pulse layers - Slower animation */}
+                                <div className="absolute inset-0 rounded-full bg-primary-main animate-ping opacity-20 duration-[3000ms]"></div>
+                                <div className="absolute -inset-1 rounded-full bg-primary-main/10 animate-pulse duration-[2000ms]"></div>
+                            </motion.button>
+                        </motion.div>
+                    )
+                }
+            </div >
 
             {/* Decorative Background element */}
-            <div className="absolute -z-10 -right-20 -bottom-20 w-[400px] h-[400px] bg-primary-main/10 rounded-full blur-3xl"></div>
-        </div>
+            < div className="absolute -z-10 -right-20 -bottom-20 w-[400px] h-[400px] bg-primary-main/10 rounded-full blur-3xl" ></div >
+        </div >
     );
 };

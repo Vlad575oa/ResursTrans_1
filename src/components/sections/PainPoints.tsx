@@ -3,47 +3,31 @@
 import { TrendingUp, Map, Wrench, Timer, Gavel, UserX, AlertCircle, ArrowRight } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
-const LOSSES = [
-    {
-        icon: <TrendingUp className="w-5 h-5" />,
-        title: "Перерасход топлива",
-        desc: "Неконтролируемый пробег и махинации съедают до 20% ГСМ."
-    },
-    {
-        icon: <Map className="w-5 h-5" />,
-        title: "Неэффективные маршруты",
-        desc: "Пустые пробеги и неоптимальная логистика."
-    },
-    {
-        icon: <Wrench className="w-5 h-5" />,
-        title: "Внеплановые ремонты",
-        desc: "Отсутствие превентивного ТО ведет к дорогим поломкам."
-    },
-    {
-        icon: <Timer className="w-5 h-5" />,
-        title: "Простои техники",
-        desc: "Машины стоят в ожидании ремонта или запчастей."
-    },
-    {
-        icon: <Gavel className="w-5 h-5" />,
-        title: "Штрафы и ДТП",
-        desc: "Агрессивное вождение увеличивает риски и расходы."
-    },
-    {
-        icon: <UserX className="w-5 h-5" />,
-        title: "Человеческий фактор",
-        desc: "Ошибки водителей, левые рейсы и низкая дисциплина."
-    }
+const LOSSES_SCHEMA = [
+    { key: "fuelWaste", icon: <TrendingUp className="w-5 h-5" /> },
+    { key: "inefficientRoutes", icon: <Map className="w-5 h-5" /> },
+    { key: "unscheduledRepairs", icon: <Wrench className="w-5 h-5" /> },
+    { key: "downtime", icon: <Timer className="w-5 h-5" /> },
+    { key: "fines", icon: <Gavel className="w-5 h-5" /> },
+    { key: "humanFactor", icon: <UserX className="w-5 h-5" /> }
 ];
 
 // How long each item stays "lit" before moving to next one (ms)
 const GLOW_CYCLE = 1500;
 
 export const PainPoints = () => {
+    const { t } = useLanguage();
     const sectionRef = useRef<HTMLElement>(null);
     const isInView = useInView(sectionRef, { once: false, margin: "-100px" });
     const [activeIndex, setActiveIndex] = useState<number>(-1);
+
+    const losses = LOSSES_SCHEMA.map(item => ({
+        ...item,
+        title: t(`PainPoints.${item.key}.title`),
+        desc: t(`PainPoints.${item.key}.desc`)
+    }));
 
     // Sequential glow loop — only runs when section is visible
     useEffect(() => {
@@ -54,11 +38,11 @@ export const PainPoints = () => {
         let idx = 0;
         setActiveIndex(0);
         const interval = setInterval(() => {
-            idx = (idx + 1) % LOSSES.length;
+            idx = (idx + 1) % losses.length;
             setActiveIndex(idx);
         }, GLOW_CYCLE);
         return () => clearInterval(interval);
-    }, [isInView]);
+    }, [isInView, losses.length]);
 
     return (
         <section ref={sectionRef} className="py-8 bg-background-offset font-sans antialiased overflow-hidden" id="checkpoints">
@@ -67,10 +51,10 @@ export const PainPoints = () => {
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6">
                     <div className="max-w-2xl">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 w-fit mb-2">
-                            <span className="text-xs font-bold text-red-500 uppercase tracking-wide">Hidden Costs</span>
+                            <span className="text-xs font-bold text-red-500 uppercase tracking-wide">{t("PainPoints.hiddenCosts")}</span>
                         </div>
                         <h2 className="text-navy text-3xl md:text-5xl font-black leading-tight tracking-tight mb-2 text-balance">
-                            Превращаем скрытые убытки в прозрачную прибыль
+                            {t("PainPoints.title")}
                         </h2>
                     </div>
                 </div>
@@ -78,7 +62,7 @@ export const PainPoints = () => {
                 <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                     {/* Losses Grid */}
                     <div className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
-                        {LOSSES.map((loss, i) => {
+                        {losses.map((loss, i) => {
                             const isActive = i === activeIndex;
                             return (
                                 <motion.div
@@ -136,10 +120,10 @@ export const PainPoints = () => {
                                 </motion.div>
 
                                 <h3 className="text-2xl sm:text-3xl font-bold leading-snug mb-4">
-                                    "Если у вас нет цифровой системы контроля — вы теряете до 30% бюджета."
+                                    "{t("PainPoints.quote")}"
                                 </h3>
                                 <div className="text-red-400 font-bold text-xl flex items-center gap-2">
-                                    <span>30%</span> Потенциал экономии
+                                    <span>30%</span> {t("PainPoints.savingsPotential")}
                                 </div>
                             </div>
 
@@ -164,7 +148,7 @@ export const PainPoints = () => {
                                         animate={{ x: ["-100%", "200%"] }}
                                         transition={{ duration: 2.2, repeat: Infinity, ease: "linear", repeatDelay: 1 }}
                                     />
-                                    <span className="relative z-10">Проверить свой автопарк</span>
+                                    <span className="relative z-10">{t("PainPoints.checkFleet")}</span>
                                     <ArrowRight className="w-5 h-5 ml-1 relative z-10" />
                                 </motion.a>
                             </div>

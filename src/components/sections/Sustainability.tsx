@@ -4,31 +4,33 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Leaf, ShieldCheck, QrCode } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useRef } from "react";
-
-const CARDS = [
-    {
-        title: "Цифровой паспорт (DPP)",
-        desc: "Подтверждение прозрачности цепочек поставок через блокчейн-сертификацию.",
-        icon: <QrCode className="w-6 h-6 text-white" />
-    },
-    {
-        title: "Экологичность",
-        desc: "Мы внедряем стандарты, которые берегут планету и ваши ресурсы.",
-        icon: <Leaf className="w-6 h-6 text-white" />
-    },
-    {
-        title: "Гарант стабильности",
-        desc: "Безупречный контроль и прогнозирование рисков для вашего бизнеса.",
-        icon: <ShieldCheck className="w-6 h-6 text-white" />
-    }
-];
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export const Sustainability = () => {
+    const { t } = useLanguage();
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start start", "end end"]
     });
+
+    const CARDS = [
+        {
+            title: t("Sustainability.cards.dpp.title"),
+            desc: t("Sustainability.cards.dpp.desc"),
+            icon: <QrCode className="w-6 h-6 text-white" />
+        },
+        {
+            title: t("Sustainability.cards.ecology.title"),
+            desc: t("Sustainability.cards.ecology.desc"),
+            icon: <Leaf className="w-6 h-6 text-white" />
+        },
+        {
+            title: t("Sustainability.cards.stability.title"),
+            desc: t("Sustainability.cards.stability.desc"),
+            icon: <ShieldCheck className="w-6 h-6 text-white" />
+        }
+    ];
 
     return (
         <section
@@ -46,13 +48,13 @@ export const Sustainability = () => {
                     <div className="max-w-4xl mx-auto text-center px-4">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/20 bg-white/5 mb-4">
                             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                            <span className="text-xs font-mono uppercase tracking-widest text-white/80">Guardian Design</span>
+                            <span className="text-xs font-mono uppercase tracking-widest text-white/80">{t("Sustainability.guardianDesign")}</span>
                         </div>
                         <h2 className="text-3xl md:text-5xl font-serif tracking-tight mb-4">
-                            Безопасность как высшая ценность
+                            {t("Sustainability.title")}
                         </h2>
                         <p className="text-lg md:text-xl text-white/70 font-light max-w-2xl mx-auto">
-                            Каждое решение «РесурсТранс» — это инвестиция в ваше спокойствие.
+                            {t("Sustainability.description")}
                         </p>
                     </div>
                 </div>
@@ -66,7 +68,7 @@ export const Sustainability = () => {
 
                 <div className="text-center pb-24">
                     <Button variant="secondary" className="border-white/20 hover:bg-white text-white hover:text-olive-spruce-dark">
-                        Посмотреть отчет (ESG)
+                        {t("Sustainability.viewReport")}
                     </Button>
                 </div>
             </div>

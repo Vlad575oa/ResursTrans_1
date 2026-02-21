@@ -2,21 +2,23 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-
-const STATS = [
-    { value: "18", label: "Лет лидерства", suffix: " " },
-    { value: "10", label: "Единиц техники", suffix: "k" },
-    { value: "13", label: "Профессионалов", suffix: "k" },
-    { value: "70", label: "Процессов в цифре", suffix: "%" },
-    { value: "15", label: "Филиалов по РФ", suffix: " " }
-];
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export const Scale = () => {
+    const { t } = useLanguage();
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start end", "end start"]
     });
+
+    const STATS = [
+        { value: "18", label: t("Scale.stats.years"), suffix: " " },
+        { value: "10", label: t("Scale.stats.units"), suffix: "k" },
+        { value: "13", label: t("Scale.stats.profs"), suffix: "k" },
+        { value: "70", label: t("Scale.stats.digital"), suffix: "%" },
+        { value: "15", label: t("Scale.stats.branches"), suffix: " " }
+    ];
 
     const mapScale = useTransform(scrollYProgress, [0, 0.5], [1.5, 1]);
     const mapOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
@@ -53,9 +55,9 @@ export const Scale = () => {
                         viewport={{ once: true }}
                         className="text-5xl md:text-7xl font-bold text-cloud-dancer tracking-tighter leading-[0.9]"
                     >
-                        Масштаб,<br />
-                        <span className="text-white/40 font-serif italic">гарантирующий</span><br />
-                        стабильность.
+                        {t("Scale.title").split(",")[0]},<br />
+                        <span className="text-white/40 font-serif italic">{t("Scale.title").split(",")[1].split(".")[0].trim()}</span><br />
+                        {t("Scale.title").split(".")[1].trim()}
                     </motion.h2>
 
                     <motion.p
@@ -65,7 +67,7 @@ export const Scale = () => {
                         viewport={{ once: true }}
                         className="text-xl text-white/60 font-serif leading-relaxed"
                     >
-                        Наши решения работают там, где критична точность и безопасность.
+                        {t("Scale.description")}
                     </motion.p>
                 </div>
 

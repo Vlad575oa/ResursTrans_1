@@ -2,33 +2,36 @@
 
 import { motion } from "framer-motion";
 import { Share2, FileCheck, Activity, BarChart3, ArrowRight } from "lucide-react";
-
-const FEATURES = [
-    "Контроль транспорта 24/7",
-    "Непрерывный мониторинг и прогнозирование рисков",
-    "Система «Авто-контроль» (web + mobile)",
-    "Электронные путевые листы",
-    "Автоматизированный техосмотр",
-    "Электронные медосмотры",
-    "Управление ремонтом («Автослесарь»)",
-    "Контроль пассажиропотока",
-    "Электронный кассир",
-    "Контроль состояния водителя"
-];
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export const Ecosystem = () => {
+    const { t } = useLanguage();
+
+    const FEATURES = [
+        t("Ecosystem.features.0"),
+        t("Ecosystem.features.1"),
+        t("Ecosystem.features.2"),
+        t("Ecosystem.features.3"),
+        t("Ecosystem.features.4"),
+        t("Ecosystem.features.5"),
+        t("Ecosystem.features.6"),
+        t("Ecosystem.features.7"),
+        t("Ecosystem.features.8"),
+        t("Ecosystem.features.9")
+    ];
+
     return (
         <section id="tech" className="py-32 bg-cloud-dancer relative overflow-hidden">
             <div className="container mx-auto px-6 max-w-7xl">
                 <div className="text-center mb-16">
                     <span className="inline-block py-1 px-3 rounded-full bg-anthracite-core/5 text-anthracite-core text-xs font-mono font-bold tracking-widest uppercase mb-4">
-                        Digital Infrastructure
+                        {t("Ecosystem.digitalInfrastructure")}
                     </span>
                     <h2 className="text-3xl md:text-5xl font-black text-anthracite-core mb-4 tracking-tight">
-                        Автопарк под <span className="text-burnt-terra italic font-serif">цифровым контролем</span>
+                        {t("Ecosystem.title")}
                     </h2>
                     <p className="text-anthracite-core/60 text-lg md:text-xl max-w-3xl mx-auto font-serif italic">
-                        Мы создаём единую систему управления:
+                        {t("Ecosystem.description")}
                     </p>
                 </div>
 
@@ -50,7 +53,7 @@ export const Ecosystem = () => {
                         <div className="flex-1 p-6 md:p-8">
                             <div className="flex justify-between items-center mb-8">
                                 <div>
-                                    <div className="text-white/40 text-xs uppercase tracking-widest mb-1 font-mono">Real-time Analytics</div>
+                                    <div className="text-white/40 text-xs uppercase tracking-widest mb-1 font-mono">{t("Ecosystem.realTimeAnalytics")}</div>
                                     <div className="text-white font-mono text-2xl font-bold italic">99.8% ACCURACY</div>
                                 </div>
                                 <div className="flex gap-2">
@@ -101,7 +104,7 @@ export const Ecosystem = () => {
                     </div>
 
                     <p className="text-center mt-12 text-anthracite-core/40 font-mono text-xs uppercase tracking-widest">
-                        Все процессы — в одной платформе.
+                        {t("Ecosystem.footer")}
                     </p>
                 </div>
             </div>

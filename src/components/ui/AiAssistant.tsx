@@ -2,8 +2,11 @@
 
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export const AiAssistant = () => {
+    const { t } = useLanguage();
+
     return (
         <motion.div
             className="fixed bottom-8 right-8 z-40 group cursor-pointer"
@@ -30,7 +33,7 @@ export const AiAssistant = () => {
 
                 {/* Tooltip (Hidden initially) */}
                 <div className="absolute right-full top-1/2 -translate-y-1/2 mr-4 px-3 py-1.5 glass-panel rounded-full text-xs text-transformative-teal font-mono opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                    AI Assistant
+                    {t("UI.aiAssistant")}
                 </div>
             </div>
         </motion.div>

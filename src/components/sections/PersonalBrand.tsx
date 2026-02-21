@@ -3,8 +3,10 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export const PersonalBrand = () => {
+    const { t } = useLanguage();
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -31,10 +33,10 @@ export const PersonalBrand = () => {
                     className="mb-12 border-b border-anthracite/10 pb-4"
                 >
                     <h2 className="text-sm font-mono uppercase tracking-widest text-anthracite/50 mb-2">
-                        Note_001.txt
+                        {t("PersonalBrand.note")}
                     </h2>
                     <h3 className="text-4xl md:text-5xl font-sans font-medium">
-                        Лица, стоящие за технологиями
+                        {t("PersonalBrand.title")}
                     </h3>
                 </motion.div>
 
@@ -47,8 +49,7 @@ export const PersonalBrand = () => {
                             transition={{ delay: 0.2 }}
                             viewport={{ once: true }}
                         >
-                            "Мы верим в «человеческую подлинность». Наши лидеры делятся опытом и сомнениями,
-                            потому что доверие строится на искренности, а не на идеальных алгоритмах."
+                            {t("PersonalBrand.quote")}
                         </motion.p>
                         <motion.p
                             initial={{ opacity: 0 }}
@@ -56,8 +57,7 @@ export const PersonalBrand = () => {
                             transition={{ delay: 0.3 }}
                             viewport={{ once: true }}
                         >
-                            Экспертные инсайты и «закулисье» транспортного холдинга.
-                            Живые истории профессионалов, которые каждый день решают сложнейшие задачи логистики.
+                            {t("PersonalBrand.description")}
                         </motion.p>
 
                         <motion.div
@@ -68,7 +68,7 @@ export const PersonalBrand = () => {
                             className="pt-8"
                         >
                             <a href="#" className="inline-flex items-center gap-2 text-olive-spruce hover:underline underline-offset-4 group">
-                                Читать блог <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+                                {t("PersonalBrand.readBlog")} <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
                             </a>
                         </motion.div>
                     </motion.div>
@@ -82,13 +82,13 @@ export const PersonalBrand = () => {
                             <div className="w-full h-full bg-neutral-200 relative overflow-hidden grayscale contrast-125">
                                 {/* Placeholder for People Image */}
                                 <div className="absolute inset-0 flex items-center justify-center text-anthracite/20 font-mono text-sm text-center p-4">
-                                    [Фото Эксперта]
+                                    {t("PersonalBrand.photoExpert")}
                                 </div>
                                 <div className="absolute inset-0 bg-gradient-to-tr from-anthracite/10 to-transparent mix-blend-multiply" />
                             </div>
                             <div className="mt-4 flex justify-between items-end font-mono text-xs text-anthracite/60">
-                                <span>Главный Инженер</span>
-                                <span>2026</span>
+                                <span>{t("PersonalBrand.chiefEngineer")}</span>
+                                <span>{t("PersonalBrand.year")}</span>
                             </div>
                         </motion.div>
 

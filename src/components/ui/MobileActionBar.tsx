@@ -3,9 +3,11 @@
 import { motion } from "framer-motion";
 import { Search, Bot, Activity } from "lucide-react";
 import { useHaptic } from "@/hooks/useHaptic";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export const MobileActionBar = () => {
     const { trigger } = useHaptic();
+    const { t } = useLanguage();
 
     return (
         <div className="fixed bottom-6 left-6 right-6 z-50 md:hidden">
@@ -29,7 +31,7 @@ export const MobileActionBar = () => {
                     className="flex items-center gap-2 bg-burnt-terra text-white px-5 py-3 rounded-xl font-bold text-sm tracking-wide shadow-lg shadow-burnt-terra/20"
                 >
                     <Bot className="w-5 h-5" />
-                    <span className="font-mono">ASK AI</span>
+                    <span className="font-mono">{t("UI.askAi")}</span>
                 </button>
 
                 {/* System Status */}

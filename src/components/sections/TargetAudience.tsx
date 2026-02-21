@@ -2,33 +2,35 @@
 
 import { motion } from "framer-motion";
 import { Factory, Construction, Zap, Bus, Building2 } from "lucide-react";
-
-const AUDIENCES = [
-    { icon: <Factory className="w-8 h-8" />, title: "Промышленные предприятия" },
-    { icon: <Construction className="w-8 h-8" />, title: "Строительные компании" },
-    { icon: <Zap className="w-8 h-8" />, title: "Энергетика" },
-    { icon: <Bus className="w-8 h-8" />, title: "Муниципальный транспорт" },
-    { icon: <Building2 className="w-8 h-8" />, title: "Корпоративные автопарки" },
-];
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export const TargetAudience = () => {
+    const { t } = useLanguage();
+
+    const AUDIENCES = [
+        { icon: <Factory className="w-8 h-8" />, title: t("TargetAudience.audiences.0") },
+        { icon: <Construction className="w-8 h-8" />, title: t("TargetAudience.audiences.1") },
+        { icon: <Zap className="w-8 h-8" />, title: t("TargetAudience.audiences.2") },
+        { icon: <Bus className="w-8 h-8" />, title: t("TargetAudience.audiences.3") },
+        { icon: <Building2 className="w-8 h-8" />, title: t("TargetAudience.audiences.4") },
+    ];
+
     return (
         <section className="py-32 bg-cloud-dancer relative overflow-hidden">
             <div className="container mx-auto px-6 max-w-7xl">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
                     <div>
-                        <span className="text-burnt-terra font-mono text-xs uppercase tracking-widest mb-4 block">Industry Solutions</span>
+                        <span className="text-burnt-terra font-mono text-xs uppercase tracking-widest mb-4 block">{t("TargetAudience.industrySolutions")}</span>
                         <h2 className="text-4xl md:text-6xl font-black text-anthracite-core mb-8 tracking-tighter leading-tight">
-                            Для кого <br />
-                            <span className="text-burnt-terra italic font-serif">наше решение</span>
+                            {t("TargetAudience.title")}
                         </h2>
                     </div>
                     <div>
                         <div className="p-8 border border-anthracite-core/10 bg-white/40 backdrop-blur-md rounded-2xl">
                             <div className="text-5xl font-black text-anthracite-core mb-2 font-mono tracking-tighter">50 – 5000+</div>
-                            <div className="text-sm uppercase tracking-widest text-anthracite-core/40 font-bold mb-4">единиц техники</div>
+                            <div className="text-sm uppercase tracking-widest text-anthracite-core/40 font-bold mb-4">{t("TargetAudience.scale")}</div>
                             <p className="text-lg text-anthracite-core/60 font-serif italic italic leading-relaxed">
-                                Любой масштаб — от локальных парков до федеральных холдингов.
+                                {t("TargetAudience.scaleDescription")}
                             </p>
                         </div>
                     </div>

@@ -2,57 +2,57 @@
 
 import { motion } from "framer-motion";
 import { TrendingDown, Timer, ShieldCheck, Banknote, LineChart } from "lucide-react";
-
-const RESULTS = [
-    {
-        icon: <TrendingDown className="w-8 h-8" />,
-        value: "15–30%",
-        label: "Снижение затрат",
-        desc: "на содержание и эксплуатацию флота"
-    },
-    {
-        icon: <Timer className="w-8 h-8" />,
-        value: "до 40%",
-        label: "Сокращение простоев",
-        desc: "за счет предиктивного сервиса"
-    },
-    {
-        icon: <ShieldCheck className="w-8 h-8" />,
-        value: "MIN",
-        label: "Снижение аварийности",
-        desc: "и повышение культуры вождения"
-    },
-    {
-        icon: <Banknote className="w-8 h-8" />,
-        value: "ZERO",
-        label: "Минимизация штрафов",
-        desc: "полный контроль законодательства"
-    },
-    {
-        icon: <LineChart className="w-8 h-8" />,
-        value: "MAX",
-        label: "Рост управляемости",
-        desc: "прозрачные KPI в реальном времени"
-    },
-];
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export const EconomicEffect = () => {
+    const { t } = useLanguage();
+
+    const RESULTS = [
+        {
+            icon: <TrendingDown className="w-8 h-8" />,
+            value: t("EconomicEffect.results.01.value"),
+            label: t("EconomicEffect.results.01.label"),
+            desc: t("EconomicEffect.results.01.desc")
+        },
+        {
+            icon: <Timer className="w-8 h-8" />,
+            value: t("EconomicEffect.results.02.value"),
+            label: t("EconomicEffect.results.02.label"),
+            desc: t("EconomicEffect.results.02.desc")
+        },
+        {
+            icon: <ShieldCheck className="w-8 h-8" />,
+            value: t("EconomicEffect.results.03.value"),
+            label: t("EconomicEffect.results.03.label"),
+            desc: t("EconomicEffect.results.03.desc")
+        },
+        {
+            icon: <Banknote className="w-8 h-8" />,
+            value: t("EconomicEffect.results.04.value"),
+            label: t("EconomicEffect.results.04.label"),
+            desc: t("EconomicEffect.results.04.desc")
+        },
+        {
+            icon: <LineChart className="w-8 h-8" />,
+            value: t("EconomicEffect.results.05.value"),
+            label: t("EconomicEffect.results.05.label"),
+            desc: t("EconomicEffect.results.05.desc")
+        },
+    ];
+
     return (
         <section className="py-32 bg-anthracite-core relative overflow-hidden">
             <div className="container mx-auto px-6 max-w-7xl">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
                     <div>
-                        <span className="text-burnt-terra font-mono text-xs uppercase tracking-widest mb-4 block">Measurable Results</span>
+                        <span className="text-burnt-terra font-mono text-xs uppercase tracking-widest mb-4 block">{t("EconomicEffect.measurableResults")}</span>
                         <h2 className="text-4xl md:text-6xl font-bold text-cloud-dancer mb-6 tracking-tighter leading-tight">
-                            Измеримый результат <br />
-                            <span className="text-white/40 font-serif italic">для вашего бизнеса</span>
+                            {t("EconomicEffect.title")}
                         </h2>
                     </div>
                     <div className="lg:pt-12">
                         <p className="text-xl text-white/60 font-serif italic leading-relaxed max-w-xl">
-                            После внедрения цифровой системы управления, автопарк превращается из
-                            <span className="text-white"> расходной статьи </span> в
-                            <span className="text-burnt-terra font-bold"> управляемый актив</span>.
+                            {t("EconomicEffect.description")}
                         </p>
                     </div>
                 </div>

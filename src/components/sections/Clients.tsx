@@ -2,29 +2,32 @@
 
 import { motion } from "framer-motion";
 import { Shield, Database, Scale, Lock, PieChart } from "lucide-react";
-
-const TRUST_FACTORS = [
-    { icon: <Shield className="w-5 h-5" />, text: "Работаем по SLA" },
-    { icon: <Database className="w-5 h-5" />, text: "Интеграция с 1С и ERP" },
-    { icon: <Scale className="w-5 h-5" />, text: "Соответствие законодательству РФ" },
-    { icon: <Lock className="w-5 h-5" />, text: "Информационная безопасность" },
-    { icon: <PieChart className="w-5 h-5" />, text: "Прозрачная финансовая модель" },
-];
-
-const CLIENTS = [
-    "РЖД", "Апатит", "Интер РАО", "Уралхим", "Ростелеком"
-];
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export const Clients = () => {
+    const { t } = useLanguage();
+
+    const TRUST_FACTORS = [
+        { icon: <Shield className="w-5 h-5" />, text: t("Clients.trustFactors.0") },
+        { icon: <Database className="w-5 h-5" />, text: t("Clients.trustFactors.1") },
+        { icon: <Scale className="w-5 h-5" />, text: t("Clients.trustFactors.2") },
+        { icon: <Lock className="w-5 h-5" />, text: t("Clients.trustFactors.3") },
+        { icon: <PieChart className="w-5 h-5" />, text: t("Clients.trustFactors.4") },
+    ];
+
+    const CLIENTS = [
+        "РЖД", "Апатит", "Интер РАО", "Уралхим", "Ростелеком"
+    ];
+
     return (
         <section className="py-32 bg-cloud-dancer text-anthracite-core">
             <div className="container mx-auto px-6 max-w-7xl">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
                     <div>
-                        <span className="text-burnt-terra font-mono text-xs uppercase tracking-widest mb-4 block">Trust & Reliability</span>
-                        <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight">Почему нам <span className="text-burnt-terra italic font-serif">доверяют</span></h2>
+                        <span className="text-burnt-terra font-mono text-xs uppercase tracking-widest mb-4 block">{t("Clients.trustReliability")}</span>
+                        <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight">{t("Clients.title")}</h2>
                         <p className="text-anthracite-core/60 text-lg font-serif italic mb-8">
-                            Крупные корпоративные клиенты по всей России выбирают нас за надежность и технологическое лидерство.
+                            {t("Clients.description")}
                         </p>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

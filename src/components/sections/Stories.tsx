@@ -2,40 +2,41 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-
-const STORIES = [
-    {
-        id: "01",
-        quote: "«Технологии не заменяют людей. Они дают нам суперсилу видеть невидимое».",
-        author: "Алексей С.",
-        role: "Главный инженер, 12 лет в компании",
-        bg: "bg-anthracite-core"
-    },
-    {
-        id: "02",
-        quote: "«Безопасность — это не инструкции, это культура. И мы строим её каждый день».",
-        author: "Мария В.",
-        role: "Директор по качеству",
-        bg: "bg-olive-spruce-dark"
-    },
-    {
-        id: "03",
-        quote: "«Когда ты управляешь 10 000 машин, каждая секунда аналитики стоит миллионы».",
-        author: "Дмитрий К.",
-        role: "Руководитель цифровой трансформации",
-        bg: "bg-burnt-terra"
-    }
-];
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export const Stories = () => {
+    const { t } = useLanguage();
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({ target: containerRef });
+
+    const STORIES = [
+        {
+            id: "01",
+            quote: t("Stories.01.quote"),
+            author: t("Stories.01.author"),
+            role: t("Stories.01.role"),
+            bg: "bg-anthracite-core"
+        },
+        {
+            id: "02",
+            quote: t("Stories.02.quote"),
+            author: t("Stories.02.author"),
+            role: t("Stories.02.role"),
+            bg: "bg-olive-spruce-dark"
+        },
+        {
+            id: "03",
+            quote: t("Stories.03.quote"),
+            author: t("Stories.03.author"),
+            role: t("Stories.03.role"),
+            bg: "bg-burnt-terra"
+        }
+    ];
 
     return (
         <section ref={containerRef} className="bg-anthracite-core text-cloud-dancer relative">
             {STORIES.map((story, i) => (
                 <div key={i} className={`sticky top-0 h-screen flex flex-col justify-center px-6 md:px-24 ${story.bg} overflow-hidden`}>
-
                     {/* Background Overlay Effect */}
                     <div className="absolute inset-0 opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
@@ -47,7 +48,7 @@ export const Stories = () => {
                             transition={{ duration: 0.8 }}
                             className="text-sm font-mono text-white/50 mb-8 uppercase tracking-widest"
                         >
-                            Human Capital // story {story.id}
+                            {t("Stories.humanCapital")} // {t("Stories.story")} {story.id}
                         </motion.div>
 
                         <motion.h3

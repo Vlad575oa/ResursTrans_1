@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import LanguageSwitcher from "../LanguageSwitcher";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 interface NavItem {
     name: string;
@@ -12,6 +14,7 @@ interface NavItem {
 
 export const NavigationClient = ({ items }: { items: NavItem[] }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const { t } = useLanguage();
 
     return (
         <>
@@ -48,8 +51,14 @@ export const NavigationClient = ({ items }: { items: NavItem[] }) => {
                                     {item.name}
                                 </Link>
                             ))}
+                            <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                                <span className="text-slate-600 font-medium">
+                                    {t("Navigation.language")}
+                                </span>
+                                <LanguageSwitcher />
+                            </div>
                             <Button className="w-full bg-primary-main text-white py-4 rounded-xl text-center font-bold">
-                                Оставить заявку
+                                {t("Navigation.submitRequest")}
                             </Button>
                         </div>
                     </motion.div>

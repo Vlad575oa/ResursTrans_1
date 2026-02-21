@@ -2,24 +2,25 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-
-const LOCATIONS = [
-    { id: 1, x: 20, y: 40, label: "Moscow HQ", status: "Active" },
-    { id: 2, x: 45, y: 30, label: "Ural Hub", status: "Active" },
-    { id: 3, x: 70, y: 45, label: "Siberia Ed.", status: "Warning" },
-    { id: 4, x: 30, y: 60, label: "South Branch", status: "Active" },
-    { id: 5, x: 80, y: 35, label: "Far East", status: "Active" },
-];
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export const GuardianMap = () => {
+    const { t } = useLanguage();
     const [activeLocation, setActiveLocation] = useState<number | null>(null);
+
+    const LOCATIONS = [
+        { id: 1, x: 20, y: 40, label: t("GuardianMap.locations.moscow"), status: "Active" },
+        { id: 2, x: 45, y: 30, label: t("GuardianMap.locations.ural"), status: "Active" },
+        { id: 3, x: 70, y: 45, label: t("GuardianMap.locations.siberia"), status: "Warning" },
+        { id: 4, x: 30, y: 60, label: t("GuardianMap.locations.south"), status: "Active" },
+        { id: 5, x: 80, y: 35, label: t("GuardianMap.locations.farEast"), status: "Active" },
+    ];
 
     return (
         <section className="py-32 bg-anthracite-core relative overflow-hidden flex flex-col items-center">
-
             <div className="container mx-auto px-6 mb-12 text-center relative z-10">
-                <span className="text-safe-green font-mono text-xs uppercase tracking-widest mb-4 block">Guardian Control System</span>
-                <h2 className="text-4xl md:text-5xl font-bold text-cloud-dancer">Карта присутствия</h2>
+                <span className="text-safe-green font-mono text-xs uppercase tracking-widest mb-4 block">{t("GuardianMap.controlSystem")}</span>
+                <h2 className="text-4xl md:text-5xl font-bold text-cloud-dancer">{t("GuardianMap.title")}</h2>
             </div>
 
             {/* Contour Map Construction */}
@@ -93,9 +94,9 @@ export const GuardianMap = () => {
                                     <div className={`w-2 h-2 rounded-full ${loc.status === 'Warning' ? 'bg-burnt-terra' : 'bg-safe-green'}`} />
                                 </div>
                                 <div className="grid grid-cols-2 gap-2 text-[10px] font-mono text-white/40">
-                                    <div>LOAD: {Math.floor(Math.random() * 40) + 40}%</div>
-                                    <div>UPTIME: 99.9%</div>
-                                    <div className="col-span-2">LATENCY: 12ms</div>
+                                    <div>{t("GuardianMap.stats.load")}: {Math.floor(Math.random() * 40) + 40}%</div>
+                                    <div>{t("GuardianMap.stats.uptime")}: 99.9%</div>
+                                    <div className="col-span-2">{t("GuardianMap.stats.latency")}: 12ms</div>
                                 </div>
                             </motion.div>
                         )}
@@ -104,11 +105,10 @@ export const GuardianMap = () => {
             </div>
 
             <div className="mt-8 flex gap-8 text-xs font-mono text-white/30">
-                <div>ACTIVE UNITS: 10,420</div>
-                <div>SYSTEM LOAD: 42%</div>
-                <div>SECURITY LEVEL: MAX</div>
+                <div>{t("GuardianMap.stats.activeUnits")}: 10,420</div>
+                <div>{t("GuardianMap.stats.systemLoad")}: 42%</div>
+                <div>{t("GuardianMap.stats.securityLevel")}: {t("GuardianMap.stats.max")}</div>
             </div>
-
         </section>
     );
 };
