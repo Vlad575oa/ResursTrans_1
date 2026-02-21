@@ -61,15 +61,15 @@ export const PainPoints = () => {
     }, [isInView]);
 
     return (
-        <section ref={sectionRef} className="py-24 bg-background-offset font-sans antialiased overflow-hidden" id="checkpoints">
+        <section ref={sectionRef} className="py-16 bg-background-offset font-sans antialiased overflow-hidden" id="checkpoints">
             <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
                 {/* Section Header */}
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
                     <div className="max-w-2xl">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 w-fit mb-4">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 w-fit mb-2">
                             <span className="text-xs font-bold text-red-500 uppercase tracking-wide">Hidden Costs</span>
                         </div>
-                        <h2 className="text-navy text-3xl md:text-5xl font-black leading-tight tracking-tight mb-4 text-balance">
+                        <h2 className="text-navy text-3xl md:text-5xl font-black leading-tight tracking-tight mb-2 text-balance">
                             Превращаем скрытые убытки в прозрачную прибыль
                         </h2>
                     </div>
