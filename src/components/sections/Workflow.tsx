@@ -1,5 +1,79 @@
 import { motion } from "framer-motion";
 
+const stepVariants = {
+    offscreen: {
+        borderColor: "rgb(241 245 249)", // border-slate-100
+        scale: 1,
+        boxShadow: "0 0 0 rgba(0,0,0,0)",
+    },
+    onscreen: {
+        borderColor: "#f57a00", // border-primary
+        scale: 1.05,
+        boxShadow: "0 10px 25px -5px rgba(245, 122, 0, 0.2)",
+        transition: {
+            duration: 0.5,
+            ease: "easeOut"
+        }
+    }
+};
+
+const iconVariants = {
+    offscreen: {
+        color: "rgb(148 163 184)", // text-slate-400
+    },
+    onscreen: {
+        color: "#f57a00", // text-primary
+        transition: {
+            duration: 0.5,
+            ease: "easeOut"
+        }
+    }
+};
+
+const textVariants = {
+    offscreen: {
+        color: "rgb(148 163 184)", // text-slate-400
+        opacity: 0.8
+    },
+    onscreen: {
+        color: "#f57a00", // text-primary
+        opacity: 1,
+        transition: {
+            duration: 0.5,
+            ease: "easeOut"
+        }
+    }
+};
+
+// For mobile numbers
+const mobileCircleVariants = {
+    offscreen: {
+        backgroundColor: "#ffffff",
+        borderColor: "rgb(203 213 225)", // border-slate-300
+    },
+    onscreen: {
+        backgroundColor: "#f57a00",
+        borderColor: "#f57a00",
+        transition: {
+            duration: 0.5,
+            ease: "easeOut"
+        }
+    }
+};
+
+const mobileNumberVariants = {
+    offscreen: {
+        color: "rgb(100 116 139)", // text-slate-500
+    },
+    onscreen: {
+        color: "#ffffff",
+        transition: {
+            duration: 0.5,
+            ease: "easeOut"
+        }
+    }
+};
+
 export function Workflow() {
     return (
         <section className="py-24 bg-[#f8f7f5] relative overflow-hidden transition-colors duration-300">
@@ -21,153 +95,98 @@ export function Workflow() {
                 <div className="hidden lg:block relative">
                     {/* Connector Line */}
                     <div className="absolute top-12 left-0 w-full h-0.5 bg-slate-200">
-                        <div className="absolute top-0 left-0 h-full bg-primary w-3/4 opacity-20"></div>
+                        <div className="absolute top-0 left-0 h-full bg-primary w-full opacity-10"></div>
                     </div>
 
                     <div className="grid grid-cols-5 gap-4">
-                        {/* Step 1 */}
-                        <div className="relative group">
-                            <div className="flex flex-col items-center text-center">
-                                <div className="w-24 h-24 rounded-full bg-white border-4 border-slate-100 flex items-center justify-center z-10 transition-all duration-300 group-hover:border-primary group-hover:scale-105 shadow-sm">
-                                    <span className="material-symbols-outlined text-slate-400 group-hover:text-primary text-4xl transition-colors">analytics</span>
+                        {[
+                            { step: "01", title: "Анализ и Аудит", desc: "Комплексный аудит текущих маршрутов, затрат и коэффициентов использования.", icon: "analytics" },
+                            { step: "02", title: "Модель оптимизации", desc: "Разработка индивидуальной стратегии и имитационной модели.", icon: "model_training" },
+                            { step: "03", title: "Подключение систем", desc: "Бесшовная интеграция ИТ-инфраструктуры и телематики транспортных средств.", icon: "hub" },
+                            { step: "04", title: "Запуск и Контроль", desc: "Пилотный запуск, корректировки в реальном времени и калибровка процессов.", icon: "rocket_launch" },
+                            { step: "05", title: "Месячная аналитика", desc: "Детальная отчетность и циклы непрерывного совершенствования.", icon: "monitoring" }
+                        ].map((item, idx) => (
+                            <motion.div
+                                key={idx}
+                                initial="offscreen"
+                                whileInView="onscreen"
+                                viewport={{ once: false, amount: 0.8 }}
+                                className="relative group"
+                            >
+                                <div className="flex flex-col items-center text-center">
+                                    <motion.div
+                                        variants={stepVariants}
+                                        className="w-24 h-24 rounded-full bg-white border-4 flex items-center justify-center z-10 transition-all duration-300 shadow-sm"
+                                    >
+                                        <motion.span
+                                            variants={iconVariants}
+                                            className="material-symbols-outlined text-4xl"
+                                        >
+                                            {item.icon}
+                                        </motion.span>
+                                    </motion.div>
+                                    <div className="mt-6 px-2">
+                                        <motion.div
+                                            variants={textVariants}
+                                            className="text-xs font-bold uppercase tracking-widest mb-1"
+                                        >
+                                            Шаг {item.step}
+                                        </motion.div>
+                                        <h3 className="text-lg font-bold text-slate-900 mb-2">{item.title}</h3>
+                                        <p className="text-sm text-slate-500 leading-relaxed font-medium">
+                                            {item.desc}
+                                        </p>
+                                    </div>
                                 </div>
-                                <div className="mt-6 px-2">
-                                    <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Шаг 01</div>
-                                    <h3 className="text-lg font-bold text-slate-900 mb-2">Анализ и Аудит</h3>
-                                    <p className="text-sm text-slate-500 leading-relaxed">
-                                        Комплексный аудит текущих маршрутов, затрат и коэффициентов использования.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Step 2 */}
-                        <div className="relative group">
-                            <div className="flex flex-col items-center text-center">
-                                <div className="w-24 h-24 rounded-full bg-white border-4 border-slate-100 flex items-center justify-center z-10 transition-all duration-300 group-hover:border-primary group-hover:scale-105 shadow-sm">
-                                    <span className="material-symbols-outlined text-slate-400 group-hover:text-primary text-4xl transition-colors">model_training</span>
-                                </div>
-                                <div className="mt-6 px-2">
-                                    <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Шаг 02</div>
-                                    <h3 className="text-lg font-bold text-slate-900 mb-2">Модель оптимизации</h3>
-                                    <p className="text-sm text-slate-500 leading-relaxed">
-                                        Разработка индивидуальной стратегии и имитационной модели.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Step 3 */}
-                        <div className="relative group">
-                            <div className="flex flex-col items-center text-center">
-                                <div className="w-24 h-24 rounded-full bg-white border-4 border-primary flex items-center justify-center z-10 transition-all duration-300 scale-110 shadow-lg shadow-orange-100">
-                                    <span className="material-symbols-outlined text-primary text-4xl">hub</span>
-                                </div>
-                                <div className="mt-6 px-2">
-                                    <div className="text-xs font-bold text-primary uppercase tracking-widest mb-1">Текущая фаза</div>
-                                    <h3 className="text-lg font-bold text-slate-900 mb-2">Подключение систем</h3>
-                                    <p className="text-sm text-slate-500 leading-relaxed">
-                                        Бесшовная интеграция ИТ-инфраструктуры и телематики транспортных средств.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Step 4 */}
-                        <div className="relative group">
-                            <div className="flex flex-col items-center text-center">
-                                <div className="w-24 h-24 rounded-full bg-white border-4 border-slate-100 flex items-center justify-center z-10 transition-all duration-300 group-hover:border-primary group-hover:scale-105 shadow-sm">
-                                    <span className="material-symbols-outlined text-slate-400 group-hover:text-primary text-4xl transition-colors">rocket_launch</span>
-                                </div>
-                                <div className="mt-6 px-2">
-                                    <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Шаг 04</div>
-                                    <h3 className="text-lg font-bold text-slate-900 mb-2">Запуск и Контроль</h3>
-                                    <p className="text-sm text-slate-500 leading-relaxed">
-                                        Пилотный запуск, корректировки в реальном времени и калибровка процессов.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Step 5 */}
-                        <div className="relative group">
-                            <div className="flex flex-col items-center text-center">
-                                <div className="w-24 h-24 rounded-full bg-white border-4 border-slate-100 flex items-center justify-center z-10 transition-all duration-300 group-hover:border-primary group-hover:scale-105 shadow-sm">
-                                    <span className="material-symbols-outlined text-slate-400 group-hover:text-primary text-4xl transition-colors">monitoring</span>
-                                </div>
-                                <div className="mt-6 px-2">
-                                    <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Шаг 05</div>
-                                    <h3 className="text-lg font-bold text-slate-900 mb-2">Месячная аналитика</h3>
-                                    <p className="text-sm text-slate-500 leading-relaxed">
-                                        Детальная отчетность и циклы непрерывного совершенствования.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                            </motion.div>
+                        ))}
                     </div>
                 </div>
 
                 {/* Mobile Timeline (Vertical) */}
-                <div className="lg:hidden flex flex-col gap-8 relative pl-6 border-l-2 border-slate-200 ml-4">
-                    {/* Step 1 */}
-                    <div className="relative pl-6">
-                        <div className="absolute -left-[31px] top-0 w-8 h-8 rounded-full bg-white border-2 border-slate-300 flex items-center justify-center shadow-sm">
-                            <span className="text-xs font-bold text-slate-500">1</span>
-                        </div>
-                        <div className="flex items-center gap-3 mb-1">
-                            <span className="material-symbols-outlined text-slate-400 text-2xl">analytics</span>
-                            <h3 className="text-lg font-bold text-slate-900">Анализ и Аудит</h3>
-                        </div>
-                        <p className="text-slate-500 mt-1">Комплексный аудит текущих маршрутов и затрат.</p>
-                    </div>
-
-                    {/* Step 2 */}
-                    <div className="relative pl-6">
-                        <div className="absolute -left-[31px] top-0 w-8 h-8 rounded-full bg-white border-2 border-slate-300 flex items-center justify-center shadow-sm">
-                            <span className="text-xs font-bold text-slate-500">2</span>
-                        </div>
-                        <div className="flex items-center gap-3 mb-1">
-                            <span className="material-symbols-outlined text-slate-400 text-2xl">model_training</span>
-                            <h3 className="text-lg font-bold text-slate-900">Модель оптимизации</h3>
-                        </div>
-                        <p className="text-slate-500 mt-1">Разработка стратегии и моделирование.</p>
-                    </div>
-
-                    {/* Step 3 */}
-                    <div className="relative pl-6">
-                        <div className="absolute -left-[31px] top-0 w-8 h-8 rounded-full bg-primary border-2 border-primary flex items-center justify-center shadow-md">
-                            <span className="text-xs font-bold text-white">3</span>
-                        </div>
-                        <div className="flex items-center gap-3 mb-1">
-                            <span className="material-symbols-outlined text-primary text-2xl">hub</span>
-                            <h3 className="text-lg font-bold text-primary">Подключение систем</h3>
-                        </div>
-                        <p className="text-slate-600 mt-1 font-medium">Интеграция ИТ-систем и транспортных средств.</p>
-                    </div>
-
-                    {/* Step 4 */}
-                    <div className="relative pl-6">
-                        <div className="absolute -left-[31px] top-0 w-8 h-8 rounded-full bg-white border-2 border-slate-300 flex items-center justify-center shadow-sm">
-                            <span className="text-xs font-bold text-slate-500">4</span>
-                        </div>
-                        <div className="flex items-center gap-3 mb-1">
-                            <span className="material-symbols-outlined text-slate-400 text-2xl">rocket_launch</span>
-                            <h3 className="text-lg font-bold text-slate-900">Запуск и Контроль</h3>
-                        </div>
-                        <p className="text-slate-500 mt-1">Пилотный запуск и корректировки.</p>
-                    </div>
-
-                    {/* Step 5 */}
-                    <div className="relative pl-6">
-                        <div className="absolute -left-[31px] top-0 w-8 h-8 rounded-full bg-white border-2 border-slate-300 flex items-center justify-center shadow-sm">
-                            <span className="text-xs font-bold text-slate-500">5</span>
-                        </div>
-                        <div className="flex items-center gap-3 mb-1">
-                            <span className="material-symbols-outlined text-slate-400 text-2xl">monitoring</span>
-                            <h3 className="text-lg font-bold text-slate-900">Месячная аналитика</h3>
-                        </div>
-                        <p className="text-slate-500 mt-1">Отчетность и улучшения.</p>
-                    </div>
+                <div className="lg:hidden flex flex-col gap-12 relative pl-6 border-l-2 border-slate-200 ml-4">
+                    {[
+                        { num: 1, title: "Анализ и Аудит", desc: "Комплексный аудит текущих маршрутов и затрат.", icon: "analytics" },
+                        { num: 2, title: "Модель оптимизации", desc: "Разработка стратегии и моделирование.", icon: "model_training" },
+                        { num: 3, title: "Подключение систем", desc: "Интеграция ИТ-систем и транспортных средств.", icon: "hub" },
+                        { num: 4, title: "Запуск и Контроль", desc: "Пилотный запуск и корректировки.", icon: "rocket_launch" },
+                        { num: 5, title: "Месячная аналитика", desc: "Отчетность и улучшения.", icon: "monitoring" }
+                    ].map((item, idx) => (
+                        <motion.div
+                            key={idx}
+                            initial="offscreen"
+                            whileInView="onscreen"
+                            viewport={{ once: false, amount: 0.9, margin: "-20% 0px -20% 0px" }}
+                            className="relative pl-6"
+                        >
+                            <motion.div
+                                variants={mobileCircleVariants}
+                                className="absolute -left-[31px] top-0 w-8 h-8 rounded-full border-2 flex items-center justify-center shadow-sm z-10"
+                            >
+                                <motion.span
+                                    variants={mobileNumberVariants}
+                                    className="text-xs font-bold"
+                                >
+                                    {item.num}
+                                </motion.span>
+                            </motion.div>
+                            <div className="flex items-center gap-3 mb-1">
+                                <motion.span
+                                    variants={iconVariants}
+                                    className="material-symbols-outlined text-2xl"
+                                >
+                                    {item.icon}
+                                </motion.span>
+                                <motion.h3
+                                    variants={textVariants}
+                                    className="text-lg font-bold"
+                                >
+                                    {item.title}
+                                </motion.h3>
+                            </div>
+                            <p className="text-slate-500 mt-1 text-sm">{item.desc}</p>
+                        </motion.div>
+                    ))}
                 </div>
             </div>
         </section>
