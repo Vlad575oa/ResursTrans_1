@@ -61,10 +61,10 @@ export const PainPoints = () => {
     }, [isInView]);
 
     return (
-        <section ref={sectionRef} className="py-16 bg-background-offset font-sans antialiased overflow-hidden" id="checkpoints">
+        <section ref={sectionRef} className="py-8 bg-background-offset font-sans antialiased overflow-hidden" id="checkpoints">
             <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
                 {/* Section Header */}
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6">
                     <div className="max-w-2xl">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 w-fit mb-2">
                             <span className="text-xs font-bold text-red-500 uppercase tracking-wide">Hidden Costs</span>
