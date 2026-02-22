@@ -40,7 +40,7 @@ export const Ecosystem = () => {
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        className="relative rounded-2xl bg-[#1a1b1d] border border-white/10 shadow-2xl overflow-hidden aspect-[16/9] md:aspect-[21/9] flex group"
+                        className="relative rounded-2xl bg-white dark:bg-[#1a1b1d] border border-foreground/10 dark:border-white/10 shadow-2xl overflow-hidden aspect-[16/9] md:aspect-[21/9] flex group"
                     >
                         {/* Sidebar */}
                         <div className="w-16 md:w-20 border-r border-white/5 flex flex-col items-center py-6 gap-6">

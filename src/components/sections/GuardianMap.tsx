@@ -24,7 +24,7 @@ export const GuardianMap = () => {
             </div>
 
             {/* Contour Map Construction */}
-            <div className="relative w-full max-w-5xl aspect-[2/1] bg-[#1a1b1d] rounded-3xl border border-white/5 overflow-hidden shadow-2xl">
+            <div className="relative w-full max-w-5xl aspect-[2/1] bg-white dark:bg-[#1a1b1d] rounded-3xl border border-foreground/10 dark:border-white/5 overflow-hidden shadow-2xl">
                 {/* Grid Lines */}
                 <div className="absolute inset-0 opacity-10"
                     style={{ backgroundImage: 'linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)', backgroundSize: '40px 40px' }}
@@ -87,7 +87,7 @@ export const GuardianMap = () => {
                             <motion.div
                                 initial={{ opacity: 0, y: 10, scale: 0.9 }}
                                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                                className="absolute bottom-10 left-1/2 -translate-x-1/2 w-56 bg-[#1a1b1d]/90 backdrop-blur-xl border border-white/10 p-4 rounded-xl shadow-2xl z-20"
+                                className="absolute bottom-10 left-1/2 -translate-x-1/2 w-56 bg-white/90 dark:bg-[#1a1b1d]/90 backdrop-blur-xl border border-foreground/10 dark:border-white/10 p-4 rounded-xl shadow-2xl z-20"
                             >
                                 <div className="flex justify-between items-center mb-2">
                                     <div className="text-cloud-dancer font-bold font-mono text-sm uppercase tracking-wide">{loc.label}</div>

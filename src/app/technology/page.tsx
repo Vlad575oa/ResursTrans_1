@@ -31,7 +31,7 @@ const TECH_STACK = [
 
 export default function TechnologyPage() {
     return (
-        <main className="min-h-screen bg-[#1C1C1C] text-[#F3F4F6] font-mono selection:bg-[#0F766E] selection:text-white relative overflow-hidden">
+        <main className="min-h-screen bg-background dark:bg-[#1C1C1C] text-foreground dark:text-[#F3F4F6] font-mono selection:bg-[#0F766E] selection:text-white relative overflow-hidden">
             <Navigation />
             <AiAssistant />
 
@@ -104,18 +104,18 @@ export default function TechnologyPage() {
                                 initial={{ opacity: 0, x: 20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ delay: index * 0.15 }}
-                                className="group relative border border-white/10 bg-[#2C2C2C]/50 hover:bg-[#2C2C2C] transition-colors p-6 md:p-8 flex flex-col md:flex-row gap-6 items-start md:items-center"
+                                className="group relative border border-foreground/10 dark:border-white/10 bg-foreground/5 dark:bg-[#2C2C2C]/50 hover:bg-foreground/10 dark:hover:bg-[#2C2C2C] transition-colors p-6 md:p-8 flex flex-col md:flex-row gap-6 items-start md:items-center"
                             >
                                 {/* Active Line Animation */}
                                 <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#0F766E] scale-y-0 group-hover:scale-y-100 transition-transform origin-top duration-300" />
 
-                                <div className="p-3 bg-white/5 rounded-sm border border-white/10 text-[#0F766E]">
+                                <div className="p-3 bg-foreground/5 dark:bg-white/5 rounded-sm border border-foreground/10 dark:border-white/10 text-[#0F766E]">
                                     {item.icon}
                                 </div>
 
                                 <div className="flex-grow">
                                     <div className="flex items-center gap-3 mb-2">
-                                        <h3 className="text-xl md:text-2xl font-bold tracking-tight text-white group-hover:text-[#0F766E] transition-colors">
+                                        <h3 className="text-xl md:text-2xl font-bold tracking-tight text-foreground dark:text-white group-hover:text-[#0F766E] transition-colors">
                                             {item.title}
                                         </h3>
                                         <span className="text-[10px] border border-white/20 px-1 py-0.5 rounded text-gray-400">
