@@ -16,16 +16,16 @@ export function Timeline() {
     const YEARS = ["2008", "2009", "2010", "2011", "2014", "2018", "2021", "2024", "2026", "2027"];
 
     const IMAGES: Record<string, string> = {
-        "2008": "/images/timeline/2008.svg",
-        "2009": "/images/timeline/2009.svg",
-        "2010": "/images/timeline/2010.png",
-        "2011": "/images/timeline/2011.svg",
-        "2014": "/images/timeline/2014.png",
-        "2018": "/images/timeline/2018.png",
-        "2021": "/images/timeline/2021.png",
-        "2024": "/images/timeline/2024.png",
-        "2026": "/images/timeline/2026.svg",
-        "2027": "/images/timeline/2027.svg"
+        "2008": "/images/generated/history_2008_1771761428782.webp",
+        "2009": "/images/generated/history_2009_1771761449850.webp",
+        "2010": "/images/timeline/2010.webp",
+        "2011": "/images/generated/history_2011_1771761463877.webp",
+        "2014": "/images/timeline/2014.webp",
+        "2018": "/images/timeline/2018.webp",
+        "2021": "/images/timeline/2021.webp",
+        "2024": "/images/timeline/2024.webp",
+        "2026": "/images/generated/history_2026_1771761478380.webp",
+        "2027": "/images/generated/history_2027_1771761495347.webp"
     };
 
     return (

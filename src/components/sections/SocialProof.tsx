@@ -3,20 +3,21 @@
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useRef } from "react";
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import { Shield, Package, Globe, CheckCircle2, Route } from "lucide-react";
 
 interface StatItemSchema {
     value: string;
     key: string;
-    icon: string;
+    icon: any;
     color: string;
 }
 
 const stats: StatItemSchema[] = [
-    { value: "15+", key: "yearsExperience", icon: "shield", color: "#FF6B35" },
-    { value: "5k+", key: "activeUnits", icon: "inventory_2", color: "#4ECDC4" },
-    { value: "20+", key: "regionsCovered", icon: "public", color: "#FFE66D" },
-    { value: "98%", key: "slaAdherence", icon: "task_alt", color: "#95E1D3" },
-    { value: "1M+", key: "kmMonthly", icon: "route", color: "#F38181" },
+    { value: "15+", key: "yearsExperience", icon: Shield, color: "#FF6B35" },
+    { value: "5k+", key: "activeUnits", icon: Package, color: "#4ECDC4" },
+    { value: "20+", key: "regionsCovered", icon: Globe, color: "#FFE66D" },
+    { value: "98%", key: "slaAdherence", icon: CheckCircle2, color: "#95E1D3" },
+    { value: "1M+", key: "kmMonthly", icon: Route, color: "#F38181" },
 ];
 
 export function SocialProof() {
@@ -28,7 +29,7 @@ export function SocialProof() {
     });
 
     return (
-        <section ref={sectionRef} className="bg-navy-custom py-14 text-white">
+        <section ref={sectionRef} className="bg-section-3 py-14 text-text-primary">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 md:gap-0">
                     {stats.map((stat, index) => (
@@ -56,25 +57,22 @@ function StatItem({ stat, index, scrollYProgress }: StatItemProps) {
     const iconColor = useTransform(
         scrollYProgress,
         [0, 0.15, 0.5, 0.85, 1],
-        ["#64748b", stat.color, stat.color, stat.color, "#64748b"]
+        ["#cbd5e1", stat.color, stat.color, stat.color, "#cbd5e1"]
     );
 
     const valueColor = useTransform(
         scrollYProgress,
         [0, 0.15, 0.5, 0.85, 1],
-        ["#94a3b8", "#ffffff", "#ffffff", "#ffffff", "#94a3b8"]
+        ["#94a3b8", "currentColor", "currentColor", "currentColor", "#94a3b8"]
     );
 
     return (
         <motion.div
             className="flex flex-col items-center justify-center text-center md:border-r md:border-white/10 md:px-4"
         >
-            <motion.span
-                className="material-symbols-outlined text-4xl mb-3"
-                style={{ color: iconColor }}
-            >
-                {stat.icon}
-            </motion.span>
+            <motion.div style={{ color: iconColor }} className="mb-3">
+                <stat.icon size={40} />
+            </motion.div>
             <motion.span
                 className="text-4xl lg:text-5xl font-black tracking-tight"
                 style={{ color: valueColor }}

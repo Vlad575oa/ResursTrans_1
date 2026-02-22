@@ -1,22 +1,37 @@
-"use client";
-
 import { HeroVisuals } from "./Hero/HeroVisuals";
 import { HeroTicker } from "./Hero/HeroTicker";
 import { HeroBenefitsTicker } from "./Hero/HeroBenefitsTicker";
-import { useLanguage } from "@/components/providers/LanguageProvider";
+import { getServerTranslations } from "@/lib/server-intl";
 
-export const Hero = () => {
-    const { t } = useLanguage();
-    const mainImage = "https://lh3.googleusercontent.com/aida-public/AB6AXuC2TRKG8mKoP9MJD-PtGXdCXjLN0jDWCa4NsAWkDxtyUdI7wRBNnRyG68-t3GnEuGs9w_HlgmNFW-P-o_HYaakdtCRwlffJSzG_GtvnLWskUg-kqWqqm1rhzZar128xj8a-jkLCr-dvXul0N_NgwrFHPjOq-xFHHuwjZ7QLMshCBYWtr4b8UVKbB4kBKBvSlJO38PyoCn8k1np0MhasKiugFmDNUIhWvXbRT-MnsvZV4sjhKB87mV5WxVTi6g2pEM84lSpMLMVvKYg4";
+export const Hero = async () => {
+    const { t } = await getServerTranslations();
+
+    // Ticker translations
+    const tickerDict = {
+        trustedBy: t("Hero.ticker.trustedBy"),
+        marketLeaders: t("Hero.ticker.marketLeaders")
+    };
+
+    // Visuals translations
+    const visualsDict = {
+        gpsSignal: t("Hero.visuals.gpsSignal"),
+        active: t("Hero.visuals.active"),
+        slaRate: t("Hero.visuals.slaRate"),
+        telemetry: t("Hero.visuals.telemetry"),
+        surface: t("Hero.visuals.surface"),
+        highway: t("Hero.visuals.highway"),
+        fuelLevel: t("Hero.visuals.fuelLevel"),
+        activeUnits: t("Hero.visuals.activeUnits"),
+        seeTransport: t("Hero.visuals.seeTransport"),
+        smartOutsourcing: t("Hero.visuals.smartOutsourcing"),
+        logo: t("Navigation.logo"),
+        unmuteTooltip: t("Hero.visuals.unmuteTooltip"),
+        muteTooltip: t("Hero.visuals.muteTooltip"),
+        replayTooltip: t("Hero.visuals.replayTooltip")
+    };
 
     return (
-        <section className="relative overflow-hidden font-sans antialiased text-slate-900 hero-canvas">
-            {/* Generative ambient orbs */}
-            <div className="pointer-events-none" aria-hidden="true">
-                <div className="hero-orb-a" />
-                <div className="hero-orb-b" />
-                <div className="hero-orb-c" />
-            </div>
+        <section className="relative overflow-hidden font-sans antialiased text-slate-900 bg-background">
 
             <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pb-16 pt-24 lg:pt-36 lg:pb-16">
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
@@ -26,18 +41,18 @@ export const Hero = () => {
                             <span className="size-2 rounded-full bg-primary-main animate-pulse"></span>
                             <span className="text-xs font-bold text-navy uppercase tracking-wide">{t("Hero.premiumLogistics")}</span>
                         </div>
-                        <h1 className="text-navy text-4xl sm:text-5xl lg:text-[3.5rem] font-black leading-[1.1] tracking-tight">
+                        <h1 className="text-text-primary text-4xl sm:text-5xl lg:text-[3.5rem] font-black leading-[1.1] tracking-tight">
                             {t("Hero.title")}
                         </h1>
-                        <p className="text-slate-500 text-lg sm:text-xl font-normal leading-relaxed max-w-xl">
+                        <p className="text-text-secondary text-lg sm:text-xl font-normal leading-relaxed max-w-xl">
                             {t("Hero.description")}
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4">
-                            <a href="#cta" className="btn-puffy btn-puffy-primary text-white font-bold py-4 px-8 rounded-xl w-full sm:w-auto text-center inline-flex justify-center items-center">
+                            <a href="#cta" className="btn-puffy btn-puffy-primary text-text-inverse font-bold py-4 px-8 rounded-xl w-full sm:w-auto text-center inline-flex justify-center items-center">
                                 {t("Hero.getAudit")}
                             </a>
-                            <a href="#calculator" className="btn-puffy btn-puffy-secondary text-navy font-bold py-4 px-8 rounded-xl w-full sm:w-auto text-center inline-flex justify-center items-center">
+                            <a href="#calculator" className="btn-puffy btn-puffy-secondary text-text-primary font-bold py-4 px-8 rounded-xl w-full sm:w-auto text-center inline-flex justify-center items-center">
                                 {t("Hero.calculateSavings")}
                             </a>
                         </div>
@@ -47,12 +62,12 @@ export const Hero = () => {
                     </div>
 
                     {/* Right Content */}
-                    <HeroVisuals />
+                    <HeroVisuals dict={visualsDict} />
                 </div>
             </div>
 
             {/* Full-bleed ticker strip */}
-            <HeroTicker />
+            <HeroTicker dict={tickerDict} />
         </section>
     );
 };

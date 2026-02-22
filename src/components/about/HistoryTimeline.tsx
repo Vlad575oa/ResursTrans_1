@@ -66,8 +66,8 @@ export function HistoryTimeline() {
                                     <div className={`hidden md:block absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-white dark:bg-[#2a2018] border-slate-100 dark:border-slate-800 ${isEven ? 'border-t border-r -right-2 rotate-45' : 'border-b border-l -left-2 rotate-45'}`}></div>
 
                                     <span className="text-primary font-extrabold text-3xl mb-2 block">{event.year}</span>
-                                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{event.title}</h3>
-                                    <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                                    <h3 className="text-xl font-bold text-text-primary mb-2">{event.title}</h3>
+                                    <p className="text-text-body text-sm leading-relaxed">
                                         {event.description}
                                     </p>
                                 </div>

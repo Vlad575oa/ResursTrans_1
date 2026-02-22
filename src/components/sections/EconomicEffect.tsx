@@ -1,11 +1,8 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { TrendingDown, Timer, ShieldCheck, Banknote, LineChart } from "lucide-react";
-import { useLanguage } from "@/components/providers/LanguageProvider";
+import { getServerTranslations } from "@/lib/server-intl";
 
-export const EconomicEffect = () => {
-    const { t } = useLanguage();
+export const EconomicEffect = async () => {
+    const { t } = await getServerTranslations();
 
     const RESULTS = [
         {
@@ -59,12 +56,10 @@ export const EconomicEffect = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-px bg-white/10 border border-white/10 group">
                     {RESULTS.map((res, i) => (
-                        <motion.div
+                        <div
                             key={i}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.1 }}
-                            className="bg-anthracite-core p-8 flex flex-col items-center text-center group/item hover:bg-white/5 transition-colors relative"
+                            className="bg-anthracite-core p-8 flex flex-col items-center text-center group/item hover:bg-white/5 transition-colors relative animate-fade-in-up"
+                            style={{ animationDelay: `${i * 0.1 + 0.2}s` }}
                         >
                             <div className="text-burnt-terra mb-6 group-hover/item:scale-110 transition-transform">
                                 {res.icon}
@@ -81,7 +76,7 @@ export const EconomicEffect = () => {
 
                             {/* Hover Border Accent */}
                             <div className="absolute inset-0 border border-burnt-terra/0 group-hover/item:border-burnt-terra/30 transition-colors pointer-events-none" />
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import Image from "next/image";
+import { MapPin, ArrowUpRight, Navigation, Fuel, LayoutDashboard, UserCheck, ArrowRight } from "lucide-react";
 
 export function Technology() {
     const { t } = useLanguage();
@@ -29,9 +31,9 @@ export function Technology() {
                         <div className="p-8 pb-0 flex-grow">
                             <div className="flex items-center justify-between mb-4">
                                 <div className="p-3 bg-primary-main/10 rounded-xl text-primary-main">
-                                    <span className="material-symbols-outlined">location_on</span>
+                                    <MapPin className="w-6 h-6" />
                                 </div>
-                                <span className="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">arrow_outward</span>
+                                <ArrowUpRight className="w-6 h-6 text-slate-300 group-hover:text-primary transition-colors" />
                             </div>
                             <h3 className="text-2xl font-bold text-text-primary mb-3">{t("Technology.gpsMonitoring.title")}</h3>
                             <p className="text-text-body leading-relaxed">
@@ -41,7 +43,14 @@ export function Technology() {
                         <div className="mt-8 px-6 pb-6 w-full">
                             <div className="w-full h-56 rounded-xl overflow-hidden bg-slate-100 relative border border-slate-200 shadow-inner group-hover:scale-[1.02] transition-transform duration-500">
                                 {/* Mockup: Map UI */}
-                                <img alt="Abstract map interface with route lines" className="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-multiply" data-alt="Digital map interface showing city streets and route lines" data-location="Map Interface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX1fLUueR8AUAmJP2mwj2QsbDid24qvsqIz-_25yRFy47XwwNyTGlgiKZTqJQyOAngU5yFI85dr_yq0rgKEo3PmXP2-u7Qp2ep7eonl5Aygg0jHznoGGT91_2k6sJVtfJn5DkNad6ecDDGSFDCqcoHcY3fXSu6dBzAPRIpE_67qBQM2lyRCZ49pfoz8FoxUI2Qe3SNKW9VvyzrwxaxUezpr1ZuaU27KUO37DDoejwdVTTiA-bGfuAYGJaSnWPC2jmtflod0dZuIP2o" />
+                                <Image
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX1fLUueR8AUAmJP2mwj2QsbDid24qvsqIz-_25yRFy47XwwNyTGlgiKZTqJQyOAngU5yFI85dr_yq0rgKEo3PmXP2-u7Qp2ep7eonl5Aygg0jHznoGGT91_2k6sJVtfJn5DkNad6ecDDGSFDCqcoHcY3fXSu6dBzAPRIpE_67qBQM2lyRCZ49pfoz8FoxUI2Qe3SNKW9VvyzrwxaxUezpr1ZuaU27KUO37DDoejwdVTTiA-bGfuAYGJaSnWPC2jmtflod0dZuIP2o"
+                                    alt="Abstract map interface with route lines"
+                                    fill
+                                    className="object-cover opacity-80 mix-blend-multiply"
+                                    data-alt="Digital map interface showing city streets and route lines"
+                                    data-location="Map Interface"
+                                />
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
                                 {/* UI Overlay elements */}
                                 <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
@@ -53,7 +62,7 @@ export function Technology() {
                                         <div className="text-slate-500">Speed: 45 km/h</div>
                                     </div>
                                     <div className="bg-primary text-white p-2 rounded-lg shadow-lg">
-                                        <span className="material-symbols-outlined text-sm">near_me</span>
+                                        <Navigation className="w-4 h-4" />
                                     </div>
                                 </div>
                             </div>
@@ -64,9 +73,9 @@ export function Technology() {
                         <div className="p-8 pb-0 flex-grow">
                             <div className="flex items-center justify-between mb-4">
                                 <div className="p-3 bg-primary-main/10 rounded-xl text-primary-main">
-                                    <span className="material-symbols-outlined">local_gas_station</span>
+                                    <Fuel className="w-6 h-6" />
                                 </div>
-                                <span className="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">arrow_outward</span>
+                                <ArrowUpRight className="w-6 h-6 text-slate-300 group-hover:text-primary transition-colors" />
                             </div>
                             <h3 className="text-2xl font-bold text-text-primary mb-3">{t("Technology.fuelAnalytics.title")}</h3>
                             <p className="text-text-body leading-relaxed">
@@ -101,9 +110,9 @@ export function Technology() {
                         <div className="p-8 pb-0 flex-grow">
                             <div className="flex items-center justify-between mb-4">
                                 <div className="p-3 bg-primary-main/10 rounded-xl text-primary-main">
-                                    <span className="material-symbols-outlined">dashboard</span>
+                                    <LayoutDashboard className="w-6 h-6" />
                                 </div>
-                                <span className="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">arrow_outward</span>
+                                <ArrowUpRight className="w-6 h-6 text-slate-300 group-hover:text-primary transition-colors" />
                             </div>
                             <h3 className="text-2xl font-bold text-text-primary mb-3">{t("Technology.biDashboards.title")}</h3>
                             <p className="text-text-body leading-relaxed">
@@ -146,9 +155,9 @@ export function Technology() {
                         <div className="p-8 pb-0 flex-grow">
                             <div className="flex items-center justify-between mb-4">
                                 <div className="p-3 bg-primary-main/10 rounded-xl text-primary-main">
-                                    <span className="material-symbols-outlined">badge</span>
+                                    <UserCheck className="w-6 h-6" />
                                 </div>
-                                <span className="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">arrow_outward</span>
+                                <ArrowUpRight className="w-6 h-6 text-slate-300 group-hover:text-primary transition-colors" />
                             </div>
                             <h3 className="text-2xl font-bold text-text-primary mb-3">{t("Technology.driverKpi.title")}</h3>
                             <p className="text-text-body leading-relaxed">
@@ -189,7 +198,7 @@ export function Technology() {
                 <div className="mt-16 text-center">
                     <button className="inline-flex items-center justify-center gap-2 text-text-primary font-bold border-b-2 border-primary pb-1 hover:text-primary transition-colors group">
                         <span>{t("Technology.exploreTech")}</span>
-                        <span className="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </button>
                 </div>
             </div>

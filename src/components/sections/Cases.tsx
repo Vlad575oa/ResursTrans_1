@@ -1,23 +1,24 @@
 "use client";
 
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import { ArrowRight, Package, ArrowUpRight, TrendingDown } from "lucide-react";
 
 export function Cases() {
     const { t } = useLanguage();
 
     return (
-        <section className="py-12 lg:py-16 px-6 lg:px-12 bg-white relative">
+        <section className="py-12 lg:py-16 px-6 lg:px-12 bg-section-2 relative">
             {/* Background decoration */}
             <div className="absolute top-0 right-0 -z-10 h-[600px] w-1/3 bg-slate-50"></div>
             <div className="mx-auto max-w-7xl">
                 <div className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
                     <div>
-                        <span className="text-sm font-bold uppercase tracking-widest text-primary">{t("Cases.successStories")}</span>
+                        <span className="text-sm font-bold uppercase tracking-widest text-primary-main">{t("Cases.successStories")}</span>
                         <h2 className="mt-3 text-3xl font-extrabold text-slate-900 sm:text-4xl">{t("Cases.title")}</h2>
                     </div>
-                    <a className="group flex items-center gap-2 text-sm font-bold text-slate-600 transition-colors hover:text-primary" href="#">
+                    <a className="group flex items-center gap-2 text-sm font-bold text-slate-600 transition-colors hover:text-primary-main" href="#">
                         {t("Cases.viewAll")}
-                        <span className="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">arrow_forward</span>
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                     </a>
                 </div>
                 {/* Main Featured Case Card */}
@@ -27,7 +28,7 @@ export function Cases() {
                         <div>
                             <div className="mb-6 flex items-center gap-3">
                                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600">
-                                    <span className="material-symbols-outlined">inventory_2</span>
+                                    <Package className="w-5 h-5" />
                                 </div>
                                 <span className="text-sm font-semibold text-slate-500">{t("Cases.category")}</span>
                             </div>
@@ -44,9 +45,9 @@ export function Cases() {
                             </div>
                         </div>
                         <div className="mt-10">
-                            <button className="inline-flex items-center gap-2 font-bold text-primary hover:text-orange-600">
+                            <button className="inline-flex items-center gap-2 font-bold text-primary-main hover:text-primary-dark">
                                 {t("Cases.readMore")}
-                                <span className="material-symbols-outlined text-sm">arrow_outward</span>
+                                <ArrowUpRight className="w-4 h-4" />
                             </button>
                         </div>
                     </div>
@@ -54,15 +55,15 @@ export function Cases() {
                     <div className="relative bg-slate-50 p-8 lg:border-l lg:border-slate-100 lg:p-12 flex flex-col justify-center">
                         {/* Abstract Graphic Background */}
                         <div className="absolute inset-0 overflow-hidden opacity-10">
-                            <div className="absolute -right-10 -top-10 h-64 w-64 rounded-full bg-primary blur-3xl"></div>
+                            <div className="absolute -right-10 -top-10 h-64 w-64 rounded-full bg-primary-main blur-3xl"></div>
                             <div className="absolute -bottom-10 -left-10 h-64 w-64 rounded-full bg-blue-500 blur-3xl"></div>
                         </div>
                         <div className="relative z-10">
                             <div className="mb-2 text-sm font-medium text-slate-500">{t("Cases.costReduction")}</div>
                             <div className="mb-8 flex items-baseline gap-4">
-                                <span className="text-6xl font-black text-primary">-18%</span>
+                                <span className="text-6xl font-black text-primary-main">-18%</span>
                                 <span className="flex items-center text-sm font-medium text-green-600 bg-green-100 px-2 py-1 rounded-full">
-                                    <span className="material-symbols-outlined text-sm mr-1">trending_down</span>
+                                    <TrendingDown className="w-4 h-4 mr-1" />
                                     {t("Cases.aboveTarget")}
                                 </span>
                             </div>
@@ -76,11 +77,11 @@ export function Cases() {
                                     <div className="h-full w-full bg-slate-400"></div>
                                 </div>
                                 <div className="flex items-center justify-between text-xs font-medium text-slate-500">
-                                    <span className="text-primary font-bold">{t("Cases.afterOptimization")}</span>
+                                    <span className="text-primary-main font-bold">{t("Cases.afterOptimization")}</span>
                                     <span className="text-slate-900 font-bold">$984k / mo</span>
                                 </div>
                                 <div className="h-4 w-full overflow-hidden rounded-full bg-slate-200">
-                                    <div className="h-full w-[82%] bg-primary"></div>
+                                    <div className="h-full w-[82%] bg-primary-main"></div>
                                 </div>
                             </div>
                             <div className="mt-8 grid grid-cols-2 gap-4">

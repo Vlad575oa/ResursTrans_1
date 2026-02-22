@@ -19,7 +19,7 @@ export const HeroActions = () => {
         <div className="flex flex-wrap gap-4 mt-2">
             <Button
                 onClick={() => { trigger(); scrollToSection('calculator'); }}
-                className="flex items-center justify-center gap-2 bg-primary-main hover:bg-primary-dark text-white text-base font-bold py-6 px-8 rounded-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 min-w-[180px]"
+                className="flex items-center justify-center gap-2 bg-primary-main hover:bg-primary-dark text-text-inverse text-base font-bold py-6 px-8 rounded-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 min-w-[180px]"
             >
                 <span>Get Calculation</span>
                 <ArrowRight className="w-5 h-5" />

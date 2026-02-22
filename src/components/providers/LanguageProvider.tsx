@@ -27,12 +27,14 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
         const savedLocale = localStorage.getItem("locale") as Locale;
         if (savedLocale && (savedLocale === "ru" || savedLocale === "en")) {
             setLocaleState(savedLocale);
+            document.cookie = `NEXT_LOCALE=${savedLocale}; path=/; max-age=31536000; SameSite=Lax`;
         }
     }, []);
 
     const setLocale = useCallback((newLocale: Locale) => {
         setLocaleState(newLocale);
         localStorage.setItem("locale", newLocale);
+        document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
     }, []);
 
     const t = useCallback((key: string): string => {

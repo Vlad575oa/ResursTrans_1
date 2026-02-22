@@ -3,13 +3,16 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import { useTheme } from "@/components/providers/ThemeProvider";
+
+import { BarChart3, Brain, Share2, Rocket, Activity as ActivityIcon } from "lucide-react";
 
 const WORKFLOW_STEPS = [
-    { key: "analysis", icon: "analytics", threshold: 0.15 },
-    { key: "model", icon: "model_training", threshold: 0.35 },
-    { key: "connection", icon: "hub", threshold: 0.55 },
-    { key: "launch", icon: "rocket_launch", threshold: 0.75 },
-    { key: "analytics", icon: "monitoring", threshold: 0.90 }
+    { key: "analysis", icon: BarChart3, threshold: 0.15 },
+    { key: "model", icon: Brain, threshold: 0.35 },
+    { key: "connection", icon: Share2, threshold: 0.55 },
+    { key: "launch", icon: Rocket, threshold: 0.75 },
+    { key: "analytics", icon: ActivityIcon, threshold: 0.90 }
 ];
 
 export function Workflow() {
@@ -21,7 +24,7 @@ export function Workflow() {
     });
 
     return (
-        <section ref={containerRef} className="py-16 bg-[#f8f7f5] relative overflow-hidden">
+        <section ref={containerRef} className="py-16 bg-section-1 relative overflow-hidden">
             {/* Background decorative element */}
             <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-white to-transparent opacity-50 pointer-events-none"></div>
 
@@ -84,14 +87,18 @@ export function Workflow() {
 
 function StepItem({ item, index, progress }: { item: typeof WORKFLOW_STEPS[0], index: number, progress: any }) {
     const { t } = useLanguage();
+    const { theme } = useTheme();
+    const primaryColor = theme === "light" ? "#f57a00" : "#66B032";
+    const primaryRgb = theme === "light" ? "245, 122, 0" : "102, 176, 50";
+
     // Range: light up 5% before and stay lit 5% after the threshold
     const active = useTransform(progress,
         [item.threshold - 0.05, item.threshold, item.threshold + 0.15, item.threshold + 0.20],
         [0, 1, 1, 0] // Fade in and slightly out as we move past, or keep at 1 if preferred. User said "lights up as I scroll".
     );
 
-    const borderColor = useTransform(active, [0, 1], ["rgb(241 245 249)", "#f57a00"]);
-    const textColor = useTransform(active, [0, 1], ["rgb(148 163 184)", "#f57a00"]);
+    const borderColor = useTransform(active, [0, 1], ["rgb(241 245 249)", primaryColor]);
+    const textColor = useTransform(active, [0, 1], ["rgb(148 163 184)", primaryColor]);
     const shadowOpacity = useTransform(active, [0, 1], [0, 0.2]);
     const scale = useTransform(active, [0, 1], [1, 1.05]);
 
@@ -99,15 +106,12 @@ function StepItem({ item, index, progress }: { item: typeof WORKFLOW_STEPS[0], i
         <div className="relative group">
             <div className="flex flex-col items-center text-center">
                 <motion.div
-                    style={{ borderColor, scale, boxShadow: useTransform(shadowOpacity, (v) => `0 10px 25px -5px rgba(245, 122, 0, ${v})`) }}
+                    style={{ borderColor, scale, boxShadow: useTransform(shadowOpacity, (v) => `0 10px 25px -5px rgba(${primaryRgb}, ${v})`) }}
                     className="w-24 h-24 rounded-full bg-white border-4 flex items-center justify-center z-10 transition-shadow duration-300"
                 >
-                    <motion.span
-                        style={{ color: textColor }}
-                        className="material-symbols-outlined text-4xl"
-                    >
-                        {item.icon}
-                    </motion.span>
+                    <motion.div style={{ color: textColor }}>
+                        <item.icon className="w-10 h-10" />
+                    </motion.div>
                 </motion.div>
                 <div className="mt-8 px-2">
                     <motion.div
@@ -128,16 +132,19 @@ function StepItem({ item, index, progress }: { item: typeof WORKFLOW_STEPS[0], i
 
 function MobileStepItem({ item, index, progress }: { item: typeof WORKFLOW_STEPS[0], index: number, progress: any }) {
     const { t } = useLanguage();
+    const { theme } = useTheme();
+    const primaryColor = theme === "light" ? "#f57a00" : "#66B032";
+
     const active = useTransform(progress,
         [item.threshold - 0.05, item.threshold, item.threshold + 0.15, item.threshold + 0.20],
         [0, 1, 1, 0]
     );
 
-    const backgroundColor = useTransform(active, [0, 1], ["#ffffff", "#f57a00"]);
-    const borderColor = useTransform(active, [0, 1], ["rgb(203 213 225)", "#f57a00"]);
+    const backgroundColor = useTransform(active, [0, 1], ["#ffffff", primaryColor]);
+    const borderColor = useTransform(active, [0, 1], ["rgb(203 213 225)", primaryColor]);
     const textColor = useTransform(active, [0, 1], ["rgb(100 116 139)", "#ffffff"]);
-    const iconColor = useTransform(active, [0, 1], ["rgb(148 163 184)", "#f57a00"]);
-    const titleColor = useTransform(active, [0, 1], ["rgb(15 23 42)", "#f57a00"]);
+    const iconColor = useTransform(active, [0, 1], ["rgb(148 163 184)", primaryColor]);
+    const titleColor = useTransform(active, [0, 1], ["rgb(15 23 42)", primaryColor]);
 
     return (
         <div className="relative pl-8">
@@ -153,12 +160,9 @@ function MobileStepItem({ item, index, progress }: { item: typeof WORKFLOW_STEPS
                 </motion.span>
             </motion.div>
             <div className="flex items-center gap-3 mb-1">
-                <motion.span
-                    style={{ color: iconColor }}
-                    className="material-symbols-outlined text-2xl"
-                >
-                    {item.icon}
-                </motion.span>
+                <motion.div style={{ color: iconColor }}>
+                    <item.icon className="w-6 h-6" />
+                </motion.div>
                 <motion.h3
                     style={{ color: titleColor }}
                     className="text-lg font-bold transition-colors duration-300"

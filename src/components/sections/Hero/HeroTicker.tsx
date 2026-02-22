@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import { motion } from "framer-motion";
-import { useLanguage } from "@/components/providers/LanguageProvider";
 
 const COMPANIES = [
     "Лукойл",
@@ -23,18 +22,17 @@ const COMPANIES = [
 const TICKER_ITEMS = [...COMPANIES, ...COMPANIES];
 
 const SEPARATOR = (
-    <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary mx-6 align-middle opacity-60" />
+    <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary-main mx-6 align-middle opacity-60" />
 );
 
-export const HeroTicker = () => {
-    const { t } = useLanguage();
+export const HeroTicker = ({ dict }: { dict: { trustedBy: string, marketLeaders: string } }) => {
     const trackRef = useRef<HTMLDivElement>(null);
 
     return (
         <div className="w-full py-8 bg-transparent overflow-hidden select-none">
             {/* Static label above */}
             <p className="text-center text-xs font-bold uppercase tracking-[0.2em] text-slate-400 mb-4">
-                {t("Hero.ticker.trustedBy")}
+                {dict.trustedBy}
             </p>
 
             {/* Scrolling strip */}
@@ -51,7 +49,7 @@ export const HeroTicker = () => {
                 >
                     {TICKER_ITEMS.map((name, i) => (
                         <span key={i} className="inline-flex items-center">
-                            <span className="text-base font-semibold text-slate-600 hover:text-primary transition-colors cursor-default">
+                            <span className="text-base font-semibold text-text-primary hover:text-primary-main transition-colors cursor-default">
                                 {name}
                             </span>
                             {SEPARATOR}
@@ -61,8 +59,8 @@ export const HeroTicker = () => {
             </div>
 
             {/* Static label below - Uniform and same size as top label */}
-            <p className="text-center text-xs font-bold uppercase tracking-[0.2em] text-slate-400 mt-6">
-                {t("Hero.ticker.marketLeaders")}
+            <p className="text-center text-xs font-bold uppercase tracking-[0.2em] text-text-muted mt-6">
+                {dict.marketLeaders}
             </p>
         </div>
     );

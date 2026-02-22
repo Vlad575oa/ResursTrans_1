@@ -1,12 +1,16 @@
 "use client";
 
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import { useRouter } from "next/navigation";
 
 export default function LanguageSwitcher() {
     const { locale, setLocale, t } = useLanguage();
+    const router = useRouter();
 
     const toggleLanguage = () => {
-        setLocale(locale === "ru" ? "en" : "ru");
+        const newLocale = locale === "ru" ? "en" : "ru";
+        setLocale(newLocale);
+        router.refresh(); // Refresh Server Components to pick up new NEXT_LOCALE cookie
     };
 
     return (

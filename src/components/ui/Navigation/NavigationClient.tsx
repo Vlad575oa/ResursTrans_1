@@ -5,16 +5,15 @@ import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import LanguageSwitcher from "../LanguageSwitcher";
-import { useLanguage } from "@/components/providers/LanguageProvider";
-
 interface NavItem {
     name: string;
     href: string;
 }
 
-export const NavigationClient = ({ items }: { items: NavItem[] }) => {
+import { Menu, X } from "lucide-react";
+
+export const NavigationClient = ({ items, tLanguage, tSubmit }: { items: NavItem[], tLanguage: string, tSubmit: string }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const { t } = useLanguage();
 
     return (
         <>
@@ -25,9 +24,9 @@ export const NavigationClient = ({ items }: { items: NavItem[] }) => {
                 aria-label="Toggle menu"
             >
                 {isOpen ? (
-                    <span className="material-symbols-outlined text-3xl">close</span>
+                    <X className="w-8 h-8" />
                 ) : (
-                    <span className="material-symbols-outlined text-3xl">menu</span>
+                    <Menu className="w-8 h-8" />
                 )}
             </button>
 
@@ -53,12 +52,12 @@ export const NavigationClient = ({ items }: { items: NavItem[] }) => {
                             ))}
                             <div className="flex items-center justify-between pt-4 border-t border-foreground/5">
                                 <span className="text-foreground/70 font-medium">
-                                    {t("Navigation.language")}
+                                    {tLanguage}
                                 </span>
                                 <LanguageSwitcher />
                             </div>
                             <Button className="w-full bg-primary-main text-white py-4 rounded-xl text-center font-bold">
-                                {t("Navigation.submitRequest")}
+                                {tSubmit}
                             </Button>
                         </div>
                     </motion.div>

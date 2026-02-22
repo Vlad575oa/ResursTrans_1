@@ -1,15 +1,16 @@
 "use client";
 
+import { ArrowRight, TrendingDown } from "lucide-react";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export function CallToAction() {
     const { t } = useLanguage();
 
     return (
-        <section 
+        <section
             className="relative py-16 px-4 bg-cover bg-center bg-fixed"
             style={{
-                backgroundImage: `url('/solutions_bg_cinematic_1771685396206.png')`
+                backgroundImage: `url('/solutions_bg_cinematic_1771685396206.webp')`
             }}
         >
             {/* Background Image with Overlay */}
@@ -25,9 +26,9 @@ export function CallToAction() {
                         {t("CallToAction.description")}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                        <button className="bg-primary hover:bg-orange-600 text-white min-w-[200px] h-14 rounded-lg text-lg font-bold transition-all shadow-[0_0_20px_rgba(245,122,0,0.4)] hover:shadow-[0_0_30px_rgba(245,122,0,0.6)] flex items-center justify-center gap-2">
+                        <button className="bg-primary-main hover:bg-primary-dark text-white min-w-[200px] h-14 rounded-lg text-lg font-bold transition-all flex items-center justify-center gap-2" style={{ boxShadow: "0 0 20px rgba(var(--color-primary-main-rgb), 0.4)" }}>
                             {t("CallToAction.submitRequest")}
-                            <span className="material-symbols-outlined">arrow_forward</span>
+                            <ArrowRight className="w-6 h-6" />
                         </button>
                         <button className="bg-white/10 hover:bg-white/20 border border-white/20 text-white min-w-[200px] h-14 rounded-lg text-lg font-bold transition-all backdrop-blur-sm flex items-center justify-center">
                             {t("CallToAction.requestQuote")}
@@ -39,7 +40,7 @@ export function CallToAction() {
                     <div className="bg-white/10 backdrop-blur-md border border-white/10 p-8 rounded-2xl max-w-xs rotate-3 hover:rotate-0 transition-transform duration-500">
                         <div className="flex items-center gap-4 mb-4">
                             <div className="size-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">
-                                <span className="material-symbols-outlined text-3xl">trending_down</span>
+                                <TrendingDown className="w-8 h-8" />
                             </div>
                             <div>
                                 <p className="text-sm text-slate-400 uppercase font-semibold">{t("CallToAction.averageSavings")}</p>

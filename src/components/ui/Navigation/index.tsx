@@ -1,16 +1,14 @@
-"use client";
-
 import { NavigationClient } from "./NavigationClient";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
-import { useLanguage } from "@/components/providers/LanguageProvider";
-import { useTheme } from "@/components/providers/ThemeProvider";
-import { Sun, Moon } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
+import { getServerTranslations } from "@/lib/server-intl";
 
-export const Navigation = () => {
-    const { locale, t } = useLanguage();
-    const { theme, toggleTheme } = useTheme();
+import { Truck } from "lucide-react";
+
+export const Navigation = async () => {
+    const { t } = await getServerTranslations();
 
     const navItems = [
         { name: t("Navigation.services"), href: "/services" },
@@ -21,13 +19,13 @@ export const Navigation = () => {
     ];
 
     return (
-        <div className="w-full bg-background/80 backdrop-blur-md border-b border-foreground/5 fixed top-0 left-0 z-50">
+        <div className="w-full bg-background fixed top-0 left-0 z-50">
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
                 <header className="flex items-center justify-between h-20">
                     {/* Logo - Server Rendered */}
                     <Link href="/" className="flex items-center gap-3 group">
                         <div className="h-10 w-10 flex items-center justify-center bg-primary-main/10 text-primary-main rounded-lg group-hover:scale-110 transition-transform">
-                            <span className="material-symbols-outlined text-2xl">local_shipping</span>
+                            <Truck className="w-6 h-6" />
                         </div>
                         <h2 className="text-foreground text-xl font-bold tracking-tight">
                             {t("Navigation.logo")}
@@ -56,18 +54,15 @@ export const Navigation = () => {
                             {t("Navigation.submitRequest")}
                         </Button>
 
-                        <Button
-                            onClick={toggleTheme}
-                            variant="ghost"
-                            size="sm"
-                            className="text-slate-600 hover:text-primary-main rounded-lg flex items-center justify-center p-2 min-w-0"
-                        >
-                            {theme === "light" ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5 text-white" />}
-                        </Button>
+                        <ThemeToggle />
 
                         <LanguageSwitcher />
 
-                        <NavigationClient items={navItems} />
+                        <NavigationClient
+                            items={navItems}
+                            tLanguage={t("Navigation.language")}
+                            tSubmit={t("Navigation.submitRequest")}
+                        />
                     </div>
                 </header>
             </div>
