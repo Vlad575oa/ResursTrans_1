@@ -25,6 +25,19 @@
   --color-navy-light: #153055;
   --color-background-offset: #F4F6F9;
   --color-background-dark-fleet: #23190f;
+
+  /* Semantic Text Colors */
+  --color-text-link: var(--text-link);
+  --color-text-link-hover: var(--text-link-hover);
+  --color-text-success: var(--text-success);
+  --color-text-disabled: var(--text-disabled);
+  --color-text-primary: var(--text-primary);
+  --color-text-body: var(--text-body);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-inverse: var(--text-inverse);
+  --color-text-accent: var(--text-accent);
+
   /* Extracted HTML Specs */
   --color-primary: #f57a00;
   --color-background-light: #f8f7f5;
@@ -61,11 +74,35 @@
 :root {
   --background: var(--color-cloud-dancer);
   --foreground: var(--color-anthracite-core);
+
+  /* Default Light Mode Text Colors */
+  --text-link: #2563EB;
+  --text-link-hover: #1D4ED8;
+  --text-success: #22C55E;
+  --text-disabled: #9CA3AF;
+  --text-primary: #111827;
+  --text-body: #374151;
+  --text-secondary: #4B5563;
+  --text-muted: #6B7280;
+  --text-inverse: #FFFFFF;
+  --text-accent: #22C55E;
 }
 
 .dark {
   --background: var(--color-anthracite-core);
   --foreground: var(--color-cloud-dancer);
+
+  /* Dark Mode Semantic Text Colors (User Requested) */
+  --text-link: #3A6EA5;
+  --text-link-hover: #163A5C;
+  --text-success: #4CAF50;
+  --text-disabled: #B8C2CC;
+  --text-primary: #1F4E79;
+  --text-body: #4A4A4A;
+  --text-secondary: #5F6B7A;
+  --text-muted: #8A97A6;
+  --text-inverse: #FFFFFF;
+  --text-accent: #4CAF50;
 }
 
 body {
