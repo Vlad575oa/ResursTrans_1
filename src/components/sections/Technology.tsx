@@ -6,35 +6,35 @@ export function Technology() {
     const { t } = useLanguage();
 
     return (
-        <section className="py-16 bg-background-light border-t border-neutral-border">
+        <section className="py-16 bg-section-2 border-t border-neutral-border">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10 gap-6">
                     <div className="max-w-3xl">
                         <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-3 block">
                             {t("Technology.techStack")}
                         </span>
-                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-text-primary leading-tight">
                             {t("Technology.title")}
                         </h2>
                     </div>
                     <div className="flex gap-3">
-                        <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white text-xs font-medium text-slate-600 border border-slate-200">
+                        <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white text-xs font-medium text-text-muted border border-slate-200">
                             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> {t("Technology.liveSystem")}
                         </span>
                     </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {/* Card 1: GPS Monitoring */}
-                    <div className="group bg-white rounded-2xl border border-neutral-border overflow-hidden hover:shadow-xl hover:shadow-orange-100/50 transition-all duration-300 flex flex-col h-full">
+                    <div className="group bg-white rounded-2xl border border-neutral-border overflow-hidden hover:shadow-xl hover:shadow-primary-main/30 transition-all duration-300 flex flex-col h-full">
                         <div className="p-8 pb-0 flex-grow">
                             <div className="flex items-center justify-between mb-4">
-                                <div className="p-3 bg-orange-50 rounded-xl text-primary">
+                                <div className="p-3 bg-primary-main/10 rounded-xl text-primary-main">
                                     <span className="material-symbols-outlined">location_on</span>
                                 </div>
                                 <span className="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">arrow_outward</span>
                             </div>
-                            <h3 className="text-2xl font-bold text-slate-900 mb-3">{t("Technology.gpsMonitoring.title")}</h3>
-                            <p className="text-slate-600 leading-relaxed">
+                            <h3 className="text-2xl font-bold text-text-primary mb-3">{t("Technology.gpsMonitoring.title")}</h3>
+                            <p className="text-text-body leading-relaxed">
                                 {t("Technology.gpsMonitoring.desc")}
                             </p>
                         </div>
@@ -60,16 +60,16 @@ export function Technology() {
                         </div>
                     </div>
                     {/* Card 2: Fuel Analytics */}
-                    <div className="group bg-white rounded-2xl border border-neutral-border overflow-hidden hover:shadow-xl hover:shadow-orange-100/50 transition-all duration-300 flex flex-col h-full">
+                    <div className="group bg-white rounded-2xl border border-neutral-border overflow-hidden hover:shadow-xl hover:shadow-primary-main/30 transition-all duration-300 flex flex-col h-full">
                         <div className="p-8 pb-0 flex-grow">
                             <div className="flex items-center justify-between mb-4">
-                                <div className="p-3 bg-orange-50 rounded-xl text-primary">
+                                <div className="p-3 bg-primary-main/10 rounded-xl text-primary-main">
                                     <span className="material-symbols-outlined">local_gas_station</span>
                                 </div>
                                 <span className="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">arrow_outward</span>
                             </div>
-                            <h3 className="text-2xl font-bold text-slate-900 mb-3">{t("Technology.fuelAnalytics.title")}</h3>
-                            <p className="text-slate-600 leading-relaxed">
+                            <h3 className="text-2xl font-bold text-text-primary mb-3">{t("Technology.fuelAnalytics.title")}</h3>
+                            <p className="text-text-body leading-relaxed">
                                 {t("Technology.fuelAnalytics.desc")}
                             </p>
                         </div>
@@ -85,9 +85,9 @@ export function Technology() {
                                         <div className="w-full bg-slate-200 rounded-t-sm h-[40%]"></div>
                                         <div className="w-full bg-slate-200 rounded-t-sm h-[65%]"></div>
                                         <div className="w-full bg-slate-200 rounded-t-sm h-[50%]"></div>
-                                        <div className="w-full bg-primary/40 rounded-t-sm h-[80%]"></div>
-                                        <div className="w-full bg-primary/60 rounded-t-sm h-[60%]"></div>
-                                        <div className="w-full bg-primary rounded-t-sm h-[35%] relative group-hover:shadow-[0_0_15px_rgba(245,122,0,0.5)] transition-shadow"></div>
+                                        <div className="w-full bg-primary-main/40 rounded-t-sm h-[80%]"></div>
+                                        <div className="w-full bg-primary-main/60 rounded-t-sm h-[60%]"></div>
+                                        <div className="w-full bg-primary-main rounded-t-sm h-[35%] relative transition-shadow" style={{ boxShadow: "inset 0 0 15px var(--color-primary-main)" }}></div>
                                     </div>
                                     <div className="flex justify-between text-[10px] text-slate-400 mt-2 border-t border-slate-200 pt-2">
                                         <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
@@ -97,16 +97,16 @@ export function Technology() {
                         </div>
                     </div>
                     {/* Card 3: BI Dashboards */}
-                    <div className="group bg-white rounded-2xl border border-neutral-border overflow-hidden hover:shadow-xl hover:shadow-orange-100/50 transition-all duration-300 flex flex-col h-full">
+                    <div className="group bg-white rounded-2xl border border-neutral-border overflow-hidden hover:shadow-xl hover:shadow-primary-main/30 transition-all duration-300 flex flex-col h-full">
                         <div className="p-8 pb-0 flex-grow">
                             <div className="flex items-center justify-between mb-4">
-                                <div className="p-3 bg-orange-50 rounded-xl text-primary">
+                                <div className="p-3 bg-primary-main/10 rounded-xl text-primary-main">
                                     <span className="material-symbols-outlined">dashboard</span>
                                 </div>
                                 <span className="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">arrow_outward</span>
                             </div>
-                            <h3 className="text-2xl font-bold text-slate-900 mb-3">{t("Technology.biDashboards.title")}</h3>
-                            <p className="text-slate-600 leading-relaxed">
+                            <h3 className="text-2xl font-bold text-text-primary mb-3">{t("Technology.biDashboards.title")}</h3>
+                            <p className="text-text-body leading-relaxed">
                                 {t("Technology.biDashboards.desc")}
                             </p>
                         </div>
@@ -142,16 +142,16 @@ export function Technology() {
                         </div>
                     </div>
                     {/* Card 4: Driver KPI */}
-                    <div className="group bg-white rounded-2xl border border-neutral-border overflow-hidden hover:shadow-xl hover:shadow-orange-100/50 transition-all duration-300 flex flex-col h-full">
+                    <div className="group bg-white rounded-2xl border border-neutral-border overflow-hidden hover:shadow-xl hover:shadow-primary-main/30 transition-all duration-300 flex flex-col h-full">
                         <div className="p-8 pb-0 flex-grow">
                             <div className="flex items-center justify-between mb-4">
-                                <div className="p-3 bg-orange-50 rounded-xl text-primary">
+                                <div className="p-3 bg-primary-main/10 rounded-xl text-primary-main">
                                     <span className="material-symbols-outlined">badge</span>
                                 </div>
                                 <span className="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">arrow_outward</span>
                             </div>
-                            <h3 className="text-2xl font-bold text-slate-900 mb-3">{t("Technology.driverKpi.title")}</h3>
-                            <p className="text-slate-600 leading-relaxed">
+                            <h3 className="text-2xl font-bold text-text-primary mb-3">{t("Technology.driverKpi.title")}</h3>
+                            <p className="text-text-body leading-relaxed">
                                 {t("Technology.driverKpi.desc")}
                             </p>
                         </div>
@@ -159,26 +159,26 @@ export function Technology() {
                             <div className="w-full h-56 rounded-xl bg-slate-50 border border-slate-200 p-4 relative overflow-hidden group-hover:scale-[1.02] transition-transform duration-500 shadow-inner flex flex-col gap-3">
                                 {/* Mockup: Driver List */}
                                 <div className="flex items-center gap-3 p-2 bg-white rounded-lg shadow-sm border border-slate-100">
-                                    <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-xs font-bold text-slate-500">JD</div>
+                                    <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-xs font-bold text-slate-500">ИП</div>
                                     <div className="flex-1">
-                                        <div className="text-xs font-bold text-slate-800">John Doe</div>
-                                        <div className="text-[10px] text-slate-500">Route A-12</div>
+                                        <div className="text-xs font-bold text-slate-800">Иван Петров</div>
+                                        <div className="text-[10px] text-slate-500">Маршрут А-12</div>
                                     </div>
                                     <div className="text-sm font-bold text-green-600">98%</div>
                                 </div>
                                 <div className="flex items-center gap-3 p-2 bg-white rounded-lg shadow-sm border border-slate-100">
-                                    <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-xs font-bold text-slate-500">AS</div>
+                                    <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-xs font-bold text-slate-500">АС</div>
                                     <div className="flex-1">
-                                        <div className="text-xs font-bold text-slate-800">Alex Smith</div>
-                                        <div className="text-[10px] text-slate-500">Route B-04</div>
+                                        <div className="text-xs font-bold text-slate-800">Алексей Смирнов</div>
+                                        <div className="text-[10px] text-slate-500">Маршрут Б-04</div>
                                     </div>
                                     <div className="text-sm font-bold text-primary">84%</div>
                                 </div>
                                 <div className="flex items-center gap-3 p-2 bg-white rounded-lg shadow-sm border border-slate-100 opacity-60">
-                                    <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-xs font-bold text-slate-500">MK</div>
+                                    <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-xs font-bold text-slate-500">МК</div>
                                     <div className="flex-1">
-                                        <div className="text-xs font-bold text-slate-800">Mike K.</div>
-                                        <div className="text-[10px] text-slate-500">Route C-01</div>
+                                        <div className="text-xs font-bold text-slate-800">Михаил Кузнецов</div>
+                                        <div className="text-[10px] text-slate-500">Маршрут В-01</div>
                                     </div>
                                     <div className="text-sm font-bold text-red-500">72%</div>
                                 </div>
@@ -187,7 +187,7 @@ export function Technology() {
                     </div>
                 </div>
                 <div className="mt-16 text-center">
-                    <button className="inline-flex items-center justify-center gap-2 text-slate-900 font-bold border-b-2 border-primary pb-1 hover:text-primary transition-colors group">
+                    <button className="inline-flex items-center justify-center gap-2 text-text-primary font-bold border-b-2 border-primary pb-1 hover:text-primary transition-colors group">
                         <span>{t("Technology.exploreTech")}</span>
                         <span className="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
                     </button>

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import { Send } from "lucide-react";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export const AiAssistant = () => {
@@ -25,10 +25,10 @@ export const AiAssistant = () => {
                 {/* Orb */}
                 <motion.div
                     className="glass-panel w-14 h-14 rounded-full flex items-center justify-center text-transformative-teal border-transformative-teal/30 shadow-[0_0_30px_rgba(15,118,110,0.3)]"
-                    whileHover={{ scale: 1.1, rotate: 180 }}
+                    whileHover={{ scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 260, damping: 20 }}
                 >
-                    <Sparkles className="w-6 h-6" />
+                    <Send className="w-5 h-5 -rotate-12" />
                 </motion.div>
 
                 {/* Tooltip (Hidden initially) */}
