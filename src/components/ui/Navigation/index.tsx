@@ -5,9 +5,12 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import { useTheme } from "@/components/providers/ThemeProvider";
+import { Sun, Moon } from "lucide-react";
 
 export const Navigation = () => {
     const { locale, t } = useLanguage();
+    const { theme, toggleTheme } = useTheme();
 
     const navItems = [
         { name: t("Navigation.services"), href: "/services" },
@@ -18,7 +21,7 @@ export const Navigation = () => {
     ];
 
     return (
-        <div className="w-full bg-white/80 backdrop-blur-md border-b border-gray-100 fixed top-0 left-0 z-50">
+        <div className="w-full bg-background/80 backdrop-blur-md border-b border-foreground/5 fixed top-0 left-0 z-50">
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
                 <header className="flex items-center justify-between h-20">
                     {/* Logo - Server Rendered */}
@@ -26,7 +29,7 @@ export const Navigation = () => {
                         <div className="h-10 w-10 flex items-center justify-center bg-primary-main/10 text-primary-main rounded-lg group-hover:scale-110 transition-transform">
                             <span className="material-symbols-outlined text-2xl">local_shipping</span>
                         </div>
-                        <h2 className="text-navy text-xl font-bold tracking-tight">
+                        <h2 className="text-foreground text-xl font-bold tracking-tight">
                             {t("Navigation.logo")}
                         </h2>
                     </Link>
@@ -37,7 +40,7 @@ export const Navigation = () => {
                             <Link
                                 key={item.name}
                                 href={item.href}
-                                className="text-slate-600 hover:text-primary-main text-sm font-medium transition-colors"
+                                className="text-foreground/70 hover:text-primary-main text-sm font-medium transition-colors"
                             >
                                 {item.name}
                             </Link>
@@ -46,8 +49,20 @@ export const Navigation = () => {
 
                     {/* Desktop CTA & Mobile Toggle Shell */}
                     <div className="flex items-center gap-4">
-                        <Button className="hidden sm:flex bg-primary-main hover:bg-primary-dark text-white text-sm font-bold py-2.5 px-6 rounded-lg transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                        <Button
+                            variant="primary"
+                            className="hidden sm:flex bg-primary-main hover:bg-primary-dark text-white text-sm font-bold py-2.5 px-6 rounded-lg transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+                        >
                             {t("Navigation.submitRequest")}
+                        </Button>
+
+                        <Button
+                            onClick={toggleTheme}
+                            variant="ghost"
+                            size="sm"
+                            className="text-slate-600 hover:text-primary-main rounded-lg flex items-center justify-center p-2 min-w-0"
+                        >
+                            {theme === "light" ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5 text-white" />}
                         </Button>
 
                         <LanguageSwitcher />

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Verified, Car, Navigation, Fuel, Activity, Map as MapIcon, Play } from "lucide-react";
+import { Verified, Car, Navigation, Fuel, Activity, Map as MapIcon, Play, Volume2, VolumeX } from "lucide-react";
 import { useState, useRef } from "react";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 
@@ -10,6 +10,15 @@ export const HeroVisuals: React.FC = () => {
     const [key, setKey] = useState(0);
     const videoRef = useRef<HTMLVideoElement>(null);
     const [showReplay, setShowReplay] = useState(false);
+    const [isMuted, setIsMuted] = useState(true);
+
+    const toggleMute = () => {
+        if (videoRef.current) {
+            const nextMuted = !isMuted;
+            videoRef.current.muted = nextMuted;
+            setIsMuted(nextMuted);
+        }
+    };
 
     const handleReplay = () => {
         setKey(prev => prev + 1);
@@ -33,7 +42,7 @@ export const HeroVisuals: React.FC = () => {
                         ref={videoRef}
                         src="/0221.mp4"
                         autoPlay
-                        muted
+                        muted={isMuted}
                         playsInline
                         loop={false}
                         onEnded={() => setShowReplay(true)}
@@ -48,7 +57,7 @@ export const HeroVisuals: React.FC = () => {
                     <motion.div
                         initial={{ opacity: 0, x: -40, y: -20 }}
                         animate={{ opacity: 1, x: -12, y: 0 }}
-                        transition={{ delay: 9.5, duration: 1.2, ease: "easeOut" }}
+                        transition={{ delay: 12.5, duration: 1.2, ease: "easeOut" }}
                         className="absolute -top-4 -left-6 z-40 bg-white/10 backdrop-blur-xl px-4 py-2 rounded-lg border border-white/20 flex items-center gap-3 text-white shadow-xl"
                     >
                         <Navigation className="w-4 h-4 text-primary-main animate-pulse" />
@@ -62,7 +71,7 @@ export const HeroVisuals: React.FC = () => {
                     <motion.div
                         initial={{ opacity: 0, x: 40, y: -20 }}
                         animate={{ opacity: 1, x: 12, y: 0 }}
-                        transition={{ delay: 10, duration: 1.2, ease: "easeOut" }}
+                        transition={{ delay: 13.0, duration: 1.2, ease: "easeOut" }}
                         className="absolute -top-4 -right-6 z-40 bg-white/10 backdrop-blur-xl px-4 py-2 rounded-lg border border-white/20 flex items-center gap-3 text-white shadow-xl"
                     >
                         <Verified className="w-4 h-4 text-green-400" />
@@ -76,7 +85,7 @@ export const HeroVisuals: React.FC = () => {
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 12 }}
-                        transition={{ delay: 10.5, duration: 1.2, ease: "easeOut" }}
+                        transition={{ delay: 13.5, duration: 1.2, ease: "easeOut" }}
                         className="absolute -bottom-4 -left-8 z-40 bg-navy/60 backdrop-blur-xl p-4 rounded-xl border border-white/10 flex items-center gap-4 text-white shadow-2xl"
                     >
                         <div className="bg-primary-main/30 p-2.5 rounded-lg">
@@ -92,7 +101,7 @@ export const HeroVisuals: React.FC = () => {
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 11, duration: 1.2, ease: "easeOut" }}
+                        transition={{ delay: 14.0, duration: 1.2, ease: "easeOut" }}
                         className="absolute -bottom-6 -right-10 z-40 bg-navy/60 backdrop-blur-xl p-5 rounded-xl border border-white/10 flex flex-col gap-3 text-white shadow-2xl min-w-[180px]"
                     >
                         <div className="flex items-center justify-between gap-4">
@@ -106,7 +115,7 @@ export const HeroVisuals: React.FC = () => {
                             <motion.div
                                 initial={{ width: 0 }}
                                 animate={{ width: "74%" }}
-                                transition={{ delay: 11.5, duration: 1.5, ease: "easeInOut" }}
+                                transition={{ delay: 14.5, duration: 1.5, ease: "easeInOut" }}
                                 className="h-full bg-orange-400 shadow-[0_0_8px_rgba(251,146,60,0.5)]"
                             />
                         </div>
@@ -126,10 +135,10 @@ export const HeroVisuals: React.FC = () => {
                                 backgroundColor: "rgba(0,0,0,0.5)",
                                 backdropFilter: "blur(4px)",
                                 transition: {
-                                    delay: 7.0,
+                                    delay: 10.0,
                                     duration: 1.5,
                                     staggerChildren: 1.2,
-                                    delayChildren: 7.0
+                                    delayChildren: 10.0
                                 }
                             }
                         }}
@@ -164,39 +173,53 @@ export const HeroVisuals: React.FC = () => {
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 0.15 }}
-                        transition={{ delay: 5.5, duration: 2.5 }}
+                        transition={{ delay: 8.5, duration: 2.5 }}
                         className="absolute inset-0 pointer-events-none z-10 flex items-center justify-center"
                     >
                         <MapIcon className="w-2/3 h-2/3 text-white opacity-20" />
                     </motion.div>
                 </div>
 
-                {/* Replay Overlay - Centered below brand with pulsing orange bulb */}
-                {
-                    showReplay && (
-                        <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="absolute bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-auto"
-                        >
-                            <motion.button
-                                initial={{ scale: 0.5 }}
-                                animate={{ scale: 1 }}
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.9 }}
-                                onClick={handleReplay}
-                                className="group relative flex items-center justify-center p-3 rounded-full bg-primary-main text-white shadow-[0_0_20px_rgba(var(--color-primary-main-rgb),0.5)]"
-                                title={t("Hero.visuals.replayTooltip")}
-                            >
-                                <Play className="w-4 h-4 fill-current relative z-10" />
+                {/* Action Buttons Container */}
+                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-4">
+                    {/* Sound Toggle Button */}
+                    <motion.button
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        onClick={toggleMute}
+                        className="p-3 rounded-full bg-navy/60 backdrop-blur-xl border border-white/10 text-white shadow-2xl hover:bg-navy/80 transition-colors pointer-events-auto"
+                        title={isMuted ? t("Hero.visuals.unmuteTooltip") : t("Hero.visuals.muteTooltip")}
+                    >
+                        {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+                    </motion.button>
 
-                                {/* Pulse layers - Slower animation */}
-                                <div className="absolute inset-0 rounded-full bg-primary-main animate-ping opacity-20 duration-[3000ms]"></div>
-                                <div className="absolute -inset-1 rounded-full bg-primary-main/10 animate-pulse duration-[2000ms]"></div>
-                            </motion.button>
-                        </motion.div>
-                    )
-                }
+                    {/* Replay Overlay - Centered below brand with pulsing orange bulb */}
+                    {
+                        showReplay && (
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.5 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="pointer-events-auto"
+                            >
+                                <motion.button
+                                    whileHover={{ scale: 1.1 }}
+                                    whileTap={{ scale: 0.9 }}
+                                    onClick={handleReplay}
+                                    className="group relative flex items-center justify-center p-3 rounded-full bg-primary-main text-white shadow-[0_0_20px_rgba(var(--color-primary-main-rgb),0.5)]"
+                                    title={t("Hero.visuals.replayTooltip")}
+                                >
+                                    <Play className="w-4 h-4 fill-current relative z-10" />
+
+                                    {/* Pulse layers - Slower animation */}
+                                    <div className="absolute inset-0 rounded-full bg-primary-main animate-ping opacity-20 duration-[3000ms]"></div>
+                                    <div className="absolute -inset-1 rounded-full bg-primary-main/10 animate-pulse duration-[2000ms]"></div>
+                                </motion.button>
+                            </motion.div>
+                        )
+                    }
+                </div>
             </div >
 
             {/* Decorative Background element */}

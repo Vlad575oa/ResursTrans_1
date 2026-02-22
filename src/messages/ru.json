@@ -31,7 +31,9 @@
       "activeUnits": "Активных единиц",
       "seeTransport": "Мы видим транспорт насквозь",
       "smartOutsourcing": "умный аутсорсинг от",
-      "replayTooltip": "Повторить анимацию"
+      "replayTooltip": "Повторить анимацию",
+      "muteTooltip": "Выключить звук",
+      "unmuteTooltip": "Включить звук"
     },
     "ticker": {
       "trustedBy": "Нам доверяют компании",

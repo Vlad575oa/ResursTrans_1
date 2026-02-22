@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter_Tight, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/components/providers/LanguageProvider";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
 const interTight = Inter_Tight({
   variable: "--font-sans",
@@ -29,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru" className="dark" suppressHydrationWarning>
+    <html lang="ru" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -38,7 +39,9 @@ export default function RootLayout({
       <body
         className={`${interTight.variable} ${playfair.variable} antialiased selection:bg-[var(--color-burnt-terra)] selection:text-white`}
       >
-        <LanguageProvider>{children}</LanguageProvider>
+        <ThemeProvider>
+          <LanguageProvider>{children}</LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

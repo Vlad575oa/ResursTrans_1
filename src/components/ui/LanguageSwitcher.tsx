@@ -12,7 +12,7 @@ export default function LanguageSwitcher() {
     return (
         <button
             onClick={toggleLanguage}
-            className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors group"
+            className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-foreground/10 transition-colors group"
             aria-label={t("Language.ariaLabel")}
         >
             {/* Flag Icon */}
@@ -20,7 +20,7 @@ export default function LanguageSwitcher() {
                 {locale === "ru" ? "🇷🇺" : "🇬🇧"}
             </span>
             {/* Language Code */}
-            <span className="text-sm font-semibold text-slate-600 group-hover:text-primary-main uppercase">
+            <span className="text-sm font-semibold text-foreground/70 group-hover:text-primary-main uppercase">
                 {locale === "ru" ? "RU" : "EN"}
             </span>
         </button>

@@ -63,11 +63,9 @@
   --foreground: var(--color-anthracite-core);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--color-anthracite-core);
-    --foreground: var(--color-cloud-dancer);
-  }
+.dark {
+  --background: var(--color-anthracite-core);
+  --foreground: var(--color-cloud-dancer);
 }
 
 body {

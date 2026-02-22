@@ -21,7 +21,7 @@ export const NavigationClient = ({ items }: { items: NavItem[] }) => {
             {/* Mobile Menu Button - Isolate Client Interaction */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="md:hidden text-navy p-2 hover:bg-navy/5 rounded-lg transition-colors flex items-center justify-center"
+                className="md:hidden text-foreground p-2 hover:bg-foreground/5 rounded-lg transition-colors flex items-center justify-center"
                 aria-label="Toggle menu"
             >
                 {isOpen ? (
@@ -38,7 +38,7 @@ export const NavigationClient = ({ items }: { items: NavItem[] }) => {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="fixed top-20 left-0 w-full md:hidden bg-white border-b border-gray-100 overflow-hidden z-40"
+                        className="fixed top-20 left-0 w-full md:hidden bg-background border-b border-foreground/5 overflow-hidden z-40"
                     >
                         <div className="px-6 py-8 flex flex-col gap-6">
                             {items.map((item) => (
@@ -46,13 +46,13 @@ export const NavigationClient = ({ items }: { items: NavItem[] }) => {
                                     key={item.name}
                                     href={item.href}
                                     onClick={() => setIsOpen(false)}
-                                    className="text-navy text-lg font-bold"
+                                    className="text-foreground text-lg font-bold"
                                 >
                                     {item.name}
                                 </Link>
                             ))}
-                            <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                                <span className="text-slate-600 font-medium">
+                            <div className="flex items-center justify-between pt-4 border-t border-foreground/5">
+                                <span className="text-foreground/70 font-medium">
                                     {t("Navigation.language")}
                                 </span>
                                 <LanguageSwitcher />

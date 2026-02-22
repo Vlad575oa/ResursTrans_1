@@ -31,7 +31,9 @@
       "activeUnits": "Active Units",
       "seeTransport": "We see transport inside out",
       "smartOutsourcing": "smart outsourcing from",
-      "replayTooltip": "Replay sequence"
+      "replayTooltip": "Replay sequence",
+      "muteTooltip": "Mute sound",
+      "unmuteTooltip": "Unmute sound"
     },
     "ticker": {
       "trustedBy": "Trusted by leading companies",
