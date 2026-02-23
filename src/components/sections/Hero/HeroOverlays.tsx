@@ -19,12 +19,12 @@ export const HeroOverlays = ({ dict, isMuted, showReplay, toggleMute, handleRepl
                 initial={{ opacity: 0, x: -40, y: -20 }}
                 animate={{ opacity: 1, x: -12, y: 0 }}
                 transition={{ delay: 12.5, duration: 1.2, ease: "easeOut" }}
-                className="absolute -top-4 -left-6 z-40 bg-white/10 backdrop-blur-xl px-4 py-2 rounded-lg border border-white/20 flex items-center gap-3 text-text-inverse shadow-xl"
+                className="absolute top-2 left-2 sm:-top-4 sm:-left-6 z-40 bg-white/10 backdrop-blur-xl p-2 sm:px-4 sm:py-2 rounded-lg border border-white/20 flex items-center gap-2 sm:gap-3 text-text-inverse shadow-xl"
             >
-                <Navigation className="w-4 h-4 text-primary-main animate-pulse" />
+                <Navigation className="w-3 h-3 sm:w-4 sm:h-4 text-primary-main animate-pulse" />
                 <div className="flex flex-col">
-                    <span className="text-[10px] uppercase font-bold tracking-widest text-text-inverse">{dict.gpsSignal}</span>
-                    <span className="text-xs font-mono font-bold text-text-inverse">{dict.active} / 1.2m</span>
+                    <span className="hidden sm:inline text-[10px] uppercase font-bold tracking-widest text-text-inverse">{dict.gpsSignal}</span>
+                    <span className="text-xs font-mono font-bold text-text-inverse"><span className="hidden sm:inline">{dict.active} / </span>1.2m</span>
                 </div>
             </motion.div>
 
@@ -33,11 +33,11 @@ export const HeroOverlays = ({ dict, isMuted, showReplay, toggleMute, handleRepl
                 initial={{ opacity: 0, x: 40, y: -20 }}
                 animate={{ opacity: 1, x: 12, y: 0 }}
                 transition={{ delay: 13.0, duration: 1.2, ease: "easeOut" }}
-                className="absolute -top-4 -right-6 z-40 bg-white/10 backdrop-blur-xl px-4 py-2 rounded-lg border border-white/20 flex items-center gap-3 text-text-inverse shadow-xl"
+                className="absolute top-2 right-2 sm:-top-4 sm:-right-6 z-40 bg-white/10 backdrop-blur-xl p-2 sm:px-4 sm:py-2 rounded-lg border border-white/20 flex items-center gap-2 sm:gap-3 text-text-inverse shadow-xl"
             >
-                <Verified className="w-4 h-4 text-green-400" />
+                <Verified className="w-3 h-3 sm:w-4 sm:h-4 text-green-400" />
                 <div className="flex flex-col text-right">
-                    <span className="text-[10px] uppercase font-bold tracking-widest text-text-inverse">{dict.slaRate}</span>
+                    <span className="hidden sm:inline text-[10px] uppercase font-bold tracking-widest text-text-inverse">{dict.slaRate}</span>
                     <span className="text-xs font-mono font-bold text-text-inverse">98.4%</span>
                 </div>
             </motion.div>
@@ -47,12 +47,12 @@ export const HeroOverlays = ({ dict, isMuted, showReplay, toggleMute, handleRepl
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 12 }}
                 transition={{ delay: 13.5, duration: 1.2, ease: "easeOut" }}
-                className="absolute -bottom-4 -left-8 z-40 bg-navy/60 backdrop-blur-xl p-4 rounded-xl border border-white/10 flex items-center gap-4 text-text-inverse shadow-2xl"
+                className="absolute bottom-2 left-2 sm:-bottom-4 sm:-left-8 z-40 bg-navy/60 backdrop-blur-xl p-3 sm:p-4 rounded-xl border border-white/10 flex items-center gap-3 sm:gap-4 text-text-inverse shadow-2xl"
             >
-                <div className="bg-primary-main/30 p-2.5 rounded-lg">
-                    <Activity className="w-5 h-5 text-primary-main" />
+                <div className="bg-primary-main/30 p-2 sm:p-2.5 rounded-lg">
+                    <Activity className="w-4 h-4 sm:w-5 sm:h-5 text-primary-main" />
                 </div>
-                <div>
+                <div className="hidden sm:block">
                     <p className="text-[10px] uppercase font-bold tracking-widest text-text-inverse">{dict.telemetry}</p>
                     <p className="text-sm font-mono font-bold text-text-inverse">{dict.surface}: {dict.highway}</p>
                 </div>
@@ -63,16 +63,16 @@ export const HeroOverlays = ({ dict, isMuted, showReplay, toggleMute, handleRepl
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 14.0, duration: 1.2, ease: "easeOut" }}
-                className="absolute -bottom-6 -right-10 z-40 bg-navy/60 backdrop-blur-xl p-5 rounded-xl border border-white/10 flex flex-col gap-3 text-text-inverse shadow-2xl min-w-[180px]"
+                className="absolute bottom-2 right-2 sm:-bottom-6 sm:-right-10 z-40 bg-navy/60 backdrop-blur-xl p-3 sm:p-5 rounded-xl border border-white/10 flex flex-col gap-2 sm:gap-3 text-text-inverse shadow-2xl min-w-[80px] sm:min-w-[180px]"
             >
-                <div className="flex items-center justify-between gap-4">
-                    <div className="flex items-center gap-2.5">
-                        <Fuel className="w-4 h-4 text-primary-main" />
-                        <span className="text-xs font-bold uppercase text-text-inverse">{dict.fuelLevel}</span>
+                <div className="flex items-center justify-between gap-3 sm:gap-4">
+                    <div className="flex items-center gap-2 sm:gap-2.5">
+                        <Fuel className="w-3 h-3 sm:w-4 sm:h-4 text-primary-main" />
+                        <span className="hidden sm:inline text-xs font-bold uppercase text-text-inverse">{dict.fuelLevel}</span>
                     </div>
                     <span className="text-xs font-mono text-primary-main font-bold">74%</span>
                 </div>
-                <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
+                <div className="hidden sm:block h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
                     <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: "74%" }}
@@ -81,9 +81,9 @@ export const HeroOverlays = ({ dict, isMuted, showReplay, toggleMute, handleRepl
                         style={{ boxShadow: "0 0 8px var(--color-primary-main, #f57a00)" }}
                     />
                 </div>
-                <div className="flex items-center gap-3 pt-1 border-t border-white/10">
-                    <Car className="w-4 h-4 text-primary-main" />
-                    <span className="text-sm font-bold tracking-tight">5,412 {dict.activeUnits}</span>
+                <div className="flex items-center gap-2 sm:gap-3 pt-0 sm:pt-1 sm:border-t border-white/10">
+                    <Car className="w-3 h-3 sm:w-4 sm:h-4 text-primary-main" />
+                    <span className="text-[10px] sm:text-sm font-bold tracking-tight">5,412 <span className="hidden sm:inline">{dict.activeUnits}</span></span>
                 </div>
             </motion.div>
 

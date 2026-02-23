@@ -5,7 +5,7 @@ import { getServerTranslations } from "@/lib/server-intl";
 import { ContactContent } from "@/components/sections/Contacts/ContactContent";
 
 export default async function ContactsPage() {
-    const { t } = await getServerTranslations();
+    const { t, tRaw } = await getServerTranslations();
 
     const titles = {
         pageTitle: t("ContactsPage.pageTitle"),
@@ -24,6 +24,15 @@ export default async function ContactsPage() {
         message: t("ContactsPage.message"),
         messagePlaceholder: t("ContactsPage.messagePlaceholder"),
         sendMessage: t("ContactsPage.sendMessage"),
+        consentText: t("ContactsPage.consentText"),
+        consentLink: t("ContactsPage.consentLink"),
+        howToGet: t("ContactsPage.howToGet"),
+        howToGetSteps: tRaw("ContactsPage.howToGetSteps") || [],
+        expand: t("ContactsPage.expand"),
+        collapse: t("ContactsPage.collapse"),
+        regionalTitle: t("ContactsPage.regionalTitle"),
+        regionalBranches: tRaw("ContactsPage.regionalBranches") || [],
+        emailValue: t("ContactsPage.emailValue")
     };
 
     return (

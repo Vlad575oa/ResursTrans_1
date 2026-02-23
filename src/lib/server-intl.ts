@@ -25,5 +25,20 @@ export async function getServerTranslations() {
         return typeof value === "string" ? value : key;
     };
 
-    return { t, locale };
+    const tRaw = (key: string): any => {
+        const keys = key.split(".");
+        let value: any = messages[locale];
+
+        for (const k of keys) {
+            if (value && typeof value === 'object' && k in value) {
+                value = value[k];
+            } else {
+                return key; // Fallback to key if not found
+            }
+        }
+
+        return value;
+    };
+
+    return { t, tRaw, locale };
 }

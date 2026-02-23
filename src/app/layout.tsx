@@ -3,17 +3,23 @@ import { Inter_Tight, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { CookieConsent } from "@/components/ui/CookieConsent";
+import { TelegramProvider } from "@/components/providers/TelegramProvider";
 
 const interTight = Inter_Tight({
   variable: "--font-sans",
   subsets: ["latin", "cyrillic"],
-  weight: ["400", "500", "600", "700", "900"], // Heavy weights for "Object Sans" feel
+  weight: ["400", "600", "700", "900"],
+  display: "swap",
+  preload: true,
 });
 
 const playfair = Playfair_Display({
   variable: "--font-serif",
   subsets: ["latin", "cyrillic"],
-  style: ["normal", "italic"], // For editorial feel
+  style: ["normal", "italic"],
+  display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -31,15 +37,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </head>
+      <head />
       <body
         className={`${interTight.variable} ${playfair.variable} antialiased selection:bg-[var(--color-burnt-terra)] selection:text-white`}
       >
         <ThemeProvider>
-          <LanguageProvider>{children}</LanguageProvider>
+          <LanguageProvider>
+            <TelegramProvider>
+              {children}
+              <CookieConsent />
+            </TelegramProvider>
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

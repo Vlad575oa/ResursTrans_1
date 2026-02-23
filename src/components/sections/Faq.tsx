@@ -10,7 +10,7 @@ export function Faq() {
     const faqItems = ["q1", "q2", "q3", "q4"];
 
     return (
-        <section className="py-16 px-4 bg-section-1 relative overflow-hidden">
+        <section className="pt-8 pb-16 px-4 bg-section-1 relative overflow-hidden">
             {/* Abstract background pattern */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-50">
                 <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary-main/5 rounded-full blur-3xl"></div>

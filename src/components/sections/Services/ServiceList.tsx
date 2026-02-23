@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import Image from "next/image";
+import { ScrollImage } from "@/components/ui/ScrollImage";
 
 interface ServiceItem {
     id: string;
@@ -70,11 +70,11 @@ export function ServiceList({ services, titles }: ServiceListProps) {
                                 className={`w-full h-full relative`}
                             >
                                 {service.image ? (
-                                    <Image
+                                    <ScrollImage
                                         src={service.image}
                                         alt={service.title}
                                         fill
-                                        className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
+                                        className="object-cover group-hover:scale-105"
                                     />
                                 ) : (
                                     <div className={`w-full h-full ${service.imageColor}`} />

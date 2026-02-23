@@ -4,6 +4,8 @@ import { createContext, useContext, useState, useCallback, useEffect, ReactNode 
 import en from "@/messages/en.json";
 import ru from "@/messages/ru.json";
 
+// Trigger HMR after translation updates
+
 type Locale = "ru" | "en";
 
 const messages = {

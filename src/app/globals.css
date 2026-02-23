@@ -166,11 +166,24 @@
       height: var(--chart-height, 100%);
     }
   }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 :root {
   --background: var(--color-cloud-dancer);
   --foreground: var(--color-anthracite-core);
+
+  --primary-main: #f57a00;
+  --primary-dark: #c26100;
 
   /* Default Light Mode Text Colors */
   --text-link: #2563EB;
@@ -187,6 +200,10 @@
   --bg-section-1: var(--color-cloud-dancer);
   --bg-section-2: var(--color-background-light);
   --bg-section-3: var(--color-cloud-dancer);
+
+  --footer-bg: #EADQCB;
+  /* Will specify exact hex later, let's use #E5DAC1 for Sand */
+  --footer-bg: #E5DAC1;
 
   /* Hero Variables (Sand Theme) */
   --hero-canvas-1: #ffffff;
@@ -218,6 +235,9 @@
   --bg-section-1: #FFFFFF;
   --bg-section-2: #F4F7F9;
   --bg-section-3: #EAECEF;
+
+  --footer-bg: #D0E7FF;
+  /* Pale blue for Green/Blue Theme */
 
   /* Blue Theme Semantic Text Colors */
   --text-link: #3A6EA5;

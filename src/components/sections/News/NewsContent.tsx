@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar } from "lucide-react";
-import Image from "next/image";
+import { ScrollImage } from "@/components/ui/ScrollImage";
 
 interface NewsItem {
     id: string;
@@ -49,11 +49,11 @@ export function NewsContent({ news, titles }: NewsContentProps) {
                         className="group cursor-pointer"
                     >
                         <div className="relative aspect-[4/5] mb-8 overflow-hidden rounded-3xl bg-neutral-200">
-                            <Image
+                            <ScrollImage
                                 src={item.image}
                                 alt={item.title}
                                 fill
-                                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                                className="object-cover group-hover:scale-105"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-anthracite-core/40 via-transparent to-transparent opacity-60" />
                             <div className="absolute top-6 left-6">

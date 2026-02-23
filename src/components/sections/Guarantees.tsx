@@ -14,9 +14,9 @@ export function Guarantees() {
     ];
 
     return (
-        <section className="py-24 px-4 bg-section-3">
+        <section className="pt-12 pb-24 md:py-24 px-4 bg-section-3">
             <div className="max-w-7xl mx-auto">
-                <div className="mb-16 text-center max-w-3xl mx-auto">
+                <div className="mb-10 md:mb-16 text-center max-w-3xl mx-auto">
                     <h2 className="text-primary-main font-bold text-sm tracking-widest uppercase mb-3">{t("Guarantees.badge")}</h2>
                     <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">
                         {t("Guarantees.title")}

@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import Image from "next/image";
+import { ScrollImage } from "@/components/ui/ScrollImage";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export function Timeline() {
@@ -29,7 +29,7 @@ export function Timeline() {
     };
 
     return (
-        <section ref={containerRef} className="py-24 bg-white relative selection:bg-burnt-terra selection:text-white">
+        <section ref={containerRef} className="pt-4 pb-12 md:pt-12 md:pb-24 bg-white relative selection:bg-burnt-terra selection:text-white">
             <div className="max-w-6xl mx-auto px-6 lg:px-8 relative">
                 {/* Central Line */}
                 <div className="absolute left-[24px] md:left-1/2 top-0 bottom-0 w-[1px] bg-anthracite-core/10 transform md:-translate-x-1/2" />
@@ -40,7 +40,7 @@ export function Timeline() {
                     style={{ scaleY: scrollYProgress, bottom: 0 }}
                 />
 
-                <div className="space-y-48">
+                <div className="space-y-20 md:space-y-48">
                     {YEARS.map((year, index) => {
                         const isEven = index % 2 === 0;
                         return (
@@ -81,7 +81,7 @@ function TimelineItem({ year, title, description, image, isEven }: {
         <motion.div
             ref={itemRef}
             style={{ y, opacity, scale }}
-            className={`flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24 relative z-10 ${isEven ? "md:flex-row-reverse" : ""
+            className={`flex flex-col md:flex-row items-center justify-between gap-8 md:gap-24 relative z-10 ${isEven ? "md:flex-row-reverse" : ""
                 }`}
         >
             {/* Year Node */}
@@ -105,11 +105,11 @@ function TimelineItem({ year, title, description, image, isEven }: {
             {/* Image Sidebar */}
             <div className={`w-full md:w-[45%] ml-16 md:ml-0 ${isEven ? "md:pr-12" : "md:pl-12"}`}>
                 <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-anthracite-core/5 group">
-                    <Image
+                    <ScrollImage
                         src={image}
                         alt={title}
                         fill
-                        className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)]"
+                        className="object-cover group-hover:scale-105 ease-[cubic-bezier(0.23,1,0.32,1)]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-anthracite-core/40 via-transparent to-transparent opacity-60" />
                 </div>

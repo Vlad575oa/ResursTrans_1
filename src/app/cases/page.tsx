@@ -33,7 +33,7 @@ export default async function CasesPage() {
         },
         {
             key: "construction",
-            image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80",
+            image: "/images/generated/construction_fleet.png",
             metrics: ["-40% Downtime", "+25% Utilization"],
             title: t("CasesPage.items.construction.title"),
             subtitle: t("CasesPage.items.construction.subtitle"),
@@ -41,7 +41,7 @@ export default async function CasesPage() {
         },
         {
             key: "agriculture",
-            image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1200&q=80",
+            image: "/images/generated/agriculture_fleet.png",
             metrics: ["-35% Time Loss", "Harvest Ready"],
             title: t("CasesPage.items.agriculture.title"),
             subtitle: t("CasesPage.items.agriculture.subtitle"),
@@ -49,7 +49,7 @@ export default async function CasesPage() {
         },
         {
             key: "passenger",
-            image: "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=1200&q=80",
+            image: "/images/generated/passenger_fleet.png",
             metrics: ["99.8% On-Time", "SLA Guaranteed"],
             title: t("CasesPage.items.passenger.title"),
             subtitle: t("CasesPage.items.passenger.subtitle"),

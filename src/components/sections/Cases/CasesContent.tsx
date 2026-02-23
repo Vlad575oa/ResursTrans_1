@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+import { ScrollImage } from "@/components/ui/ScrollImage";
 import { ArrowUpRight } from "lucide-react";
 
 interface CaseItem {
@@ -24,8 +24,8 @@ interface CasesContentProps {
 
 export function CasesContent({ cases, titles }: CasesContentProps) {
     return (
-        <div className="container mx-auto px-6 py-24 md:py-32 max-w-7xl">
-            <header className="mb-24 flex flex-col md:flex-row justify-between items-end">
+        <div className="container mx-auto px-6 py-12 md:py-24 max-w-7xl">
+            <header className="mb-12 md:mb-24 flex flex-col md:flex-row justify-between items-end">
                 <div className="max-w-2xl">
                     <span className="text-burnt-terra font-mono text-xs uppercase tracking-widest font-bold mb-4 block">Archive 2024-2025</span>
                     <h1 className="text-6xl md:text-8xl font-black mb-6 tracking-tighter leading-[0.85]">
@@ -37,7 +37,7 @@ export function CasesContent({ cases, titles }: CasesContentProps) {
                 </div>
             </header>
 
-            <div className="grid grid-cols-1 gap-24">
+            <div className="grid grid-cols-1 gap-12 md:gap-24">
                 {cases.map((item, index) => (
                     <motion.section
                         key={item.key}
@@ -46,17 +46,17 @@ export function CasesContent({ cases, titles }: CasesContentProps) {
                         viewport={{ once: true, margin: "-100px" }}
                         className="group"
                     >
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
                             {/* Image / Visual */}
                             <div className="relative aspect-[16/10] overflow-hidden rounded-3xl bg-neutral-200">
                                 <div className="absolute inset-0 bg-anthracite-core/20 group-hover:bg-transparent transition-colors duration-700 z-10" />
-                                <Image
+                                <ScrollImage
                                     src={item.image}
                                     alt={item.title}
                                     fill
-                                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
+                                    className="object-cover md:grayscale md:group-hover:grayscale-0 md:group-hover:scale-[1.02]"
                                 />
-                                <div className="absolute bottom-6 right-6 z-20">
+                                <div className="absolute bottom-6 right-6 z-20 pointer-events-none">
                                     <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-2xl group-hover:rotate-45 transition-transform duration-500">
                                         <ArrowUpRight className="w-5 h-5 text-anthracite-core" />
                                     </div>

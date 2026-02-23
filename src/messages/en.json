@@ -550,13 +550,14 @@
     "title": "Contacts | ResursTrans",
     "description": "Get in touch. Contact information for ResursTrans company.",
     "pageTitle": "Contacts",
-    "headOffice": "Head Office",
+    "headOffice": "Central Office in Moscow",
     "address": "Address",
-    "addressValue": "2-ya Khutorskaya St., 38A, Bldg. 14, Moscow",
+    "addressValue": "127287, Russia, Moscow, 2-ya Khutorskaya St., 38A, Bldg. 14",
     "phone": "Phone",
-    "phoneValue": "+8 (800) 123-45-67",
+    "phoneValue": "+7 (495) 646-08-39",
     "hours": "Mon-Fri: 9:00 - 18:00",
     "email": "Email",
+    "emailValue": "info@resourcetrans.ru",
     "writeUs": "Write to Us",
     "name": "Name",
     "namePlaceholder": "John Doe",
@@ -564,7 +565,90 @@
     "emailPlaceholder": "john@example.com",
     "message": "Message",
     "messagePlaceholder": "How can we help you?",
-    "sendMessage": "Send Message"
+    "sendMessage": "Send Message",
+    "consentText": "I consent to the processing of personal data in accordance with the ",
+    "consentLink": "Privacy Policy",
+    "howToGet": "How to get there",
+    "howToGetSteps": [
+      "1. Dmitrovskaya Metro Station. From the metro vestibule (through glass doors), turn left, then follow the passage to the first left turn upwards.",
+      "2. Upon exiting outside, turn right into the archway.",
+      "3. Then walk straight to the end of the residential building (on your right)."
+    ],
+    "expand": "Expand",
+    "collapse": "Collapse",
+    "regionalTitle": "Regional Divisions",
+    "regionalBranches": [
+      {
+        "name": "ResursTrans Branch in Moscow",
+        "address": "127276, Moscow, Botanicheskaya st., 10 D, bld. 1",
+        "phone": "+7 (495) 150-00-59"
+      },
+      {
+        "name": "ResursTrans Branch in Khabarovsk",
+        "address": "680000, Khabarovsk, Pushkina st., 50",
+        "phone": "+7 (421) 259-89-95"
+      },
+      {
+        "name": "ResursTrans Branch in Irkutsk",
+        "address": "664025 Irkutsk, Lenina st. 6, of.421",
+        "phone": "+7 (395) 248-28-23"
+      },
+      {
+        "name": "ResursTrans Branch in St. Petersburg",
+        "address": "191144, St. Petersburg, Bakunina ave., 5",
+        "phone": "+7 (812) 317-11-36"
+      },
+      {
+        "name": "ResursTrans Branch in Chita",
+        "address": "672012, Chita, Podgorbunskogo st. 62",
+        "phone": "+7 (302) 228-41-76"
+      },
+      {
+        "name": "ResursTrans Branch in Novosibirsk",
+        "address": "630099, Novosibirsk, Vokzalnaya magistral st., 16, of.708",
+        "phone": "+7 (383) 227-84-40"
+      },
+      {
+        "name": "ResursTrans Branch in Chelyabinsk",
+        "address": "454091, Chelyabinsk, Elkina st. 45 A, 15th floor",
+        "phone": "+7 (351) 242-00-51"
+      },
+      {
+        "name": "ResursTrans Branch in Yekaterinburg",
+        "address": "620107, Yekaterinburg, Vyezdnoy lane, 1",
+        "phone": "+7 (343) 311-12-22"
+      },
+      {
+        "name": "ResursTrans Branch in Samara",
+        "address": "443082, Samara, Rechnaya st., 46",
+        "phone": "+7 (846) 300-44-97"
+      },
+      {
+        "name": "ResursTrans Branch in Saratov",
+        "address": "410012, Saratov, Teatralnaya sq., 11a, off.1",
+        "phone": "+7 (845) 233-85-84"
+      },
+      {
+        "name": "ResursTrans Branch in N. Novgorod",
+        "address": "603108, Nizhny Novgorod, st. Kostarikha - 2",
+        "phone": "+7 (831) 262-16-58"
+      },
+      {
+        "name": "ResursTrans Separate Division in Balakovo",
+        "address": "413840, Saratov region, Balakovo, Dorozhnaya st., 4/10",
+        "phone": "+7 (845) 354-49-00"
+      },
+      {
+        "name": "ResursTrans Separate Division in Vladimir",
+        "address": "600001, Vladimir, Dvoryanskaya st., 27A, bldg. 7",
+        "phone": "+7 (495) 477-56-05"
+      },
+      {
+        "name": "ResursTrans Branch in Kaliningrad",
+        "address": "236011, Kaliningrad, Tikhoretsky dead end, 2B",
+        "phone": "+7 (4012) 720-388"
+      }
+    ]
   },
   "CareerPage": {
     "title": "Career | ResursTrans",
@@ -769,5 +853,28 @@
   "Metadata": {
     "homeTitle": "ResursTrans — Smart Transport and Special Equipment Outsourcing",
     "homeDescription": "We see transport inside out. Professional transport outsourcing for large business. Modern IT platform and control of every vehicle unit."
+  },
+  "PrivacyPolicy": {
+    "title": "Privacy Policy",
+    "content": "1. GENERAL PROVISIONS\n\n1.1. This Privacy Policy (hereinafter — the Policy) defines the procedure for processing and protecting personal data of ResursTrans website users (hereinafter — the Site, the Company).\n\n1.2. The Company respects user privacy and takes all necessary measures to protect personal data.\n\n1.3. By using the Site, you express your consent to this Policy.\n\n2. COLLECTION OF PERSONAL DATA\n\n2.1. The Company may collect the following personal data:\n- Full name\n- Email address\n- Phone number\n- Company information\n- Other information provided voluntarily by the user\n\n2.2. Data collection is carried out through feedback forms, subscriptions, and other interactive elements of the Site.\n\n3. PURPOSES OF DATA PROCESSING\n\n3.1. Personal data is used for:\n- Processing user requests\n- Providing services and support\n- Informing about new services and offers\n- Improving Site functionality\n\n4. DATA PROTECTION\n\n4.1. The Company applies necessary technical and organizational measures to protect personal data from unauthorized access, alteration, disclosure, or destruction.\n\n5. DATA TRANSFER TO THIRD PARTIES\n\n5.1. The Company does not transfer personal data to third parties, except as required by Russian Federation law.\n\n6. COOKIE FILES\n\n6.1. The Site uses cookies to improve user experience and analyze traffic.\n\n7. USER RIGHTS\n\n7.1. Users have the right to access, correct, and delete their personal data.\n\n8. CONTACTS\n\n8.1. For questions about personal data processing, contact: info@resourcetrans.ru"
+  },
+  "CookieBanner": {
+    "text": "We use cookies to improve your experience. By continuing to use this site, you agree to our ",
+    "link": "Privacy Policy",
+    "accept": "Got it"
+  },
+  "TelegramModal": {
+    "title": "Redirecting to Telegram",
+    "description": "You are leaving the ResursTrans website and moving to a third-party application. Please note that during the transition, your phone number and profile data will become available to the messenger platform.",
+    "cancel": "Cancel",
+    "proceed": "Proceed"
+  },
+  "TermsOfUse": {
+    "title": "Terms of Use",
+    "content": "1. GENERAL PROVISIONS\n\n1.1. These Terms of Use (hereinafter — the Terms) govern the use of the ResursTrans website (hereinafter — the Site).\n\n1.2. By using the Site, you confirm that you have read and unconditionally accept these Terms.\n\n1.3. The Company reserves the right to make changes to the Terms at any time.\n\n2. INTELLECTUAL PROPERTY\n\n2.1. All Site materials are protected by copyright and are the property of the Company.\n\n2.2. Any use of Site materials is only possible with the written permission of the Company.\n\n3. RULES OF USE\n\n3.1. The user agrees to:\n- Use the Site for lawful purposes\n- Not disrupt Site functionality\n- Not distribute malicious software\n- Not attempt to gain unauthorized access\n\n4. LIABILITY\n\n4.1. The Company is not liable for:\n- Damages arising from Site use\n- Operation of third-party resources linked on the Site\n- Temporary interruptions in Site operation\n\n5. SERVICE PROVISION\n\n5.1. Information on the Site is for informational purposes only and does not constitute a public offer.\n\n5.2. The Company reserves the right to change information on the Site without prior notice.\n\n6. GOVERNING LAW\n\n6.1. These Terms are governed by the laws of the Russian Federation.\n\n7. CONTACTS\n\n7.1. For questions related to Site use, contact: info@resourcetrans.ru"
+  },
+  "CookieSettings": {
+    "title": "Cookie Settings",
+    "content": "1. WHAT ARE COOKIES\n\n1.1. Cookies are small text files that are saved to your device when you visit the Site.\n\n1.2. They allow the Site to remember your actions and preferences.\n\n2. TYPES OF COOKIES\n\n2.1. We use the following types of cookies:\n\n• Essential Cookies\n  - Provide basic Site functionality\n  - Cannot be disabled\n  - Do not store personal data\n\n• Analytics Cookies\n  - Help understand how users interact with the Site\n  - Collect anonymous statistics\n  - Example: Google Analytics\n\n• Functional Cookies\n  - Remember your preferences (language, region)\n  - Improve user experience\n\n• Marketing Cookies\n  - Used to display relevant advertising\n  - Track advertising campaign effectiveness\n\n3. COOKIE MANAGEMENT\n\n3.1. You can manage cookie settings through your browser:\n- Chrome: Settings → Privacy → Cookies\n- Firefox: Settings → Privacy → Cookies\n- Safari: Settings → Privacy\n- Edge: Settings → Cookies\n\n3.2. Disabling cookies may affect Site functionality.\n\n4. STORAGE PERIOD\n\n4.1. Session cookies are deleted after closing the browser.\n\n4.2. Persistent cookies are stored from 24 hours to 2 years.\n\n5. THIRD PARTIES\n\n5.1. Some cookies are set by third-party services:\n- Google Analytics\n- Yandex.Metrica\n- Social networks\n\n6. POLICY UPDATES\n\n6.1. The cookie policy may be updated periodically.\n\n7. CONTACTS\n\n7.1. For questions about cookie usage: info@resourcetrans.ru"
   }
 }

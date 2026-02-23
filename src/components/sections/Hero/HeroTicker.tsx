@@ -1,7 +1,5 @@
 "use client";
 
-import { useRef } from "react";
-import { motion } from "framer-motion";
 
 const COMPANIES = [
     "Лукойл",
@@ -26,8 +24,6 @@ const SEPARATOR = (
 );
 
 export const HeroTicker = ({ dict }: { dict: { trustedBy: string, marketLeaders: string } }) => {
-    const trackRef = useRef<HTMLDivElement>(null);
-
     return (
         <div className="w-full py-8 bg-transparent overflow-hidden select-none">
             {/* Static label above */}
@@ -37,14 +33,11 @@ export const HeroTicker = ({ dict }: { dict: { trustedBy: string, marketLeaders:
 
             {/* Scrolling strip */}
             <div className="relative overflow-hidden">
-                <motion.div
-                    ref={trackRef}
+                <div
                     className="flex items-center whitespace-nowrap"
-                    animate={{ x: ["0%", "-50%"] }}
-                    transition={{
-                        duration: 28,
-                        ease: "linear",
-                        repeat: Infinity,
+                    style={{
+                        animation: "marquee 28s linear infinite",
+                        width: "max-content"
                     }}
                 >
                     {TICKER_ITEMS.map((name, i) => (
@@ -55,7 +48,7 @@ export const HeroTicker = ({ dict }: { dict: { trustedBy: string, marketLeaders:
                             {SEPARATOR}
                         </span>
                     ))}
-                </motion.div>
+                </div>
             </div>
 
             {/* Static label below - Uniform and same size as top label */}

@@ -140,7 +140,7 @@ export function Technology() {
                                         </div>
                                     </div>
                                     <div className="col-span-2 bg-slate-800 rounded-lg p-3 flex items-center gap-4">
-                                        <div className="w-10 h-10 rounded-full border-4 border-primary border-t-transparent animate-spin"></div>
+                                        <div className="w-10 h-10 rounded-full border-[3px] border-primary animate-pulse shadow-[0_0_10px_rgba(245,122,0,0.5)]"></div>
                                         <div className="flex flex-col">
                                             <span className="text-xs text-slate-400">System Status</span>
                                             <span className="text-sm font-bold text-green-400">All Systems Operational</span>

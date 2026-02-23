@@ -1,7 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Send } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { MapPin, Phone, Mail, Send, ChevronDown, ChevronUp, Map as MapIcon, CheckSquare, Square } from "lucide-react";
+import Link from "next/link";
 
 interface ContactContentProps {
     titles: {
@@ -12,7 +14,7 @@ interface ContactContentProps {
         phone: string;
         phoneValue: string;
         hours: string;
-        email: string;
+        emailValue: string;
         writeUs: string;
         name: string;
         namePlaceholder: string;
@@ -21,10 +23,20 @@ interface ContactContentProps {
         message: string;
         messagePlaceholder: string;
         sendMessage: string;
+        consentText: string;
+        consentLink: string;
+        howToGet: string;
+        howToGetSteps: string[];
+        expand: string;
+        collapse: string;
+        regionalTitle: string;
+        regionalBranches: { name: string; address: string; phone: string }[];
     }
 }
 
 export function ContactContent({ titles }: ContactContentProps) {
+    const [isBranchesExpanded, setIsBranchesExpanded] = useState(false);
+    const [isConsentGiven, setIsConsentGiven] = useState(false);
     return (
         <div className="container mx-auto px-6 py-24 md:py-32 max-w-7xl">
             <motion.header
@@ -78,14 +90,70 @@ export function ContactContent({ titles }: ContactContentProps) {
                                     <Mail className="w-5 h-5 text-anthracite-core group-hover:text-burnt-terra transition-colors" />
                                 </div>
                                 <div>
-                                    <p className="font-mono text-[10px] uppercase tracking-widest text-anthracite-core/40 mb-2">{titles.email}</p>
+                                    <p className="font-mono text-[10px] uppercase tracking-widest text-anthracite-core/40 mb-2">{titles.emailValue || "Email"}</p>
                                     <p className="text-xl md:text-2xl font-bold tracking-tight hover:text-burnt-terra transition-colors cursor-pointer">
-                                        info@resurstrans.ru
+                                        {titles.emailValue}
                                     </p>
+                                </div>
+                            </div>
+
+                            <div className="flex items-start gap-6 group">
+                                <div className="w-12 h-12 rounded-2xl bg-anthracite-core/5 flex items-center justify-center group-hover:bg-burnt-terra/10 transition-colors">
+                                    <MapIcon className="w-5 h-5 text-anthracite-core group-hover:text-burnt-terra transition-colors" />
+                                </div>
+                                <div>
+                                    <p className="font-mono text-[10px] uppercase tracking-widest text-anthracite-core/40 mb-3">{titles.howToGet}</p>
+                                    <div className="text-sm md:text-base font-serif italic text-anthracite-core/80 mt-1 space-y-4">
+                                        {titles.howToGetSteps?.map((step, idx) => (
+                                            <p key={idx} className="leading-relaxed">{step}</p>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </section>
+
+                    {/* Regional Branches Section */}
+                    {titles.regionalBranches && titles.regionalBranches.length > 0 && (
+                        <section className="mt-16 pt-16 border-t border-anthracite-core/10">
+                            <div
+                                className="flex items-center justify-between cursor-pointer group"
+                                onClick={() => setIsBranchesExpanded(!isBranchesExpanded)}
+                            >
+                                <h2 className="text-burnt-terra font-mono text-[10px] uppercase tracking-[0.2em] font-bold">
+                                    {titles.regionalTitle}
+                                </h2>
+                                <div className="flex items-center gap-3 text-anthracite-core/60 group-hover:text-burnt-terra transition-colors">
+                                    <span className="text-xs font-bold uppercase tracking-wider">
+                                        {isBranchesExpanded ? titles.collapse : titles.expand}
+                                    </span>
+                                    {isBranchesExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                                </div>
+                            </div>
+
+                            <AnimatePresence>
+                                {isBranchesExpanded && (
+                                    <motion.div
+                                        initial={{ height: 0, opacity: 0 }}
+                                        animate={{ height: "auto", opacity: 1 }}
+                                        exit={{ height: 0, opacity: 0 }}
+                                        transition={{ duration: 0.3 }}
+                                        className="overflow-hidden"
+                                    >
+                                        <div className="grid grid-cols-1 gap-4 mt-8">
+                                            {titles.regionalBranches.map((branch, idx) => (
+                                                <div key={idx} className="bg-anthracite-core/5 p-6 rounded-2xl hover:bg-white hover:shadow-lg transition-all border border-transparent hover:border-anthracite-core/5">
+                                                    <h3 className="font-bold text-lg mb-2">{branch.name}</h3>
+                                                    <p className="text-sm whitespace-pre-line text-anthracite-core/70 mb-3">{branch.address}</p>
+                                                    <p className="font-mono text-sm text-burnt-terra font-bold">{branch.phone}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </section>
+                    )}
                 </div>
 
                 <motion.div
@@ -120,9 +188,33 @@ export function ContactContent({ titles }: ContactContentProps) {
                                 placeholder={titles.messagePlaceholder}
                             ></textarea>
                         </div>
-                        <button className="w-full py-6 bg-anthracite-core text-white rounded-3xl font-bold text-lg hover:bg-burnt-terra transition-all shadow-xl shadow-anthracite-core/20 group flex items-center justify-center gap-3">
+
+                        <div className="flex items-start gap-3 cursor-pointer group" onClick={() => setIsConsentGiven(!isConsentGiven)}>
+                            <div className="mt-1">
+                                {isConsentGiven ? (
+                                    <CheckSquare className="w-5 h-5 text-burnt-terra" />
+                                ) : (
+                                    <Square className="w-5 h-5 text-anthracite-core/30 group-hover:text-burnt-terra/50 transition-colors" />
+                                )}
+                            </div>
+                            <p className="text-xs text-anthracite-core/60 leading-relaxed font-mono">
+                                {titles.consentText}{" "}
+                                <Link href="/privacy" className="text-burnt-terra hover:underline">
+                                    {titles.consentLink}
+                                </Link>
+                            </p>
+                        </div>
+
+                        <button
+                            type="button"
+                            disabled={!isConsentGiven}
+                            className={`w-full py-6 rounded-3xl font-bold text-lg transition-all shadow-xl group flex items-center justify-center gap-3 ${isConsentGiven
+                                ? "bg-anthracite-core text-white hover:bg-burnt-terra shadow-anthracite-core/20 cursor-pointer"
+                                : "bg-anthracite-core/10 text-anthracite-core/40 shadow-none cursor-not-allowed"
+                                }`}
+                        >
                             {titles.sendMessage}
-                            <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                            <Send className={`w-5 h-5 transition-transform ${isConsentGiven ? 'group-hover:translate-x-1 group-hover:-translate-y-1' : ''}`} />
                         </button>
                     </form>
                 </motion.div>

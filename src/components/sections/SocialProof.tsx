@@ -29,16 +29,17 @@ export function SocialProof() {
     });
 
     return (
-        <section ref={sectionRef} className="bg-section-3 py-14 text-text-primary">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 md:gap-0">
+        <section ref={sectionRef} className="bg-section-3 py-6 md:py-14 text-text-primary">
+            <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8 overflow-hidden">
+                <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 md:grid md:grid-cols-5 md:gap-0 pb-4 md:pb-0 hide-scrollbar -mx-4 px-4 md:mx-0 md:px-0">
                     {stats.map((stat, index) => (
-                        <StatItem
-                            key={stat.value}
-                            stat={stat}
-                            index={index}
-                            scrollYProgress={scrollYProgress}
-                        />
+                        <div key={stat.value} className="snap-center shrink-0 min-w-[110px] md:min-w-0">
+                            <StatItem
+                                stat={stat}
+                                index={index}
+                                scrollYProgress={scrollYProgress}
+                            />
+                        </div>
                     ))}
                 </div>
             </div>
@@ -70,16 +71,16 @@ function StatItem({ stat, index, scrollYProgress }: StatItemProps) {
         <motion.div
             className="flex flex-col items-center justify-center text-center md:border-r md:border-white/10 md:px-4"
         >
-            <motion.div style={{ color: iconColor }} className="mb-3">
-                <stat.icon size={40} />
+            <motion.div style={{ color: iconColor }} className="mb-1.5 md:mb-3 flex justify-center">
+                <stat.icon className="w-6 h-6 md:w-10 md:h-10" />
             </motion.div>
             <motion.span
-                className="text-4xl lg:text-5xl font-black tracking-tight"
+                className="text-2xl md:text-4xl lg:text-5xl font-black tracking-tight"
                 style={{ color: valueColor }}
             >
                 {stat.value}
             </motion.span>
-            <span className="mt-3 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
+            <span className="mt-1 flex justify-center text-center max-w-[100px] md:max-w-none md:mt-3 text-[8px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
                 {t(`SocialProof.${stat.key}`)}
             </span>
         </motion.div>
