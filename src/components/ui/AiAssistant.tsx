@@ -5,20 +5,44 @@ import { Send, Info } from "lucide-react";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { useTelegram } from "@/components/providers/TelegramProvider";
 import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
 
 export const AiAssistant = () => {
     const { t } = useLanguage();
     const pathname = usePathname();
     const { openTelegramModal } = useTelegram();
+    const [isFooterVisible, setIsFooterVisible] = useState(false);
 
     const isHome = pathname === '/' || /^\/(ru|en|de)$/.test(pathname || '');
 
+    useEffect(() => {
+        const handleScroll = () => {
+            const footer = document.querySelector('footer');
+            if (footer) {
+                const rect = footer.getBoundingClientRect();
+                setIsFooterVisible(rect.top <= window.innerHeight);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('resize', handleScroll);
+        handleScroll();
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleScroll);
+        };
+    }, []);
+
     return (
         <motion.div
-            className={`fixed bottom-8 right-8 z-40 group ${isHome ? 'hidden md:block' : ''}`}
+            className={`fixed bottom-8 right-8 z-40 group ${isHome ? 'hidden md:block' : ''} ${isFooterVisible ? 'pointer-events-none' : ''}`}
             initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
+            animate={{
+                y: isFooterVisible ? 100 : 0,
+                opacity: isFooterVisible ? 0 : 1
+            }}
+            transition={{ duration: 0.5 }}
         >
             <button
                 onClick={() => openTelegramModal("https://t.me/resurstrans")}
@@ -26,7 +50,7 @@ export const AiAssistant = () => {
             >
                 {/* Orb without blur radius */}
                 <motion.div
-                    className="w-14 h-14 rounded-full flex items-center justify-center bg-[#2AABEE] text-white relative"
+                    className="w-14 h-14 rounded-full flex items-center justify-center bg-[#2AABEE] text-white relative shadow-lg shadow-[#2AABEE]/30"
                     whileHover={{ scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 260, damping: 20 }}
                 >

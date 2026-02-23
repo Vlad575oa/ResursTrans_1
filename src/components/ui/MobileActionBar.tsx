@@ -3,16 +3,38 @@
 import { motion } from "framer-motion";
 import { Send, Info } from "lucide-react";
 import { useTelegram } from "@/components/providers/TelegramProvider";
+import { useState, useEffect } from "react";
 
 export const MobileActionBar = () => {
     const { openTelegramModal } = useTelegram();
+    const [isFooterVisible, setIsFooterVisible] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const footer = document.querySelector('footer');
+            if (footer) {
+                const rect = footer.getBoundingClientRect();
+                setIsFooterVisible(rect.top <= window.innerHeight);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('resize', handleScroll);
+        handleScroll();
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleScroll);
+        };
+    }, []);
+
     return (
-        <div className="fixed bottom-6 left-0 right-0 z-50 flex justify-center pointer-events-none md:hidden px-6">
+        <div className={`fixed bottom-6 left-0 right-0 z-50 flex justify-center pointer-events-none md:hidden px-6 ${isFooterVisible ? 'opacity-0 translate-y-20' : 'opacity-100 translate-y-0'} transition-all duration-500`}>
             <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5 }}
-                className="pointer-events-auto"
+                className={`pointer-events-auto ${isFooterVisible ? 'pointer-events-none' : ''}`}
             >
                 <button
                     onClick={() => openTelegramModal("https://t.me/resurstrans")}
