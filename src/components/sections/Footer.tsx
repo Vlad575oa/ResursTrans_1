@@ -1,10 +1,8 @@
-"use client";
-
 import { Truck, Globe, Send, Share2, MapPin, Phone, Mail, SendHorizonal } from "lucide-react";
-import { useLanguage } from "@/components/providers/LanguageProvider";
+import { getServerTranslations } from "@/lib/server-intl";
 
-export function Footer() {
-    const { t } = useLanguage();
+export async function Footer() {
+    const { t } = await getServerTranslations();
 
     return (
         <footer className="hero-canvas border-t border-black/10 pt-16 pb-8 relative overflow-hidden">

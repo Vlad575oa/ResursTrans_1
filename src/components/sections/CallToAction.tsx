@@ -1,10 +1,8 @@
-"use client";
-
 import { ArrowRight, TrendingDown } from "lucide-react";
-import { useLanguage } from "@/components/providers/LanguageProvider";
+import { getServerTranslations } from "@/lib/server-intl";
 
-export function CallToAction() {
-    const { t } = useLanguage();
+export async function CallToAction() {
+    const { t } = await getServerTranslations();
 
     return (
         <section

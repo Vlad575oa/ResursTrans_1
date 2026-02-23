@@ -1,10 +1,8 @@
-"use client";
-
 import { Truck, UserCheck, Headset, Fuel, BarChart3 } from "lucide-react";
-import { useLanguage } from "@/components/providers/LanguageProvider";
+import { getServerTranslations } from "@/lib/server-intl";
 
-export function Solutions() {
-    const { t } = useLanguage();
+export async function Solutions() {
+    const { t } = await getServerTranslations();
 
     const features = [
         {

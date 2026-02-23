@@ -1,10 +1,8 @@
-"use client";
-
 import { ShieldCheck, FileText, Gavel, Eye } from "lucide-react";
-import { useLanguage } from "@/components/providers/LanguageProvider";
+import { getServerTranslations } from "@/lib/server-intl";
 
-export function Guarantees() {
-    const { t } = useLanguage();
+export async function Guarantees() {
+    const { t } = await getServerTranslations();
 
     const guarantees = [
         { key: "insurance", icon: ShieldCheck },

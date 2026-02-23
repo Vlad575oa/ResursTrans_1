@@ -1,11 +1,8 @@
-"use client";
-
-import { useLanguage } from "@/components/providers/LanguageProvider";
-
+import { getServerTranslations } from "@/lib/server-intl";
 import { ChevronDown } from "lucide-react";
 
-export function Faq() {
-    const { t } = useLanguage();
+export async function Faq() {
+    const { t } = await getServerTranslations();
 
     const faqItems = ["q1", "q2", "q3", "q4"];
 

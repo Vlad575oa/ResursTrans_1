@@ -4,9 +4,7 @@ import { Play, Volume2, VolumeX } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
 
-const HeroOverlays = dynamic(() => import("./HeroOverlays").then(m => m.HeroOverlays), {
-    ssr: false
-});
+const HeroOverlays = dynamic(() => import("./HeroOverlays").then(m => m.HeroOverlays));
 
 export const HeroVisuals = ({ dict }: { dict: Record<string, string> }) => {
     const [key, setKey] = useState(0);
