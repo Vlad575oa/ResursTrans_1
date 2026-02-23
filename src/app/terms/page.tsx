@@ -9,7 +9,7 @@ export default async function TermsOfUsePage() {
     const sections = content.split(/\n\n(?=\d+\.\s)/);
 
     return (
-        <div className="container mx-auto px-6 py-32 max-w-4xl min-h-screen">
+        <div className="container mx-auto px-6 pt-24 pb-32 max-w-4xl min-h-screen">
             <div className="mb-8">
                 <Link href="/" className="inline-flex items-center gap-2 text-text-secondary hover:text-primary transition-colors text-sm font-semibold uppercase tracking-widest">
                     <ArrowLeft className="w-4 h-4" />
