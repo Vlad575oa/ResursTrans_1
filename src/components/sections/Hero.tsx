@@ -1,16 +1,8 @@
 import { HeroVisuals } from "./Hero/HeroVisuals";
-import { HeroTicker } from "./Hero/HeroTicker";
-import { HeroBenefitsTicker } from "./Hero/HeroBenefitsTicker";
 import { getServerTranslations } from "@/lib/server-intl";
 
 export const Hero = async () => {
     const { t } = await getServerTranslations();
-
-    // Ticker translations
-    const tickerDict = {
-        trustedBy: t("Hero.ticker.trustedBy"),
-        marketLeaders: t("Hero.ticker.marketLeaders")
-    };
 
     // Visuals translations
     const visualsDict = {
@@ -65,9 +57,7 @@ export const Hero = async () => {
                     <HeroVisuals dict={visualsDict} />
                 </div>
             </div>
-
-            {/* Full-bleed ticker strip */}
-            <HeroTicker dict={tickerDict} />
         </section>
     );
 };
+

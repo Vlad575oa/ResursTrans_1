@@ -17,6 +17,7 @@ const Clients = dynamic(() => import("@/components/sections/Clients").then(m => 
 const Calculator = dynamic(() => import("@/components/sections/Calculator").then(m => m.Calculator));
 const Cases = dynamic(() => import("@/components/sections/Cases").then(m => m.Cases));
 const CallToAction = dynamic(() => import("@/components/sections/CallToAction").then(m => m.CallToAction));
+const TrustMarquee = dynamic(() => import("@/components/sections/TrustMarquee").then(m => m.TrustMarquee));
 const Footer = dynamic(() => import("@/components/sections/Footer").then(m => m.Footer));
 
 // Heavy UI components
@@ -33,6 +34,7 @@ export default function Home() {
       <AiAssistant />
 
       <Hero />
+      <TrustMarquee />
       <PainPoints />
       <Solutions />
       <SocialProof />
