@@ -45,7 +45,7 @@ export const AiAssistant = () => {
             transition={{ duration: 0.5 }}
         >
             <button
-                onClick={() => openTelegramModal("https://t.me/resurstrans")}
+                onClick={() => openTelegramModal("https://t.me/resurslogistics")}
                 className="relative block cursor-pointer"
             >
                 {/* Orb without blur radius */}

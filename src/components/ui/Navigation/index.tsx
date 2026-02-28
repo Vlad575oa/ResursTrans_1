@@ -19,7 +19,7 @@ export const Navigation = async () => {
     ];
 
     return (
-        <div className="w-full bg-background fixed top-0 left-0 z-50">
+        <div className="w-full bg-[#101622]/80 dark:bg-background backdrop-blur-md dark:backdrop-blur-none border-b border-white/5 dark:border-transparent fixed top-0 left-0 z-50 transition-colors">
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
                 <header className="flex items-center justify-between h-20">
                     {/* Logo - Server Rendered */}
@@ -27,7 +27,7 @@ export const Navigation = async () => {
                         <div className="h-10 w-10 flex items-center justify-center bg-primary-main/10 text-primary-main rounded-lg group-hover:scale-110 transition-transform">
                             <Truck className="w-6 h-6" />
                         </div>
-                        <h2 className="text-foreground text-xl font-bold tracking-tight">
+                        <h2 className="text-white dark:text-foreground text-xl font-bold tracking-tight">
                             {t("Navigation.logo")}
                         </h2>
                     </Link>
@@ -38,7 +38,7 @@ export const Navigation = async () => {
                             <Link
                                 key={item.name}
                                 href={item.href}
-                                className="text-foreground/70 hover:text-primary-main text-sm font-medium transition-colors"
+                                className="text-slate-300 dark:text-foreground/70 hover:text-white dark:hover:text-primary-main text-sm font-medium transition-colors"
                             >
                                 {item.name}
                             </Link>
@@ -49,8 +49,9 @@ export const Navigation = async () => {
                     <div className="flex items-center gap-4">
                         <Button
                             variant="primary"
-                            className="hidden sm:flex bg-primary-main hover:bg-primary-dark text-white text-sm font-bold py-2.5 px-6 rounded-lg transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+                            className="hidden sm:flex bg-white/5 dark:bg-primary-main hover:bg-white/10 dark:hover:bg-primary-dark text-white border border-white/10 dark:border-transparent text-sm font-bold py-2.5 px-6 rounded-lg transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 group"
                         >
+                            <span className="text-primary-main group-hover:text-white dark:hidden transition-colors mr-2">→</span>
                             {t("Navigation.submitRequest")}
                         </Button>
 

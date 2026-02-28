@@ -6,8 +6,8 @@ import { ArrowLeft, ShieldCheck, Briefcase, CheckCircle2, MessageSquare, Users }
 import { getServerTranslations } from "@/lib/server-intl";
 
 export const metadata = {
-    title: 'Карьера | РесурсТранс',
-    description: 'Мы создаем все условия для профессионального роста сотрудников и предпочитаем растить кадры внутри компании. Узнайте больше о карьере в РесурсТранс.',
+    title: 'Карьера | РесурсЛогистика',
+    description: 'Мы создаем все условия для профессионального роста сотрудников и предпочитаем растить кадры внутри компании. Узнайте больше о карьере в РесурсЛогистика.',
 };
 
 export default async function CareerPage() {
@@ -26,10 +26,10 @@ export default async function CareerPage() {
                 {/* Hero Section */}
                 <section className="mb-20">
                     <h1 className="text-4xl md:text-6xl font-black text-slate-900 mb-8 tracking-tight">
-                        {t("CareerPage.heroTitle") || "Карьера в"} <span className="text-primary">РесурсТранс</span>
+                        {t("CareerPage.heroTitle") || "Карьера в"} <span className="text-primary">РесурсЛогистика</span>
                     </h1>
                     <p className="text-xl text-slate-600 max-w-3xl leading-relaxed">
-                        {t("CareerPage.heroDesc") || "Мы создаем все условия для профессионального роста сотрудников и предпочитаем растить кадры внутри компании. В «РесурсТранс» много историй успеха, когда рядовые сотрудники стали руководителями."}
+                        {t("CareerPage.heroDesc") || "Мы создаем все условия для профессионального роста сотрудников и предпочитаем растить кадры внутри компании. В «РесурсЛогистика» много историй успеха, когда рядовые сотрудники стали руководителями."}
                     </p>
                 </section>
 
@@ -99,7 +99,7 @@ export default async function CareerPage() {
                         </div>
                         <div className="bg-slate-50 p-8 rounded-2xl border border-slate-100">
                             <p className="text-lg text-slate-600 leading-relaxed mb-8">
-                                {t("CareerPage.contestDesc") || "Кроме того, в «РесурсТранс» принято организовывать ежегодный конкурс профессионального мастерства для водительского состава, по результатам которого победителей награждают грамотами и денежными призами, а также направляют на Межрегиональный конкурс профмастерства «Ресурс Групп» в г. Сочи."}
+                                {t("CareerPage.contestDesc") || "Кроме того, в «РесурсЛогистика» принято организовывать ежегодный конкурс профессионального мастерства для водительского состава, по результатам которого победителей награждают грамотами и денежными призами, а также направляют на Межрегиональный конкурс профмастерства «Ресурс Групп» в г. Сочи."}
                             </p>
                             <div className="pt-6 border-t border-slate-200">
                                 <p className="text-slate-800 font-medium mb-4">{t("CareerPage.socialInvite") || "Узнать больше о корпоративной жизни компании можно на наших страницах в соцсетях:"}</p>

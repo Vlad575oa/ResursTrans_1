@@ -77,7 +77,7 @@ export async function Footer() {
                 <div className="border-t border-black/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                     <div className="flex flex-col md:flex-row items-center gap-2">
                         <p className="text-text-secondary text-xs">{t("Footer.copyright")}</p>
-                        <a href="https://t.me/+79263177226" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-text-secondary hover:text-primary transition-colors text-xs">
+                        <a href="https://t.me/+79998887766" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-text-secondary hover:text-primary transition-colors text-xs">
                             <span>сайт разработан</span>
                             <SendHorizonal className="w-3 h-3" />
                         </a>

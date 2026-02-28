@@ -23,10 +23,10 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "РесурсТранс — Умный аутсорсинг транспорта и спецтехники",
+  title: "РесурсЛогистика — Умный аутсорсинг транспорта и спецтехники",
   description: "Мы видим транспорт насквозь. Профессиональный аутсорсинг транспортных услуг для крупного бизнеса. Современная ИТ-платформа и контроль каждой единицы техники.",
   alternates: {
-    canonical: "https://resurstrans.ru",
+    canonical: "https://resurslogistics.ru",
   },
 };
 

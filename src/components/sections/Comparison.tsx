@@ -66,7 +66,7 @@ export const Comparison = () => {
                                 <span className="font-serif italic text-sm md:text-base">{row.own}</span>
                             </div>
 
-                            {/* ResursTrans (Positive) */}
+                            {/* ResursLogistics (Positive) */}
                             <div className="col-span-12 md:col-span-5 flex gap-4 text-anthracite-core font-medium items-start">
                                 <CheckCircle className="w-5 h-5 text-safe-green shrink-0 mt-0.5" />
                                 <span className="text-sm md:text-base">{row.resurs}</span>

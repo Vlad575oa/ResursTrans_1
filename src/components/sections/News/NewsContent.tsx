@@ -84,7 +84,7 @@ export function NewsContent({ news, titles }: NewsContentProps) {
             {/* Newsletter Placeholder */}
             <div className="mt-32 border-t border-anthracite-core/10 pt-24 text-center">
                 <h3 className="text-2xl font-bold mb-4">Подпишитесь на обновления</h3>
-                <p className="text-anthracite-core/50 font-serif italic mb-8 max-w-lg mx-auto">Получайте актуальные новости транспортной отрасли и кейсы ResursTrans напрямую.</p>
+                <p className="text-anthracite-core/50 font-serif italic mb-8 max-w-lg mx-auto">Получайте актуальные новости транспортной отрасли и кейсы ResursLogistics напрямую.</p>
                 <div className="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
                     <input
                         type="email"

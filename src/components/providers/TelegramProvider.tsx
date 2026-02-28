@@ -52,7 +52,7 @@ export const TelegramProvider = ({ children }: { children: React.ReactNode }) =>
                                 {t("TelegramModal.title") || "Переход в Telegram"}
                             </h3>
                             <p className="text-anthracite-core/70 dark:text-cloud-dancer/70 mb-8 leading-relaxed font-serif italic text-lg">
-                                {t("TelegramModal.description") || "Вы покидаете сайт РесурсТранс и переходите в стороннее приложение. Обратите внимание, что при переходе ваш номер телефона и данные профиля станут доступны платформе мессенджера."}
+                                {t("TelegramModal.description") || "Вы покидаете сайт РесурсЛогистика и переходите в стороннее приложение. Обратите внимание, что при переходе ваш номер телефона и данные профиля станут доступны платформе мессенджера."}
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4">
                                 <button

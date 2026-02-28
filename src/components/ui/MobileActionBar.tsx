@@ -37,7 +37,7 @@ export const MobileActionBar = () => {
                 className={`pointer-events-auto ${isFooterVisible ? 'pointer-events-none' : ''}`}
             >
                 <button
-                    onClick={() => openTelegramModal("https://t.me/resurstrans")}
+                    onClick={() => openTelegramModal("https://t.me/resurslogistics")}
                     className="relative flex items-center justify-center gap-2 bg-[#2AABEE] text-white px-8 py-4 rounded-full font-bold text-base tracking-wide hover:bg-[#229ED9] transition-all shadow-lg shadow-[#2AABEE]/30 active:scale-95"
                 >
                     <Send className="w-5 h-5 -mt-0.5 -ml-1 flex-shrink-0" />
